@@ -1,14 +1,15 @@
-import React, { Component } from 'react';
+import styled from 'styled-components';
+import Header from './Header';
+import Meta from "./Meta";
+import "../GlobalStyle";
 
-class Page extends Component {
-  render() {
-    return (
-      <div>
-        <p>Hey I'm the page component</p>
-        {this.props.children}
-      </div>
-    );
-  }
-}
+const Page = props => (
+  <div>
+    <Meta />
+    <Header />
+    <p>Hey I'm the page component!</p>
+    {props.children}
+  </div>
+);
 
 export default Page;
