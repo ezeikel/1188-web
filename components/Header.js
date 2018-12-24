@@ -1,7 +1,9 @@
+import { useState } from "react";
 import Link from "next/link";
 import Router from "next/router";
 import styled from "styled-components";
 import NProgress from "nprogress";
+import Nav from "./Nav";
 
 Router.onRouteChangeStart = () => {
   NProgress.start();
@@ -28,15 +30,19 @@ const Logo = styled.h1`
   }
 `;
 
-const Header = () => (
-  <Wrapper>
-    <Logo>
-      <Link href="/">
-        <a>1188</a>
-      </Link>
-    </Logo>
-    <p>Hey I'm the Header component</p>
-  </Wrapper>
-);
+const Header = () => {
+  const [active, toggleActive] = useState(false);
+
+  return (
+    <Wrapper>
+      <Logo>
+        <Link href="/">
+          <a>1188</a>
+        </Link>
+      </Logo>
+      <Nav active={active} toggleActive={toggleActive} />
+    </Wrapper>
+  );
+};
 
 export default Header;

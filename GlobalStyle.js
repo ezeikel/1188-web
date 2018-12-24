@@ -42,6 +42,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: var(--default-font-family);
+  font-size: 1.6rem;
 }
 img {
   max-width: 100%;
