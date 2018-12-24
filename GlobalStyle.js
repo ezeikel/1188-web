@@ -23,6 +23,7 @@ export default createGlobalStyle`
   --spacing-medium: 16px;
   --spacing-large: 32px;
   --spacing-huge: 64px;
+  --spacing-gargantuan: 128px;
   /* Font */
   --default-font-family: 'proxima-nova', sans-serif;
   --default-font-size: 10px;
@@ -49,6 +50,7 @@ img {
 }
 a {
   text-decoration: none;
+  color: var(--color-black);
 }
 ul {
   list-style-type: none;
