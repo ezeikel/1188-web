@@ -18,22 +18,27 @@ const Nav = () => {
     <Wrapper>
       <ul>
         <li>
-          <Link href="/about">
+          <Link href="/">
             <a>Home</a>
           </Link>
         </li>
         <li>
-          <Link href="/about">
-            <a>Services</a>
+          <Link href="/what-we-do">
+            <a>What we do</a>
           </Link>
         </li>
         <li>
-          <Link href="/about">
+          <Link href="/who-we-are">
             <a>Who we are</a>
           </Link>
         </li>
         <li>
-          <Link href="/about">
+          <Link href="/blog">
+            <a>Blog</a>
+          </Link>
+        </li>
+        <li>
+          <Link href="/contact">
             <a>Contact</a>
           </Link>
         </li>
