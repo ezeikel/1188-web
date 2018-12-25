@@ -7,8 +7,8 @@ const Wrapper = styled.nav`
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: #6CC7BE;
-  transform: translate3d(0,${({ active }) => active ?  '0' : '-100vh'},0);
+  background-color: #6cc7be;
+  transform: translate3d(0, ${({ active }) => (active ? "0" : "-100vh")}, 0);
   transition: transform 0.3s ease-in-out, background-color 0.2s ease;
   display: grid;
   place-items: center;
@@ -30,22 +30,25 @@ const Wrapper = styled.nav`
   }
   @media (min-width: 768px) {
     position: relative;
-    box-shadow: 0 -3px 3rem 0px rgba(0, 0, 0, 0.1);
-    transform: translate3d(0,0,0);
+    transform: translate3d(0, 0, 0);
+    background-color: initial;
     ul {
       grid-template-columns: repeat(5, auto);
+      grid-template-rows: initial;
       grid-column-gap: var(--spacing-large);
       text-transform: uppercase;
       font-size: 1.8rem;
-
-    display: grid;
-    -webkit-box-pack: center;
-    justify-content: center;
-    align-content: start;
-    height: 100%;
-    font-weight: 300;
-    text-align: center;
-    transition: all 0.3s ease-in-out 0s;
+      padding-top: 0;
+      display: grid;
+      justify-content: center;
+      align-content: start;
+      height: 100%;
+      font-weight: 300;
+      text-align: center;
+      transition: all 0.3s ease-in-out 0s;
+      a {
+        color: var(--color-black);
+      }
     }
   }
 `;

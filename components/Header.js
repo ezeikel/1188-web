@@ -30,8 +30,9 @@ const Wrapper = styled.header`
 `;
 
 const Logo = styled.h1`
-  font-size: 4rem;
+  font-size: 3.2rem;
   z-index: 1;
+  margin: 0;
   a {
     transition: color 0.3s ease-in-out;
     color: var(--color-${({ active }) => active ? 'white' : 'black'});
