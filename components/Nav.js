@@ -7,47 +7,43 @@ const Wrapper = styled.nav`
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: #6cc7be;
+  background-color: var(--color-white);
   transform: translate3d(0, ${({ active }) => (active ? "0" : "-100vh")}, 0);
   transition: transform 0.3s ease-in-out, background-color 0.2s ease;
   display: grid;
-  place-items: center;
+  align-items: start;
+  padding-top: 100px;
   ul {
     display: grid;
     grid-template-rows: repeat(5, auto);
     grid-row-gap: var(--spacing-huge);
+    place-items: center;
     justify-content: center;
-    align-content: start;
-    height: 100%;
     font-weight: bold;
     text-align: center;
-    font-size: 3.6rem;
+    font-size: 3rem;
     text-transform: uppercase;
-    padding-top: var(--spacing-gargantuan);
     a {
-      color: var(--color-white);
+      color: var(--color-black);
     }
   }
   @media (min-width: 768px) {
     position: relative;
     transform: translate3d(0, 0, 0);
     background-color: initial;
+    padding-top: 0;
     ul {
+      height: 100%;
       grid-template-columns: repeat(5, auto);
       grid-template-rows: initial;
       grid-column-gap: var(--spacing-large);
+      grid-row-gap: 0;
       text-transform: uppercase;
       font-size: 1.8rem;
       padding-top: 0;
-      display: grid;
-      justify-content: center;
-      align-content: start;
-      height: 100%;
-      font-weight: 300;
-      text-align: center;
       transition: all 0.3s ease-in-out 0s;
       a {
-        color: var(--color-black);
+        color: var(--color-white);
       }
     }
   }

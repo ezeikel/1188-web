@@ -11,7 +11,7 @@ const Wrapper = styled.div`
     margin-left: auto;
     width: 25px;
     height: 2px;
-    background-color: var(--color-${({ active }) => active ? 'white' : 'black'});
+    background-color: var(--color-${({ active }) => active ? 'black' : 'white'});
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
   }
   ${({ active }) => {
@@ -27,7 +27,7 @@ const Wrapper = styled.div`
       }
     ` : ''
   }};
-  @media (min-width: 1024px) {
+  @media (min-width: 768px) {
     display: none;
   }
 `;

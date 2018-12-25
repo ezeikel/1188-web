@@ -8,7 +8,6 @@ const Page = props => (
     <Meta />
     <GlobalStyle />
     <Header />
-    <p>Hey I'm the page component!</p>
     {props.children}
   </div>
 );

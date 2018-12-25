@@ -20,13 +20,16 @@ Router.onRouteChangeError = () => {
 };
 
 const Wrapper = styled.header`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   display: grid;
   grid-template-columns: auto auto;
   justify-content: space-between;
   place-items: center;
   padding: var(--spacing-medium);
-  @media (min-width: 768px) {
-  }
+  height: 100px;
 `;
 
 const Logo = styled.h1`
@@ -35,11 +38,13 @@ const Logo = styled.h1`
   margin: 0;
   a {
     transition: color 0.3s ease-in-out;
-    color: var(--color-${({ active }) => active ? 'white' : 'black'});
+    color: var(--color-${({ active }) => active ? 'black' : 'white'});
   }
-  @media (max-width: 1300px) {
-    margin: 0;
+  @media (min-width: 768px) {
     text-align: center;
+    a {
+      color: var(--color-white);
+    }
   }
 `;
 
