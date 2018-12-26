@@ -33,7 +33,7 @@ const Wrapper = styled.div`
 `;
 
 const Hamburger = ({ active, toggleActive }) => (
-  <Wrapper active={active} onClick={() => toggleActive(!active)}>
+  <Wrapper active={active} onClick={toggleActive}>
     <span></span>
     <span></span>
     <span></span>

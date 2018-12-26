@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Component, useState } from "react";
 import Link from "next/link";
 import Router from "next/router";
 import styled from "styled-components";
@@ -12,7 +12,6 @@ Router.onRouteChangeStart = () => {
 
 Router.onRouteChangeComplete = () => {
   NProgress.done();
-  console.log("onRouteChangeComplete");
 };
 
 Router.onRouteChangeError = () => {
@@ -48,20 +47,32 @@ const Logo = styled.h1`
   }
 `;
 
-const Header = () => {
-  const [active, toggleActive] = useState(false);
+class Header extends Component {
+  // TODO: Reinstate once nextjs supports hooks
+  //const [active, toggleActive] = useState(false);
+  state = {
+    active: false
+  };
 
-  return (
-    <Wrapper active={active}>
-      <Logo active={active}>
-        <Link href="/">
-          <a>1188</a>
-        </Link>
-      </Logo>
-      <Nav active={active}/>
-      <Hamburger active={active} toggleActive={toggleActive}/>
-    </Wrapper>
-  );
+  toggleActive = () => {
+    this.setState({
+      active: !this.state.active
+    });
+  };
+
+  render() {
+    return (
+      <Wrapper active={this.state.active}>
+        <Logo active={this.state.active}>
+          <Link href="/">
+            <a>1188</a>
+          </Link>
+        </Logo>
+        <Nav active={this.state.active}/>
+        <Hamburger active={this.state.active} toggleActive={this.toggleActive}/>
+      </Wrapper>
+    );
+  }
 };
 
 export default Header;

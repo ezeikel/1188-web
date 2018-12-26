@@ -13,38 +13,39 @@ const Wrapper = styled.nav`
   display: grid;
   align-items: start;
   padding-top: 100px;
-  ul {
-    display: grid;
-    grid-template-rows: repeat(5, auto);
-    grid-row-gap: var(--spacing-huge);
-    place-items: center;
-    justify-content: center;
-    font-weight: bold;
-    text-align: center;
-    font-size: 3rem;
-    text-transform: uppercase;
-    a {
-      color: var(--color-black);
-    }
-  }
   @media (min-width: 768px) {
     position: relative;
     transform: translate3d(0, 0, 0);
     background-color: initial;
     padding-top: 0;
-    ul {
-      height: 100%;
-      grid-template-columns: repeat(5, auto);
-      grid-template-rows: initial;
-      grid-column-gap: var(--spacing-large);
-      grid-row-gap: 0;
-      text-transform: uppercase;
-      font-size: 1.8rem;
-      padding-top: 0;
-      transition: all 0.3s ease-in-out 0s;
-      a {
-        color: var(--color-white);
-      }
+  }
+`;
+
+const NavList = styled.ul`
+  display: grid;
+  grid-template-rows: repeat(5, auto);
+  grid-row-gap: var(--spacing-huge);
+  place-items: center;
+  justify-content: center;
+  font-weight: bold;
+  text-align: center;
+  font-size: 3rem;
+  text-transform: uppercase;
+  a {
+    color: var(--color-black);
+  }
+  @media (min-width: 768px) {
+    height: 100%;
+    grid-template-columns: repeat(5, auto);
+    grid-template-rows: initial;
+    grid-column-gap: var(--spacing-large);
+    grid-row-gap: 0;
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    padding-top: 0;
+    transition: all 0.3s ease-in-out 0s;
+    a {
+      color: var(--color-white);
     }
   }
 `;
@@ -52,7 +53,7 @@ const Wrapper = styled.nav`
 const Nav = ({ active }) => {
   return (
     <Wrapper active={active}>
-      <ul>
+      <NavList>
         <li>
           <Link href="/">
             <a>Home</a>
@@ -78,7 +79,7 @@ const Nav = ({ active }) => {
             <a>Contact</a>
           </Link>
         </li>
-      </ul>
+      </NavList>
     </Wrapper>
   );
 };
