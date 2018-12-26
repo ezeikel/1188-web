@@ -1,4 +1,4 @@
-import { Component, useState } from "react";
+import { Component } from "react";
 import Link from "next/link";
 import Router from "next/router";
 import styled from "styled-components";
@@ -31,19 +31,15 @@ const Wrapper = styled.header`
   height: 100px;
 `;
 
-const Logo = styled.h1`
-  font-size: 3.2rem;
+const Logo = styled.div`
+  display: grid;
+  place-items: center;
   z-index: 1;
   margin: 0;
-  a {
-    transition: color 0.3s ease-in-out;
-    color: var(--color-${({ active }) => active ? 'black' : 'white'});
-  }
+  width: 100px;
   @media (min-width: 768px) {
     text-align: center;
-    a {
-      color: var(--color-white);
-    }
+    cursor: pointer;
   }
 `;
 
@@ -65,7 +61,7 @@ class Header extends Component {
       <Wrapper active={this.state.active}>
         <Logo active={this.state.active}>
           <Link href="/">
-            <a>1188</a>
+            <img src="/static/logos/1188.svg" />
           </Link>
         </Logo>
         <Nav active={this.state.active}/>

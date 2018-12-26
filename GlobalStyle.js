@@ -25,7 +25,7 @@ export default createGlobalStyle`
   --spacing-huge: 64px;
   --spacing-gargantuan: 128px;
   /* Font */
-  --default-font-family: 'proxima-nova', sans-serif;
+  --default-font-family: 'itc-avant-garde-gothic-pro', sans-serif;
   --default-font-size: 10px;
   --font-size-tiny: 1.4rem;
   --font-size-small: 1.6rem;
@@ -33,6 +33,8 @@ export default createGlobalStyle`
   --font-size-large: 2rem;
   --font-size-huge: 2.2rem;
 }
+::-moz-selection { background: var(--color-primary); }
+::selection { background: var(--color-primary); }
 * {
   box-sizing: border-box;
 }

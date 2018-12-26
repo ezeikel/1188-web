@@ -14,6 +14,7 @@ const Wrapper = styled.nav`
   align-items: start;
   padding-top: 100px;
   @media (min-width: 768px) {
+    height: 100%;
     position: relative;
     transform: translate3d(0, 0, 0);
     background-color: initial;
@@ -27,13 +28,9 @@ const NavList = styled.ul`
   grid-row-gap: var(--spacing-huge);
   place-items: center;
   justify-content: center;
-  font-weight: bold;
   text-align: center;
   font-size: 3rem;
   text-transform: uppercase;
-  a {
-    color: var(--color-black);
-  }
   @media (min-width: 768px) {
     height: 100%;
     grid-template-columns: repeat(5, auto);
@@ -44,8 +41,47 @@ const NavList = styled.ul`
     font-size: 1.8rem;
     padding-top: 0;
     transition: all 0.3s ease-in-out 0s;
-    a {
-      color: var(--color-white);
+    text-transform: capitalize;
+  }
+`;
+
+const NavListItem =  styled.li`
+  @media (min-width: 768px) {
+    overflow-x: hidden;
+    height: 100%;
+    display: grid;
+    place-items: center;
+  }
+`;
+
+const StyledLink =  styled.a`
+  color: var(--color-black);
+  font-weight: bold;
+  @media (min-width: 768px) {
+    display: grid;
+    place-items: center;
+    height: 100%;
+    position: relative;
+    color: var(--color-white);
+    overflow-x: hidden;
+    cursor: pointer;
+    &:after {
+      position: relative;
+      content: "";
+      display: block;
+      position: absolute;
+      background-color: var(--color-white);
+      height: 2px;
+      width: 50%;
+      bottom: 0;
+      left: 0;
+      transform: translateX(-150%);
+      transition: transform 0.2s ease-in-out;
+    }
+    &:hover {
+      &:after {
+        transform: translatex(0);
+      }
     }
   }
 `;
@@ -54,31 +90,31 @@ const Nav = ({ active }) => {
   return (
     <Wrapper active={active}>
       <NavList>
-        <li>
+        <NavListItem>
           <Link href="/">
-            <a>Home</a>
+            <StyledLink>Home</StyledLink>
           </Link>
-        </li>
-        <li>
+        </NavListItem>
+        <NavListItem>
           <Link href="/what-we-do">
-            <a>What we do</a>
+            <StyledLink>What we do</StyledLink>
           </Link>
-        </li>
-        <li>
+        </NavListItem>
+        <NavListItem>
           <Link href="/who-we-are">
-            <a>Who we are</a>
+            <StyledLink>Who we are</StyledLink>
           </Link>
-        </li>
-        <li>
+        </NavListItem>
+        <NavListItem>
           <Link href="/blog">
-            <a>Blog</a>
+            <StyledLink>Blog</StyledLink>
           </Link>
-        </li>
-        <li>
+        </NavListItem>
+        <NavListItem>
           <Link href="/contact">
-            <a>Contact</a>
+            <StyledLink>Contact</StyledLink>
           </Link>
-        </li>
+        </NavListItem>
       </NavList>
     </Wrapper>
   );
