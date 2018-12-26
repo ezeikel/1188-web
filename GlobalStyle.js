@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle, keyframes } from "styled-components";
 
 export default createGlobalStyle`
 /* CSS Variables */
@@ -57,4 +57,11 @@ ul {
   padding-left: 0;
   margin: 0;
 }
+`;
+
+export const scrollDown = keyframes`
+  40%, 60% {
+    -webkit-transform: translateY(10px);
+            transform: translateY(10px);
+  }
 `;

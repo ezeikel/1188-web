@@ -27,7 +27,7 @@ const Wrapper = styled.header`
   grid-template-columns: auto auto;
   justify-content: space-between;
   place-items: center;
-  padding: var(--spacing-medium);
+  padding: var(--spacing-large);
   height: 100px;
 `;
 
