@@ -39,9 +39,11 @@ const Logo = styled.div`
   z-index: 1;
   margin: 0;
   width: 100px;
+  img {
+    width: 100%;
+  }
   @media (min-width: 768px) {
     text-align: center;
-    cursor: pointer;
   }
 `;
 
@@ -111,7 +113,9 @@ class Header extends Component {
       <Wrapper active={this.state.active} ref={this._header} sticky={this.state.sticky} >
         <Logo active={this.state.active}>
           <Link href="/">
-            <img src="/static/logos/1188.svg" />
+            <a>
+              <img src="/static/logos/1188.svg" />
+            </a>
           </Link>
         </Logo>
         <Nav active={this.state.active} sticky={this.state.sticky} />

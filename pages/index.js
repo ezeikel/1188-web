@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import ScrollDown from '../components/ScrollDown';
 
 const Wrapper = styled.div`
-  height: 200vh;
+  height: 150vh;
 `;
 
 const Hero = styled.section`

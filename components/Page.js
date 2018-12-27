@@ -1,7 +1,12 @@
-import styled from 'styled-components';
-import Header from './Header';
 import Meta from "./Meta";
+import Header from './Header';
+import Footer from './Footer';
 import GlobalStyle from "../GlobalStyle";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fab } from "@fortawesome/free-brands-svg-icons";
+//import { far } from "@fortawesome/pro-regular-svg-icons";
+
+library.add(fab);
 
 const Page = props => (
   <div>
@@ -9,6 +14,7 @@ const Page = props => (
     <GlobalStyle />
     <Header />
     {props.children}
+    <Footer />
   </div>
 );
 
