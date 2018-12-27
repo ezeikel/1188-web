@@ -6,18 +6,22 @@ const Wrapper = styled.div`
   height: 150vh;
 `;
 
-const Hero = styled.section`
+const Overlay = styled.section`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   display: grid;
   grid-template-rows: repeat(4, auto);
   justify-items: center;
-  min-height: 100vh;
-  background: linear-gradient(100deg, rgba(251, 84, 43, .7) 0%,rgba(42, 0, 84, 1) 100%),
-    url("/static/images/hero3.jpg");
-  background-size: cover;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background: linear-gradient(100deg, rgba(251, 84, 43, .7) 0%,rgba(42, 0, 84, 1) 100%);
   padding: 0 var(--spacing-medium);
+`;
+
+const Hero = styled.section`
+  position: relative;
+  height: 80vh;
 `;
 
 const HeroTitle = styled.h1`
@@ -41,11 +45,20 @@ const StyledScrollDown = styled(ScrollDown)`
   align-self: center;
 `;
 
+const StyledVideo = styled.video`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
 const Index = () => (
   <Wrapper>
     <Hero>
-      <HeroTitle>Building out the dope tech ideas of women, people of colour and other marginalised communities.</HeroTitle>
-      <StyledScrollDown />
+      <StyledVideo autoPlay muted loop src="/static/videos/hero.mp4" type="video/mp4" />
+      <Overlay>
+        <HeroTitle>Building the internet.</HeroTitle>
+        <StyledScrollDown />
+      </Overlay>
     </Hero>
   </Wrapper>
 )

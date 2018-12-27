@@ -14,6 +14,7 @@ const Wrapper = styled.nav`
   align-items: start;
   padding-top: 100px;
   @media (min-width: 768px) {
+    z-index: 1;
     height: 100%;
     position: relative;
     transform: translate3d(0, 0, 0);
