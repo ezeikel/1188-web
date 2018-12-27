@@ -11,7 +11,7 @@ const Wrapper = styled.div`
     margin-left: auto;
     width: 25px;
     height: 2px;
-    background-color: var(--color-${({ active }) => active ? 'black' : 'white'});
+    background-color: var(--color-${({ active, sticky }) => active || sticky ? 'black' : 'white'});
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
   }
   ${({ active }) => {
@@ -32,8 +32,8 @@ const Wrapper = styled.div`
   }
 `;
 
-const Hamburger = ({ active, toggleActive }) => (
-  <Wrapper active={active} onClick={toggleActive}>
+const Hamburger = ({ active, sticky, toggleActive }) => (
+  <Wrapper active={active} sticky={sticky} onClick={toggleActive}>
     <span></span>
     <span></span>
     <span></span>

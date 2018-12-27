@@ -54,7 +54,7 @@ const NavListItem =  styled.li`
   }
 `;
 
-const StyledLink =  styled.a`
+const StyledLink = styled.a`
   color: var(--color-black);
   font-weight: bold;
   @media (min-width: 768px) {
@@ -62,7 +62,7 @@ const StyledLink =  styled.a`
     place-items: center;
     height: 100%;
     position: relative;
-    color: var(--color-white);
+    color: ${({ sticky }) => sticky ? 'var(--color-black)' : 'var(--color-white)'};
     overflow-x: hidden;
     cursor: pointer;
     &:after {
@@ -70,7 +70,7 @@ const StyledLink =  styled.a`
       content: "";
       display: block;
       position: absolute;
-      background-color: var(--color-white);
+      background-color: ${({ sticky }) => sticky ? 'var(--color-black)' : 'var(--color-white)'};
       height: 2px;
       width: 50%;
       bottom: 0;
@@ -86,33 +86,33 @@ const StyledLink =  styled.a`
   }
 `;
 
-const Nav = ({ active }) => {
+const Nav = ({ active, sticky }) => {
   return (
     <Wrapper active={active}>
       <NavList>
         <NavListItem>
           <Link href="/">
-            <StyledLink>Home</StyledLink>
+            <StyledLink sticky={sticky}>Home</StyledLink>
           </Link>
         </NavListItem>
         <NavListItem>
           <Link href="/what-we-do">
-            <StyledLink>What we do</StyledLink>
+            <StyledLink sticky={sticky}>What we do</StyledLink>
           </Link>
         </NavListItem>
         <NavListItem>
           <Link href="/who-we-are">
-            <StyledLink>Who we are</StyledLink>
+            <StyledLink sticky={sticky}>Who we are</StyledLink>
           </Link>
         </NavListItem>
         <NavListItem>
           <Link href="/blog">
-            <StyledLink>Blog</StyledLink>
+            <StyledLink sticky={sticky}>Blog</StyledLink>
           </Link>
         </NavListItem>
         <NavListItem>
           <Link href="/contact">
-            <StyledLink>Contact</StyledLink>
+            <StyledLink sticky={sticky}>Contact</StyledLink>
           </Link>
         </NavListItem>
       </NavList>
