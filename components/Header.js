@@ -74,12 +74,12 @@ class Header extends Component {
     }, () => {
       if (this.state.active) {
         document.documentElement.classList.add('no-scroll');
-        document.ontouchend = (e) => {
-          e.preventDefault();
-        };
+        // document.ontouchend = (e) => {
+        //   e.preventDefault();
+        // };
       } else {
         document.documentElement.classList.remove('no-scroll');
-        document.ontouchend = null;
+        // document.ontouchend = null;
       }
     });
   };
