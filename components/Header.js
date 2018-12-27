@@ -69,6 +69,16 @@ class Header extends Component {
   toggleActive = () => {
     this.setState({
       active: !this.state.active
+    }, () => {
+      if (this.state.active) {
+        document.documentElement.classList.add('no-scroll');
+        document.ontouchend = (e) => {
+          e.preventDefault();
+        };
+      } else {
+        document.documentElement.classList.remove('no-scroll');
+        document.ontouchend = null;
+      }
     });
   };
 
