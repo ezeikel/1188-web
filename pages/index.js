@@ -12,6 +12,7 @@ const Overlay = styled.section`
   left: 0;
   right: 0;
   bottom: 0;
+  min-height: 100vh;
   display: grid;
   grid-template-rows: repeat(4, 1fr);
   grid-template-columns: repeat(12, 1fr);

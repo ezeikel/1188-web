@@ -61,11 +61,11 @@ const StyledLink = styled.a`
   @media (min-width: 768px) {
     display: grid;
     place-items: center;
-    height: 100%;
     position: relative;
     color: ${({ sticky, home }) => sticky || !home ? 'var(--color-black)' : 'var(--color-white)'};
     overflow-x: hidden;
     cursor: pointer;
+    padding-bottom: var(--spacing-small);
     &:after {
       position: relative;
       content: "";

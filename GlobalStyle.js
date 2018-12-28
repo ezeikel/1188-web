@@ -38,7 +38,7 @@ export default createGlobalStyle`
   --font-size-large: 2rem;
   --font-size-huge: 2.2rem;
 
-  --header-height: 100px;
+  --header-height: 130px;
 }
 ::-moz-selection { background: var(--color-primary); }
 ::selection { background: var(--color-primary); }
