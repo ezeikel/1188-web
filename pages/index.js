@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import ScrollDown from '../components/ScrollDown';
 
 const Wrapper = styled.div`
-  height: 150vh;
 `;
 
 const Overlay = styled.section`

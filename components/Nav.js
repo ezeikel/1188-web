@@ -12,7 +12,7 @@ const Wrapper = styled.nav`
   transition: transform 0.3s ease-in-out, background-color 0.2s ease;
   display: grid;
   align-items: start;
-  padding-top: 100px;
+  padding-top: var(--header-height);
   @media (min-width: 768px) {
     z-index: 1;
     height: 100%;

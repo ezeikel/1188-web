@@ -1,6 +1,6 @@
 import { Component, createRef } from "react";
 import Link from "next/link";
-import Router, { withRouter } from "next/router";
+import Router from "next/router";
 import styled from "styled-components";
 import NProgress from "nprogress";
 import Nav from "./Nav";
@@ -25,7 +25,7 @@ const Wrapper = styled.header`
   justify-content: space-between;
   place-items: center;
   padding: var(--spacing-large);
-  height: 100px;
+  height: var(--header-height);
   background-color: ${({ sticky }) =>
     sticky ? "var(--color-white)" : "transparent"};
   box-shadow: ${({ sticky }) =>
@@ -114,10 +114,8 @@ class Header extends Component {
   }
 
   render() {
-    const home = this.props.router.pathname === '/';
-
     return (
-      <Wrapper active={this.state.active} sticky={this.state.sticky} home={home} ref={this._header} >
+      <Wrapper active={this.state.active} sticky={this.state.sticky} home={this.props.home} ref={this._header} >
         <Logo active={this.state.active}>
           <Link href="/">
             <a>
@@ -125,11 +123,11 @@ class Header extends Component {
             </a>
           </Link>
         </Logo>
-        <Nav active={this.state.active} sticky={this.state.sticky} home={home} />
+        <Nav active={this.state.active} sticky={this.state.sticky} home={this.props.home} />
         <Hamburger active={this.state.active} toggleActive={this.toggleActive} sticky={this.state.sticky} />
       </Wrapper>
     );
   }
 };
 
-export default withRouter(Header);
+export default Header;

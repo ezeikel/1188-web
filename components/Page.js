@@ -1,3 +1,5 @@
+import { Component } from "react";
+import { withRouter } from "next/router";
 import styled from "styled-components";
 import Meta from "./Meta";
 import Header from './Header';
@@ -11,19 +13,27 @@ library.add(fab);
 
 const Wrapper = styled.div`
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: ${({ home }) =>
+    home ? "1fr minmax(var(--header-height), auto)" : "var(--header-height) 1fr minmax(var(--header-height), auto);"};
+  min-height: 100vh;
 `;
 
-const Page = props => (
-  <div>
-    <Meta />
-    <GlobalStyle />
-    <Wrapper>
-      <Header />
-      {props.children}
-      <Footer />
-    </Wrapper>
-  </div>
-);
+class Page extends Component {
+  render() {
+    const home = this.props.router.pathname === '/';
 
-export default Page;
+    return (
+      <div>
+        <Meta />
+        <GlobalStyle />
+        <Wrapper home={home}>
+          <Header home={home} />
+          {this.props.children}
+          <Footer />
+        </Wrapper>
+      </div>
+    );
+  }
+};
+
+export default withRouter(Page);
