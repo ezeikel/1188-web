@@ -19,10 +19,6 @@ Router.onRouteChangeError = () => {
 };
 
 const Wrapper = styled.header`
-  position: ${({ sticky }) => sticky ? 'fixed' : 'absolute'};
-  top: 0;
-  left: 0;
-  right: 0;
   z-index: 1;
   display: grid;
   grid-template-columns: auto auto;
@@ -30,8 +26,16 @@ const Wrapper = styled.header`
   place-items: center;
   padding: var(--spacing-large);
   height: 100px;
-  background-color: ${({ sticky }) => sticky ? 'var(--color-white)' : 'transparent'};
-  box-shadow: ${({ sticky }) => sticky ? 'rgba(0, 0, 0, 0.1) 0px 2px 1.5rem 0px' : 'non'};;
+  background-color: ${({ sticky }) =>
+    sticky ? "var(--color-white)" : "transparent"};
+  box-shadow: ${({ sticky }) =>
+    sticky ? "rgba(0, 0, 0, 0.1) 0px 2px 1.5rem 0px" : "non"};
+  @media (min-width: 768px) {
+    position: ${({ sticky }) => (sticky ? "fixed" : "absolute")};
+    top: 0;
+    left: 0;
+    right: 0;
+  }
 `;
 
 const Logo = styled.div`

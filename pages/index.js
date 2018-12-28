@@ -21,7 +21,8 @@ const Overlay = styled.section`
 
 const Hero = styled.section`
   position: relative;
-  height: 80vh;
+  height: 100vh;
+  overflow: hidden;
 `;
 
 const HeroTitle = styled.h1`
@@ -31,6 +32,8 @@ const HeroTitle = styled.h1`
   color: var(--color-white);
   text-align: center;
   max-width: 1300px;
+  display: grid;
+  place-items: center;
   @media (min-width: 768px) {
     grid-row: 3 / span 1;
     font-size: 6.4rem;

@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import Meta from "./Meta";
 import Header from './Header';
 import Footer from './Footer';
@@ -8,13 +9,20 @@ import { fab } from "@fortawesome/free-brands-svg-icons";
 
 library.add(fab);
 
+const Wrapper = styled.div`
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+`;
+
 const Page = props => (
   <div>
     <Meta />
     <GlobalStyle />
-    <Header />
-    {props.children}
-    <Footer />
+    <Wrapper>
+      <Header />
+      {props.children}
+      <Footer />
+    </Wrapper>
   </div>
 );
 

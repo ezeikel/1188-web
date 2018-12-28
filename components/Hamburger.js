@@ -11,7 +11,8 @@ const Wrapper = styled.div`
     margin-left: auto;
     width: 25px;
     height: 2px;
-    background-color: var(--color-${({ active, sticky }) => active || sticky ? 'black' : 'white'});
+    background-color: var(--color-${({ active, sticky }) => active || sticky ? 'black' : 'black'});
+    background-color: var(--color-black);
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
   }
   ${({ active }) => {
