@@ -72,6 +72,7 @@ class Header extends Component {
   targetElement = null;
 
   componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll.bind(this));
     this.targetElement = this.targetRef.current;
   }
 
