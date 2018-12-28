@@ -47,12 +47,6 @@ export default createGlobalStyle`
 }
 html {
   font-size: var(--default-font-size);
-  &.no-scroll {
-    overflow: hidden;
-    body {
-      overflow: hidden;
-    }
-  }
 }
 body {
   margin: 0;

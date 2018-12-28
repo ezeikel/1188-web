@@ -3,6 +3,7 @@ import Link from "next/link";
 import Router from "next/router";
 import styled from "styled-components";
 import NProgress from "nprogress";
+import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 import Nav from "./Nav";
 import Hamburger from "./Hamburger";
 
@@ -67,12 +68,16 @@ class Header extends Component {
     dragging: false
   };
 
+  targetRef = createRef();
+  targetElement = null;
+
   componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll.bind(this));
+    this.targetElement = this.targetRef.current;
   }
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
+    clearAllBodyScrollLocks();
   }
 
   toggleActive = () => {
@@ -80,9 +85,9 @@ class Header extends Component {
       active: !this.state.active
     }, () => {
       if (this.state.active) {
-        document.documentElement.classList.add('no-scroll');
+        disableBodyScroll(this.targetElement);
       } else {
-        document.documentElement.classList.remove('no-scroll');
+        enableBodyScroll(this.targetElement);
       }
     });
   };
@@ -112,24 +117,6 @@ class Header extends Component {
   }
 
   render() {
-    document.ontouchmove = (e) => {
-      this.setState({
-        dragging: true
-      });
-    };
-
-    document.ontouchend = (e) => {
-      if (this.state.dragging && this.state.active) {
-        e.preventDefault();
-      }
-    };
-
-    document.ontouchstart = (e) => {
-      this.setState({
-        dragging: false
-      });
-    };
-
     return (
       <Wrapper active={this.state.active} sticky={this.state.sticky} home={this.props.home} ref={this._header} >
         <Logo active={this.state.active}>
@@ -139,7 +126,7 @@ class Header extends Component {
             </a>
           </Link>
         </Logo>
-        <Nav active={this.state.active} sticky={this.state.sticky} home={this.props.home} />
+        <Nav active={this.state.active} sticky={this.state.sticky} home={this.props.home} ref={this.targetElement} />
         <Hamburger active={this.state.active} toggleActive={this.toggleActive} sticky={this.state.sticky} />
       </Wrapper>
     );
