@@ -13,15 +13,14 @@ const Overlay = styled.section`
   right: 0;
   bottom: 0;
   display: grid;
-  grid-template-rows: repeat(4, auto);
-  grid-template-columns: repeat(12, auto);
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: repeat(12, 1fr);
   justify-items: center;
   background: linear-gradient(
     100deg,
     rgba(251, 84, 43, 0.7) 0%,
     rgba(42, 0, 84, 1) 100%
   );
-  padding: 0 var(--spacing-medium);
 `;
 
 const Hero = styled.section`
@@ -32,16 +31,16 @@ const Hero = styled.section`
 
 const HeroTitle = styled.h1`
   grid-row: 2 / span 1;
-  grid-column: 6;
+  grid-column: 1 / -1;
   margin: 0;
   font-size: 4rem;
   color: var(--color-white);
-  text-align: center;
   max-width: 1300px;
   display: grid;
   place-items: center;
+  text-align: center;
   @media (min-width: 768px) {
-    grid-row: 2 / span 1;
+    grid-row: 2 / span 2;
     font-size: 6.4rem;
   }
   @media (min-width: 1024px) {
@@ -51,7 +50,7 @@ const HeroTitle = styled.h1`
 
 const StyledScrollDown = styled(ScrollDown)`
   grid-row: 4 / -1;
-  grid-column: 6;
+  grid-column: 1 / -1;
   align-self: center;
 `;
 
@@ -63,7 +62,7 @@ const StyledVideo = styled.video`
 
 const StyledLink = styled.a`
   grid-row: 3 / span 1;
-  grid-column: 6 / span 1;
+  grid-column: 1 / -1;
   align-self: end;
   display: grid;
   place-items: center;
@@ -81,6 +80,7 @@ const StyledLink = styled.a`
     &:hover {
       background-color: #6043ed;
       border-color: #6043ed;
+      cursor: pointer;
     }
   }
 `;
@@ -91,7 +91,7 @@ const Index = () => (
       <StyledVideo autoPlay muted loop src="/static/videos/hero.mp4" type="video/mp4" />
       <Overlay>
         <HeroTitle>Building the internet.</HeroTitle>
-        <Link href={`/who-we-are`}>
+        <Link href="/who-we-are">
           <StyledLink>Learn More</StyledLink>
         </Link>
         <StyledScrollDown />

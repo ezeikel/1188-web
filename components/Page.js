@@ -12,6 +12,7 @@ import { fab } from "@fortawesome/free-brands-svg-icons";
 library.add(fab);
 
 const Wrapper = styled.div`
+  position: relative;
   display: grid;
   grid-template-rows: ${({ home }) =>
     home ? "1fr minmax(var(--header-height), auto)" : "var(--header-height) 1fr minmax(var(--header-height), auto);"};
