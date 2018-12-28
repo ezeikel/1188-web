@@ -90,7 +90,9 @@ const StyledLink = styled.a`
 const Index = () => (
   <Wrapper>
     <Hero>
-      <StyledVideo autoPlay muted loop playsInline src="/static/videos/hero.mp4" type="video/mp4" />
+      <StyledVideo  preload="yes" autoPlay muted loop playsInline >
+        <source src="/static/videos/hero.mp4" type="video/mp4" />
+      </StyledVideo>
       <Overlay>
         <HeroTitle>Building a more inclusive internet.</HeroTitle>
         <Link href="/who-we-are">
