@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styled from 'styled-components';
 import ScrollDown from '../components/ScrollDown';
 import Contact from '../components/Contact';
@@ -13,8 +14,13 @@ const Overlay = styled.section`
   bottom: 0;
   display: grid;
   grid-template-rows: repeat(4, auto);
+  grid-template-columns: repeat(12, auto);
   justify-items: center;
-  background: linear-gradient(100deg, rgba(251, 84, 43, .7) 0%,rgba(42, 0, 84, 1) 100%);
+  background: linear-gradient(
+    100deg,
+    rgba(251, 84, 43, 0.7) 0%,
+    rgba(42, 0, 84, 1) 100%
+  );
   padding: 0 var(--spacing-medium);
 `;
 
@@ -26,6 +32,7 @@ const Hero = styled.section`
 
 const HeroTitle = styled.h1`
   grid-row: 2 / span 1;
+  grid-column: 6;
   margin: 0;
   font-size: 4rem;
   color: var(--color-white);
@@ -34,7 +41,7 @@ const HeroTitle = styled.h1`
   display: grid;
   place-items: center;
   @media (min-width: 768px) {
-    grid-row: 3 / span 1;
+    grid-row: 2 / span 1;
     font-size: 6.4rem;
   }
   @media (min-width: 1024px) {
@@ -44,6 +51,7 @@ const HeroTitle = styled.h1`
 
 const StyledScrollDown = styled(ScrollDown)`
   grid-row: 4 / -1;
+  grid-column: 6;
   align-self: center;
 `;
 
@@ -53,12 +61,39 @@ const StyledVideo = styled.video`
   object-fit: cover;
 `;
 
+const StyledLink = styled.a`
+  grid-row: 3 / span 1;
+  grid-column: 6 / span 1;
+  align-self: end;
+  display: grid;
+  place-items: center;
+  border: 3px solid var(--color-tertiary);
+  border-radius: 4px;
+  color: var(--color-white);
+  background-color: var(--color-tertiary);
+  font-size: 22px;
+  font-weight: bold;
+  padding: var(--spacing-medium) var(--spacing-large);
+  color: var(--color-white);
+  background-color: var(--color-tertiary);
+  @media (min-width: 768px) {
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      background-color: #6043ed;
+      border-color: #6043ed;
+    }
+  }
+`;
+
 const Index = () => (
   <Wrapper>
     <Hero>
       <StyledVideo autoPlay muted loop src="/static/videos/hero.mp4" type="video/mp4" />
       <Overlay>
         <HeroTitle>Building the internet.</HeroTitle>
+        <Link href={`/who-we-are`}>
+          <StyledLink>Learn More</StyledLink>
+        </Link>
         <StyledScrollDown />
       </Overlay>
     </Hero>

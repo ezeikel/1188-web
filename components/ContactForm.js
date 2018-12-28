@@ -27,7 +27,7 @@ const Fieldset = styled.div`
 
 const Label = styled.label`
   color: var(--color-black);
-  text-transform: uppercase;
+  text-transform: capitalize;
 `;
 
 // const SubmitMessage = styled.div `

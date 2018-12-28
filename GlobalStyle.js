@@ -7,16 +7,21 @@ export default createGlobalStyle`
   --color-primary: #1abc9c;
   /* --color-primary: #F7E7CE; */
   --color-secondary: #F1D3D1;
+  --color-tertiary: #4629D3;
+  --color-radical-red: #FF3D63;
+  --color-aquamarine: #62FFD3;
+  --color-bittersweet: #FF7264;
+  --color-black: #2E3333;
+  --color-white: #FFFFFF;
+  --color-gold: #CDA349;
+  --color-gold-lighter: #D4AF61;
+  --color-light-grey: #ECF0F1;
+  --color-red: #E74C3C;
+  --color-green: #2ECC71;
+  --color-grey: #BDC3C7;
   --color-black: #3b3b3b;
   --color-white: #fff;
   --color-gold: #CDA349;
-  --color-gold-lighter: #d4af61;
-  --color-light-grey: #ecf0f1;
-  --color-red: #e74c3c;
-  --color-dark-red: #c0392b;
-  --color-green: #2ecc71;
-  --color-grey: #bdc3c7;
-  --color-gold-star: #f1c40f;
   /* Spacing */
   --spacing-tiny: 4px;
   --spacing-small: 8px;
