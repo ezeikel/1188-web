@@ -24,13 +24,14 @@ const Wrapper = styled.header`
   grid-template-columns: auto auto;
   justify-content: space-between;
   place-items: center;
-  padding: var(--spacing-large);
+  padding: var(--spacing-medium) var(--spacing-large);
   height: var(--header-height);
   background-color: ${({ sticky }) =>
     sticky ? "var(--color-white)" : "transparent"};
   box-shadow: ${({ sticky }) =>
     sticky ? "rgba(0, 0, 0, 0.1) 0px 2px 1.5rem 0px" : "none"};
   @media (min-width: 768px) {
+    padding: var(--spacing-large);
     position: ${({ sticky, home }) => (home ? sticky ? "fixed" : "absolute" : "static")};
     top: 0;
     left: 0;
@@ -62,7 +63,8 @@ class Header extends Component {
 
   state = {
     active: false,
-    sticky: false
+    sticky: false,
+    dragging: false
   };
 
   componentDidMount() {
@@ -79,12 +81,8 @@ class Header extends Component {
     }, () => {
       if (this.state.active) {
         document.documentElement.classList.add('no-scroll');
-        document.ontouchend = (e) => {
-          e.preventDefault();
-        };
       } else {
         document.documentElement.classList.remove('no-scroll');
-        document.ontouchend = null;
       }
     });
   };
@@ -114,6 +112,24 @@ class Header extends Component {
   }
 
   render() {
+    document.ontouchmove = (e) => {
+      this.setState({
+        dragging: true
+      });
+    };
+
+    document.ontouchend = (e) => {
+      if (this.state.dragging && this.state.active) {
+        e.preventDefault();
+      }
+    };
+
+    document.ontouchstart = (e) => {
+      this.setState({
+        dragging: false
+      });
+    };
+
     return (
       <Wrapper active={this.state.active} sticky={this.state.sticky} home={this.props.home} ref={this._header} >
         <Logo active={this.state.active}>
