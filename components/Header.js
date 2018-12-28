@@ -44,7 +44,7 @@ const Logo = styled.div`
   z-index: 1;
   margin: 0;
   width: 100px;
-  img {
+  img, a {
     width: 100%;
   }
   @media (min-width: 768px) {

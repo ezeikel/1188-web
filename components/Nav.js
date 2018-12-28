@@ -65,7 +65,6 @@ const StyledLink = styled.a`
     color: ${({ sticky, home }) => sticky || !home ? 'var(--color-black)' : 'var(--color-white)'};
     overflow-x: hidden;
     cursor: pointer;
-    padding-bottom: var(--spacing-small);
     &:after {
       position: relative;
       content: "";
