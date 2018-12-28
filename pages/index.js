@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import ScrollDown from '../components/ScrollDown';
+import Contact from '../components/Contact';
 
 const Wrapper = styled.div`
 `;
@@ -61,6 +62,7 @@ const Index = () => (
         <StyledScrollDown />
       </Overlay>
     </Hero>
+    <Contact />
   </Wrapper>
 )
 

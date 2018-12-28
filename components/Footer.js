@@ -91,17 +91,17 @@ const Footer = () => (
         </Link>
       </li>
       <li>
-        <Link href="https://twitter.com/118eighty8">
+        <Link href="https://www.instagram.com/118eighty8">
           <a><FontAwesomeIcon icon={['fab', 'instagram']} color="#fff" size="2x" /></a>
         </Link>
       </li>
       <li>
-        <Link href="https://twitter.com/118eighty8">
+        <Link href="https://fb.me/118eighty8">
           <a><FontAwesomeIcon icon={['fab', 'facebook-f']} color="#fff" size="2x" /></a>
         </Link>
       </li>
       <li>
-        <Link href="https://twitter.com/118eighty8">
+        <Link href="https://www.linkedin.com/company/eleven-8eighty8">
           <a><FontAwesomeIcon icon={['fab', 'linkedin-in']} color="#fff" size="2x" /></a>
         </Link>
       </li>
