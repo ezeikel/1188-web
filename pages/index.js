@@ -90,7 +90,7 @@ const Index = () => (
     <Hero>
       <StyledVideo autoPlay muted loop src="/static/videos/hero.mp4" type="video/mp4" />
       <Overlay>
-        <HeroTitle>Building the internet.</HeroTitle>
+        <HeroTitle>Building a more inclusive internet.</HeroTitle>
         <Link href="/who-we-are">
           <StyledLink>Learn More</StyledLink>
         </Link>
