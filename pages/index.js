@@ -17,11 +17,18 @@ const Overlay = styled.section`
   grid-template-rows: repeat(4, 1fr);
   grid-template-columns: repeat(12, 1fr);
   justify-items: center;
-  background: linear-gradient(
-    100deg,
-    rgba(251, 84, 43, 0.7) 0%,
-    rgba(42, 0, 84, 1) 100%
-  );
+  background: linear-gradient(100deg, rgba(251, 84, 43, .7) 0%,rgba(42, 0, 84, 1) 100%),
+  url("/static/images/hero4.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  @media (min-width: 768px) {
+    background: linear-gradient(
+      100deg,
+      rgba(251, 84, 43, 0.7) 0%,
+      rgba(42, 0, 84, 1) 100%
+    );
+  }
 `;
 
 const Hero = styled.section`
@@ -56,9 +63,14 @@ const StyledScrollDown = styled(ScrollDown)`
 `;
 
 const StyledVideo = styled.video`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  display: none;
+  @media (min-width: 768px) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+  }
 `;
 
 const StyledLink = styled.a`
