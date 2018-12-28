@@ -63,7 +63,7 @@ const StyledLink = styled.a`
     place-items: center;
     height: 100%;
     position: relative;
-    color: ${({ sticky }) => sticky ? 'var(--color-black)' : 'var(--color-white)'};
+    color: ${({ sticky, home }) => sticky || !home ? 'var(--color-black)' : 'var(--color-white)'};
     overflow-x: hidden;
     cursor: pointer;
     &:after {
@@ -71,7 +71,7 @@ const StyledLink = styled.a`
       content: "";
       display: block;
       position: absolute;
-      background-color: ${({ sticky }) => sticky ? 'var(--color-black)' : 'var(--color-white)'};
+      background-color: ${({ sticky, home }) => sticky || !home ? 'var(--color-black)' : 'var(--color-white)'};
       height: 2px;
       width: 50%;
       bottom: 0;
@@ -87,33 +87,33 @@ const StyledLink = styled.a`
   }
 `;
 
-const Nav = ({ active, sticky }) => {
+const Nav = ({ active, sticky, home }) => {
   return (
     <Wrapper active={active}>
       <NavList>
         <NavListItem>
           <Link href="/">
-            <StyledLink sticky={sticky}>Home</StyledLink>
+            <StyledLink sticky={sticky} home={home}>Home</StyledLink>
           </Link>
         </NavListItem>
         <NavListItem>
           <Link href="/what-we-do">
-            <StyledLink sticky={sticky}>What we do</StyledLink>
+            <StyledLink sticky={sticky} home={home}>What we do</StyledLink>
           </Link>
         </NavListItem>
         <NavListItem>
           <Link href="/who-we-are">
-            <StyledLink sticky={sticky}>Who we are</StyledLink>
+            <StyledLink sticky={sticky} home={home}>Who we are</StyledLink>
           </Link>
         </NavListItem>
         <NavListItem>
           <Link href="/blog">
-            <StyledLink sticky={sticky}>Blog</StyledLink>
+            <StyledLink sticky={sticky} home={home}>Blog</StyledLink>
           </Link>
         </NavListItem>
         <NavListItem>
           <Link href="/contact">
-            <StyledLink sticky={sticky}>Contact</StyledLink>
+            <StyledLink sticky={sticky} home={home}>Contact</StyledLink>
           </Link>
         </NavListItem>
       </NavList>

@@ -1,6 +1,6 @@
 import { Component, createRef } from "react";
 import Link from "next/link";
-import Router from "next/router";
+import Router, { withRouter } from "next/router";
 import styled from "styled-components";
 import NProgress from "nprogress";
 import Nav from "./Nav";
@@ -29,9 +29,9 @@ const Wrapper = styled.header`
   background-color: ${({ sticky }) =>
     sticky ? "var(--color-white)" : "transparent"};
   box-shadow: ${({ sticky }) =>
-    sticky ? "rgba(0, 0, 0, 0.1) 0px 2px 1.5rem 0px" : "non"};
+    sticky ? "rgba(0, 0, 0, 0.1) 0px 2px 1.5rem 0px" : "none"};
   @media (min-width: 768px) {
-    position: ${({ sticky }) => (sticky ? "fixed" : "absolute")};
+    position: ${({ sticky, home }) => (home ? sticky ? "fixed" : "absolute" : "static")};
     top: 0;
     left: 0;
     right: 0;
@@ -114,8 +114,10 @@ class Header extends Component {
   }
 
   render() {
+    const home = this.props.router.pathname === '/';
+
     return (
-      <Wrapper active={this.state.active} ref={this._header} sticky={this.state.sticky} >
+      <Wrapper active={this.state.active} sticky={this.state.sticky} home={home} ref={this._header} >
         <Logo active={this.state.active}>
           <Link href="/">
             <a>
@@ -123,11 +125,11 @@ class Header extends Component {
             </a>
           </Link>
         </Logo>
-        <Nav active={this.state.active} sticky={this.state.sticky} />
+        <Nav active={this.state.active} sticky={this.state.sticky} home={home} />
         <Hamburger active={this.state.active} toggleActive={this.toggleActive} sticky={this.state.sticky} />
       </Wrapper>
     );
   }
 };
 
-export default Header;
+export default withRouter(Header);
