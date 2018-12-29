@@ -90,7 +90,7 @@ const StyledLink = styled.a`
 const Index = () => (
   <Wrapper>
     <Hero>
-      <StyledVideo  preload="yes" autoPlay muted loop playsInline >
+      <StyledVideo autoPlay muted loop playsInline >
         <source src="/static/videos/hero.mp4" type="video/mp4" />
       </StyledVideo>
       <Overlay>
