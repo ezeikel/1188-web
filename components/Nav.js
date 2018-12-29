@@ -86,33 +86,33 @@ const StyledLink = styled.a`
   }
 `;
 
-const Nav = ({ active, sticky, home }) => {
+const Nav = ({ active, toggleActive, sticky, home }) => {
   return (
     <Wrapper active={active}>
       <NavList>
         <NavListItem>
           <Link href="/">
-            <StyledLink sticky={sticky} home={home}>Home</StyledLink>
+            <StyledLink onClick={() => toggleActive("close-nav")} sticky={sticky} home={home}>Home</StyledLink>
           </Link>
         </NavListItem>
         <NavListItem>
           <Link href="/what-we-do">
-            <StyledLink sticky={sticky} home={home}>What we do</StyledLink>
+            <StyledLink onClick={() => toggleActive("close-nav")} sticky={sticky} home={home}>What we do</StyledLink>
           </Link>
         </NavListItem>
         <NavListItem>
           <Link href="/who-we-are">
-            <StyledLink sticky={sticky} home={home}>Who we are</StyledLink>
+            <StyledLink onClick={() => toggleActive("close-nav")} sticky={sticky} home={home}>Who we are</StyledLink>
           </Link>
         </NavListItem>
         <NavListItem>
           <Link href="/blog">
-            <StyledLink sticky={sticky} home={home}>Blog</StyledLink>
+            <StyledLink onClick={() => toggleActive("close-nav")} sticky={sticky} home={home}>Blog</StyledLink>
           </Link>
         </NavListItem>
         <NavListItem>
           <Link href="/contact">
-            <StyledLink sticky={sticky} home={home}>Contact</StyledLink>
+            <StyledLink onClick={() => toggleActive("close-nav")} sticky={sticky} home={home}>Contact</StyledLink>
           </Link>
         </NavListItem>
       </NavList>

@@ -67,12 +67,8 @@ class Header extends Component {
     sticky: false
   };
 
-  targetRef = createRef();
-  targetElement = null;
-
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll.bind(this));
-    this.targetElement = this.targetRef.current;
   }
 
   componentWillUnmount() {
@@ -80,7 +76,16 @@ class Header extends Component {
     clearAllBodyScrollLocks();
   }
 
-  toggleActive = () => {
+  toggleActive = (option) => {
+    if (option === 'close-nav') {
+      this.setState({
+        active: false
+      });
+      enableBodyScroll(this._header.current);
+
+      return;
+    }
+
     this.setState({
       active: !this.state.active
     }, () => {
@@ -121,12 +126,12 @@ class Header extends Component {
       <Wrapper active={this.state.active} sticky={this.state.sticky} home={this.props.home} ref={this._header} >
         <Logo active={this.state.active}>
           <Link href="/">
-            <a>
+            <a onClick={() => this.toggleActive("close-nav")}>
               <img src="/static/logos/1188.svg" />
             </a>
           </Link>
         </Logo>
-        <Nav active={this.state.active} sticky={this.state.sticky} home={this.props.home} ref={this.targetElement} />
+        <Nav active={this.state.active} toggleActive={this.toggleActive} sticky={this.state.sticky} home={this.props.home} />
         <Hamburger active={this.state.active} toggleActive={this.toggleActive} sticky={this.state.sticky} />
       </Wrapper>
     );
