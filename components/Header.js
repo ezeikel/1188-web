@@ -64,8 +64,7 @@ class Header extends Component {
 
   state = {
     active: false,
-    sticky: false,
-    dragging: false
+    sticky: false
   };
 
   targetRef = createRef();
@@ -86,9 +85,9 @@ class Header extends Component {
       active: !this.state.active
     }, () => {
       if (this.state.active) {
-        disableBodyScroll(this.targetElement);
+        disableBodyScroll(this._header.current);
       } else {
-        enableBodyScroll(this.targetElement);
+        enableBodyScroll(this._header.current);
       }
     });
   };
