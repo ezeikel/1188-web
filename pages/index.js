@@ -90,8 +90,11 @@ const StyledLink = styled.a`
 const Index = () => (
   <Wrapper>
     <Hero>
-      <StyledVideo autoPlay muted loop playsInline >
-        <source src="/static/videos/hero.mp4" type="video/mp4" />
+      <StyledVideo autoPlay muted loop playsInline>
+        <source
+          src="https://res.cloudinary.com/ezeikelpemberton/video/upload/v1546188744/1188/hero.mp4"
+          type="video/mp4"
+        />
       </StyledVideo>
       <Overlay>
         <HeroTitle>Building a more inclusive internet.</HeroTitle>
@@ -103,6 +106,6 @@ const Index = () => (
     </Hero>
     <Contact />
   </Wrapper>
-)
+);
 
 export default Index
