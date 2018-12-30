@@ -59,7 +59,7 @@ const Logo = styled.div`
 
 const SocialLinks = styled.ul`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   justify-items: center;
   width: 100%;
   margin: 0;
@@ -68,7 +68,7 @@ const SocialLinks = styled.ul`
   }
   @media (min-width: 768px) {
     width: auto;
-    grid-template-columns: repeat(4, 80px);
+    grid-template-columns: repeat(5, 80px);
     grid-row: 1 / span 1;
     grid-column: 2 / span 1;
     align-self: center;
@@ -93,6 +93,11 @@ const Footer = () => (
       <li>
         <Link href="https://www.instagram.com/118eighty8">
           <a><FontAwesomeIcon icon={['fab', 'instagram']} color="#fff" size="2x" /></a>
+        </Link>
+      </li>
+      <li>
+        <Link href="https://medium.com/@118eighty8">
+          <a><FontAwesomeIcon icon={['fab', 'medium-m']} color="#fff" size="2x" /></a>
         </Link>
       </li>
       <li>
