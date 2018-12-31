@@ -34,9 +34,8 @@ const HeroTitle = styled.h1`
   grid-row: 2 / span 1;
   grid-column: 1 / -1;
   margin: 0;
-  font-size: 4rem;
+  font-size: 3.2rem;
   color: var(--color-white);
-  max-width: 1300px;
   display: grid;
   place-items: center;
   text-align: center;
@@ -45,7 +44,7 @@ const HeroTitle = styled.h1`
     font-size: 6.4rem;
   }
   @media (min-width: 1024px) {
-    font-size: 8.2rem;
+    font-size: 6.8rem;
   }
 `;
 
@@ -66,17 +65,14 @@ const StyledLink = styled.a`
   grid-row: 3 / span 1;
   grid-column: 1 / -1;
   align-self: end;
-  display: grid;
-  place-items: center;
   border: 3px solid var(--color-tertiary);
   border-radius: 4px;
   color: var(--color-white);
   background-color: var(--color-tertiary);
-  font-size: 22px;
+  font-size: 2.2rem;
   font-weight: bold;
   padding: var(--spacing-medium) var(--spacing-large);
   color: var(--color-white);
-  background-color: var(--color-tertiary);
   @media (min-width: 768px) {
     transition: all 0.3s ease-in-out;
     &:hover {

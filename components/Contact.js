@@ -12,12 +12,13 @@ const Wrapper = styled.div`
 `;
 
 const Title = styled.h2`
-  font-size: 48px;
+  font-size: 4.8rem;
   line-height: 1;
   text-align: center;
   color: var(--color-primary);
+  margin-bottom: 0;
   @media (min-width: 768px) {
-    font-size: 56px;
+    font-size: 5.6rem;
     grid-column: 1 / span 1;
     text-align: left;
   }
@@ -26,7 +27,8 @@ const Title = styled.h2`
 const Copy = styled.div`
   p {
     color: var(--color-black);
-    font-size: 24px;
+    font-size: 2.2rem;
+    line-height: 3.2rem;
     font-weight: 300;
     margin: 0;
     a {
