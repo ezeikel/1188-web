@@ -8,29 +8,26 @@ const Wrapper = styled.footer`
   place-items: center;
   grid-row-gap: var(--spacing-large);
   padding: var(--spacing-large);
-  background-color: var(--color-black);
-  span {
-    color: var(--color-white);
-    span span {
-      color: var(--color-red);
-    }
-  }
+  background-color: #000;
   @media (min-width: 768px) {
     grid-row-gap: var(--spacing-huge);
+    grid-column-gap: var(--spacing-huge);
+    justify-items: start;
     padding: var(--spacing-huge);
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     grid-row-gap: var(--spacing-medium);
   }
 `;
 
-const Copy = styled.span`
+const Copyright = styled.section`
   display: grid;
   grid-row-gap: var(--spacing-medium);
   text-align: center;
   font-weight: 300;
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   line-height: 21px;
+  color: var(--color-dark-grey);
   a,
   a:link,
   a:active,
@@ -40,8 +37,38 @@ const Copy = styled.span`
     text-decoration: underline;
   }
   @media (min-width: 768px) {
-    grid-row: 2 / -1;
+    width: 100%;
+    grid-row: 3 / -1;
+    grid-column: 1 / -1;
     align-self: end;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+  }
+`;
+
+const MadeWith = styled.span`
+  > span:first-of-type {
+    color: var(--color-red);
+  }
+  > span:nth-of-type(2) {
+    color: var(--color-white);
+  }
+  @media (min-width: 768px) {
+    align-self: end;
+    justify-self: end;
+  }
+`;
+
+const RightsReservered = styled.span`
+  @media (min-width: 768px) {
+    justify-self: start;
+    align-self: end;
+    > span:first-of-type {
+      color: var(--color-red);
+    }
+    > span:nth-of-type(2) {
+      color: var(--color-white);
+    }
   }
 `;
 
@@ -60,6 +87,8 @@ const Logo = styled.div`
 const SocialLinks = styled.ul`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+  justify-content: start;
+  grid-column-gap: var(--spacing-large);
   justify-items: center;
   width: 100%;
   margin: 0;
@@ -67,33 +96,138 @@ const SocialLinks = styled.ul`
     color: var(--color-white);
   }
   @media (min-width: 768px) {
-    width: auto;
-    grid-template-columns: repeat(5, 80px);
+    grid-template-columns: repeat(5, auto);
+  }
+`;
+
+const Visit = styled.section`
+  display: grid;
+  grid-template-rows: repeat(2, auto);
+  grid-row-gap: var(--spacing-medium);
+  place-items: center;
+  font-size: 1.4rem;
+  h4 {
+    margin: 0;
+    color: var(--color-white);
+  }
+  address {
+    color: var(--color-dark-grey);
+    font-style: normal;
+  }
+  @media (min-width: 768px) {
     grid-row: 1 / span 1;
-    grid-column: 2 / span 1;
-    align-self: center;
+    grid-column: 3 / span 2;
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    grid-row-gap: var(--spacing-medium);
+    justify-items: start;
+  }
+`;
+
+const Slogan = styled.section`
+  display: grid;
+  grid-template-rows: repeat(2, auto);
+  grid-row-gap: var(--spacing-medium);
+  place-items: center;
+  color: var(--color-dark-grey);
+  font-size: 1.4rem;
+  span {
+    color: var(--color-white);
+  }
+  @media (min-width: 768px) {
+    grid-row: 1 / span 1;
+    grid-column: 1 / span 2;
+    display: grid;
+    justify-items: start;
+  }
+`;
+
+const NewBusiness = styled.section`
+  display: grid;
+  grid-template-rows: repeat(2, auto);
+  grid-row-gap: var(--spacing-medium);
+  place-items: center;
+  font-size: 1.4rem;
+  h4 {
+    margin: 0;
+    color: var(--color-white);
+  }
+  a {
+    color: var(--color-dark-grey);
+  }
+  color: var(--color-dark-grey);
+  display: grid;
+  grid-template-rows: repeat(2, auto);
+  @media (min-width: 768px) {
+    grid-row: 1 / span 1;
+    grid-column: 5 / span 2;
+    display: grid;
+    justify-items: start;
+    grid-template-rows: repeat(2, auto);
+    grid-row-gap: var(--spacing-medium);
+  }
+`;
+
+const Social = styled.section`
+  display: grid;
+  grid-template-rows: repeat(2, auto);
+  grid-row-gap: var(--spacing-medium);
+  place-items: center;
+  h4 {
+    font-size: 1.4rem;
+    margin: 0;
+    color: var(--color-white);
+  }
+  a {
+    svg {
+      color: var(--color-dark-grey);
+    }
+    &:hover {
+        svg {
+          @media (min-width: 768px) {
+            transition: color 0.3s ease-in-out;
+            &:hover {
+              color: var(--color-white);
+            }
+          }
+        }
+      }
+  }
+  color: var(--color-dark-grey);
+  @media (min-width: 768px) {
+    grid-row: 2 / span 1;
+    grid-column: 1 / span 2;
+    align-self: end;
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    grid-row-gap: var(--spacing-medium);
+    justify-items: start;
+    width: 100%;
   }
 `;
 
 const Footer = () => (
   <Wrapper>
-    <Logo>
-      <Link href="/">
-        <a>
-          <img src="/static/logos/1188-outline-white.svg" />
-        </a>
-      </Link>
-    </Logo>
-    <section>
+    <Slogan>
+      <Logo>
+        <Link href="/">
+          <a>
+            <img src="/static/logos/1188-outline-white.svg" />
+          </a>
+        </Link>
+      </Logo>
+      <p>We create possibilities for the  diverse connected world. <span>Be Bold.</span></p>
+    </Slogan>
+    <Visit>
       <h4>Visit</h4>
       <address>Pop Brixton, 49 Brixton Station Rd, London SW9 8PQ</address>
-    </section>
-    <section>
+    </Visit>
+    <NewBusiness>
       <h4>New business</h4>
-      <a href="mailto:jim@rock.com">Email us</a>
-      <a tel="">+4486701023</a>
-    </section>
-    <section>
+      <a href="mailto:hello@1188.agency">Email us</a>
+      <a href="tel:4486701023">+44 86701023</a>
+    </NewBusiness>
+    <Social>
       <h4>Follow</h4>
       <SocialLinks>
         <li>
@@ -101,7 +235,7 @@ const Footer = () => (
             <a>
               <FontAwesomeIcon
                 icon={["fab", "twitter"]}
-                color="#fff"
+                color="var(--color-dark-grey)"
                 size="2x"
               />
             </a>
@@ -112,7 +246,7 @@ const Footer = () => (
             <a>
               <FontAwesomeIcon
                 icon={["fab", "instagram"]}
-                color="#fff"
+                color="var(--color-dark-grey)"
                 size="2x"
               />
             </a>
@@ -123,7 +257,7 @@ const Footer = () => (
             <a>
               <FontAwesomeIcon
                 icon={["fab", "medium-m"]}
-                color="#fff"
+                color="var(--color-dark-grey)"
                 size="2x"
               />
             </a>
@@ -134,7 +268,7 @@ const Footer = () => (
             <a>
               <FontAwesomeIcon
                 icon={["fab", "facebook-f"]}
-                color="#fff"
+                color="var(--color-dark-grey)"
                 size="2x"
               />
             </a>
@@ -145,20 +279,20 @@ const Footer = () => (
             <a>
               <FontAwesomeIcon
                 icon={["fab", "linkedin-in"]}
-                color="#fff"
+                color="var(--color-dark-grey)"
                 size="2x"
               />
             </a>
           </Link>
         </li>
       </SocialLinks>
-    </section>
-    <Copy>
-      <span>&copy; {new Date().getFullYear()} 1188. All rights reserved.</span>
-      <span>
-        Made with <span>♡</span> in South London.
-      </span>
-    </Copy>
+    </Social>
+    <Copyright>
+      <RightsReservered>&copy; {new Date().getFullYear()} 1188. All rights reserved.</RightsReservered>
+      <MadeWith>
+        Made with <span>♡</span> in <span>South London</span>.
+      </MadeWith>
+    </Copyright>
   </Wrapper>
 );
 
