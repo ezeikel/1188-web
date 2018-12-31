@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Wrapper = styled.footer`
   display: grid;
-  grid-template-rows: 80px auto 1fr;
+  grid-template-rows: repeat(3, auto);
   place-items: center;
   grid-row-gap: var(--spacing-large);
   padding: var(--spacing-large);
@@ -84,36 +84,80 @@ const Footer = () => (
         </a>
       </Link>
     </Logo>
-    <SocialLinks>
-      <li>
-        <Link href="https://twitter.com/118eighty8">
-          <a><FontAwesomeIcon icon={['fab', 'twitter']} color="#fff" size="2x" /></a>
-        </Link>
-      </li>
-      <li>
-        <Link href="https://www.instagram.com/118eighty8">
-          <a><FontAwesomeIcon icon={['fab', 'instagram']} color="#fff" size="2x" /></a>
-        </Link>
-      </li>
-      <li>
-        <Link href="https://medium.com/@118eighty8">
-          <a><FontAwesomeIcon icon={['fab', 'medium-m']} color="#fff" size="2x" /></a>
-        </Link>
-      </li>
-      <li>
-        <Link href="https://fb.me/118eighty8">
-          <a><FontAwesomeIcon icon={['fab', 'facebook-f']} color="#fff" size="2x" /></a>
-        </Link>
-      </li>
-      <li>
-        <Link href="https://www.linkedin.com/company/eleven-8eighty8">
-          <a><FontAwesomeIcon icon={['fab', 'linkedin-in']} color="#fff" size="2x" /></a>
-        </Link>
-      </li>
-    </SocialLinks>
+    <section>
+      <h4>Visit</h4>
+      <address>Pop Brixton, 49 Brixton Station Rd, London SW9 8PQ</address>
+    </section>
+    <section>
+      <h4>New business</h4>
+      <a href="mailto:jim@rock.com">Email us</a>
+      <a tel="">+4486701023</a>
+    </section>
+    <section>
+      <h4>Follow</h4>
+      <SocialLinks>
+        <li>
+          <Link href="https://twitter.com/118eighty8">
+            <a>
+              <FontAwesomeIcon
+                icon={["fab", "twitter"]}
+                color="#fff"
+                size="2x"
+              />
+            </a>
+          </Link>
+        </li>
+        <li>
+          <Link href="https://www.instagram.com/118eighty8">
+            <a>
+              <FontAwesomeIcon
+                icon={["fab", "instagram"]}
+                color="#fff"
+                size="2x"
+              />
+            </a>
+          </Link>
+        </li>
+        <li>
+          <Link href="https://medium.com/@118eighty8">
+            <a>
+              <FontAwesomeIcon
+                icon={["fab", "medium-m"]}
+                color="#fff"
+                size="2x"
+              />
+            </a>
+          </Link>
+        </li>
+        <li>
+          <Link href="https://fb.me/118eighty8">
+            <a>
+              <FontAwesomeIcon
+                icon={["fab", "facebook-f"]}
+                color="#fff"
+                size="2x"
+              />
+            </a>
+          </Link>
+        </li>
+        <li>
+          <Link href="https://www.linkedin.com/company/eleven-8eighty8">
+            <a>
+              <FontAwesomeIcon
+                icon={["fab", "linkedin-in"]}
+                color="#fff"
+                size="2x"
+              />
+            </a>
+          </Link>
+        </li>
+      </SocialLinks>
+    </section>
     <Copy>
-      <span>All rights reserved &copy; {new Date().getFullYear()}. 1188</span>
-      <span>Made with <span>♡</span> in South London.</span>
+      <span>&copy; {new Date().getFullYear()} 1188. All rights reserved.</span>
+      <span>
+        Made with <span>♡</span> in South London.
+      </span>
     </Copy>
   </Wrapper>
 );
