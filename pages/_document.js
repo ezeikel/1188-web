@@ -17,6 +17,18 @@ export default class MyDocument extends Document {
     return { ...page, styleTags };
   }
 
+  setGoogleAnalyticsTags() {
+    return {
+      __html: `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-131531376-1');
+      `
+    };
+  }
+
   render() {
     return (
       <html>
@@ -27,6 +39,10 @@ export default class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
+          {/* Global site tag (gtag.js) - Google Analytics */}
+          <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131531376-1"></script>
+          <script dangerouslySetInnerHTML={this.setGoogleAnalyticsTags()} >
+          </script>
         </body>
       </html>
     );
