@@ -30,21 +30,18 @@ export default class MyDocument extends Document {
   }
 
   render() {
-    return (
-      <html>
+    return <html>
         <Head>
           {/* Step 5: Output the styles in the head  */}
           {this.props.styleTags}
+          {/* Global site tag (gtag.js) - Google Analytics */}
+          <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131531376-1" />
+          <script dangerouslySetInnerHTML={this.setGoogleAnalyticsTags()} />
         </Head>
         <body>
           <Main />
           <NextScript />
-          {/* Global site tag (gtag.js) - Google Analytics */}
-          <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131531376-1"></script>
-          <script dangerouslySetInnerHTML={this.setGoogleAnalyticsTags()} >
-          </script>
         </body>
-      </html>
-    );
+      </html>;
   }
 }
