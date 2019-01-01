@@ -48,6 +48,7 @@ export default createGlobalStyle`
 }
 html {
   font-size: var(--default-font-size);
+  scroll-behavior: smooth;
 }
 body {
   margin: 0;

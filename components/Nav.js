@@ -87,37 +87,43 @@ const StyledLink = styled.a`
 `;
 
 const Nav = ({ active, toggleActive, sticky, home }) => {
-  return (
-    <Wrapper active={active}>
+  return <Wrapper active={active}>
       <NavList>
         <NavListItem>
           <Link href="/">
-            <StyledLink onClick={() => toggleActive("close-nav")} sticky={sticky} home={home}>Home</StyledLink>
+            <StyledLink onClick={() => toggleActive("close-nav")} sticky={sticky} home={home}>
+              Home
+            </StyledLink>
           </Link>
         </NavListItem>
         <NavListItem>
           <Link href="/what-we-do">
-            <StyledLink onClick={() => toggleActive("close-nav")} sticky={sticky} home={home}>What we do</StyledLink>
+            <StyledLink onClick={() => toggleActive("close-nav")} sticky={sticky} home={home}>
+              What we do
+            </StyledLink>
           </Link>
         </NavListItem>
         <NavListItem>
           <Link href="/who-we-are">
-            <StyledLink onClick={() => toggleActive("close-nav")} sticky={sticky} home={home}>Who we are</StyledLink>
+            <StyledLink onClick={() => toggleActive("close-nav")} sticky={sticky} home={home}>
+              Who we are
+            </StyledLink>
           </Link>
         </NavListItem>
         <NavListItem>
-          <Link href="/blog">
-            <StyledLink onClick={() => toggleActive("close-nav")} sticky={sticky} home={home}>Blog</StyledLink>
-          </Link>
+        <StyledLink href="https://medium.com/@118eighty8" sticky={sticky} home={home}>
+          Blog
+        </StyledLink>
         </NavListItem>
         <NavListItem>
-          <Link href="/contact">
-            <StyledLink onClick={() => toggleActive("close-nav")} sticky={sticky} home={home}>Contact</StyledLink>
+          <Link href="/#contact">
+            <StyledLink onClick={() => toggleActive("close-nav")} sticky={sticky} home={home}>
+              Contact
+            </StyledLink>
           </Link>
         </NavListItem>
       </NavList>
-    </Wrapper>
-  );
+    </Wrapper>;
 };
 
 export default Nav;
