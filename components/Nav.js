@@ -63,7 +63,6 @@ const StyledLink = styled.a`
     place-items: center;
     position: relative;
     color: ${({ sticky, home }) => sticky || !home ? 'var(--color-black)' : 'var(--color-white)'};
-    overflow-x: hidden;
     cursor: pointer;
     &:after {
       position: relative;
@@ -73,7 +72,7 @@ const StyledLink = styled.a`
       background-color: ${({ sticky, home }) => sticky || !home ? 'var(--color-black)' : 'var(--color-white)'};
       height: 2px;
       width: 50%;
-      bottom: 0;
+      bottom: calc(var(--spacing-tiny) * -1);
       left: 0;
       transform: translateX(-150%);
       transition: transform 0.2s ease-in-out;
