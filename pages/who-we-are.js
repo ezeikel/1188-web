@@ -1,6 +1,6 @@
 const WhoWeAre = () => (
   <div>
-    <p>This is the WhoWeAre page</p>
+    <h1>The Team</h1>
   </div>
 );
 

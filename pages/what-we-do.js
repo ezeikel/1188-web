@@ -1,6 +1,6 @@
 const WhatWeDo = () => (
   <div>
-    <p>This is the WhatWeDo page</p>
+    <h1>Services</h1>
   </div>
 );
 
