@@ -19,14 +19,37 @@ const Title = styled.h2`
 
 const TeamCards = styled.section`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-  grid-auto-rows: 80px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, auto));
+  grid-auto-rows: 600px;
   grid-auto-flow: dense;
-  padding: var(--spacing-large);
+  justify-items: center;
+  grid-gap: var(--spacing-large);
+  padding: var(--spacing-large) 0;
 `;
 
 const TeamCard = styled.div`
+  display: grid;
+  grid-template-rows: auto 1fr 1fr;
+  grid-row-gap: var(--spacing-small);
+`;
 
+const Photo = styled.img`
+  max-height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: top center;
+`;
+
+const Name = styled.span`
+  display: grid;
+  justify-items: start;
+  align-items: center;
+`;
+
+const Role = styled.span`
+  display: grid;
+  justify-items: start;
+  align-items: center;
 `;
 
 const team = [
@@ -67,11 +90,11 @@ const WhoWeAre = () => (
     <Title>The Team</Title>
     <TeamCards>
       {
-        team.map(member => (
-          <TeamCard>
-            <img src={member.image} />
-            <span>{member.name}</span>
-            <span>{member.role}</span>
+        team.map((member,i) => (
+          <TeamCard key={i}>
+            <Photo src={member.image} />
+            <Name>{member.name}</Name>
+            <Role>{member.role}</Role>
           </TeamCard>
         ))
       }

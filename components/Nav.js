@@ -13,6 +13,7 @@ const Wrapper = styled.nav`
   display: grid;
   align-items: start;
   padding-top: var(--header-height);
+  overflow: hidden;
   @media (min-width: 768px) {
     z-index: 1;
     height: 100%;

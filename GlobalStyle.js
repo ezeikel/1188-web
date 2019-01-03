@@ -40,6 +40,7 @@ export default createGlobalStyle`
   --font-size-huge: 2.2rem;
 
   --header-height: 130px;
+  --header-height-wide: 100px;
 }
 ::-moz-selection { background: var(--color-primary); }
 ::selection { background: var(--color-primary); }
@@ -58,7 +59,6 @@ body {
 }
 img {
   max-width: 100%;
-  max-height: 100%;
 }
 a {
   text-decoration: none;
