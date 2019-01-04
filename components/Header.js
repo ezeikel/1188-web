@@ -33,7 +33,7 @@ const Wrapper = styled.header`
     sticky ? "rgba(0, 0, 0, 0.1) 0px 2px 1.5rem 0px" : "none"};
   @media (min-width: 768px) {
     padding: var(--spacing-large);
-    position: ${({ sticky, home }) => (home ? sticky ? "fixed" : "absolute" : "static")};
+    position: ${({ sticky, home }) => (sticky ? "fixed" :  home ? "absolute" : "static")};
     top: 0;
     left: 0;
     right: 0;

@@ -17,13 +17,13 @@ const Wrapper = styled.div`
   grid-template-rows: ${({ home }) =>
     home
       ? "1fr minmax(var(--header-height), auto)"
-      : "var(--header-height) 1fr minmax(var(--header-height), auto);"};
+      : "var(--header-height) 1fr minmax(var(--footer-height), auto);"};
   min-height: 100vh;
   @media (min-width: 768px) {
     grid-template-rows: ${({ home }) =>
       home
         ? "1fr minmax(var(--header-height-wide), auto)"
-        : "var(--header-height-wide) 1fr minmax(var(--header-height-wide), auto);"};
+        : "var(--header-height-wide) 1fr minmax(var(--header-footer-wide), auto);"};
   }
 `;
 

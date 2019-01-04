@@ -41,6 +41,8 @@ export default createGlobalStyle`
 
   --header-height: 130px;
   --header-height-wide: 100px;
+  --header-footer: var(--header-height);
+  --header-footer-wide: var( --header-height-wide);
 }
 ::-moz-selection { background: var(--color-primary); }
 ::selection { background: var(--color-primary); }
