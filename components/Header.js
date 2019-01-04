@@ -64,8 +64,7 @@ class Header extends Component {
   }
 
   state = {
-    active: false,
-    sticky: false
+    active: false
   };
 
   componentDidMount() {
@@ -111,20 +110,16 @@ class Header extends Component {
 
     if (elementBottom > viewportTop && elementTop < viewportBottom) {
       el.classList.remove('is-sticky')
-      this.setState({
-        sticky: false
-      });
+      this.props.toggleStickyHeader(false);
     } else {
       el.classList.add('is-sticky');
-      this.setState({
-        sticky: true
-      });
+      this.props.toggleStickyHeader(true);
     }
   }
 
   render() {
     return (
-      <Wrapper active={this.state.active} sticky={this.state.sticky} home={this.props.home} ref={this._header} >
+      <Wrapper active={this.state.active} sticky={this.props.stickyHeader} home={this.props.home} ref={this._header} >
         <Logo active={this.state.active}>
           <Link href="/">
             <a onClick={() => this.toggleActive("close-nav")}>
@@ -132,8 +127,8 @@ class Header extends Component {
             </a>
           </Link>
         </Logo>
-        <Nav active={this.state.active} toggleActive={this.toggleActive} sticky={this.state.sticky} home={this.props.home} />
-        <Hamburger active={this.state.active} toggleActive={this.toggleActive} sticky={this.state.sticky} />
+        <Nav active={this.state.active} toggleActive={this.toggleActive} sticky={this.props.stickyHeader} home={this.props.home} />
+        <Hamburger active={this.state.active} toggleActive={this.toggleActive} sticky={this.props.stickyHeader} />
       </Wrapper>
     );
   }

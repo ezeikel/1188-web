@@ -14,20 +14,30 @@ library.add(fab);
 const Wrapper = styled.div`
   position: relative;
   display: grid;
-  grid-template-rows: ${({ home }) =>
-    home
+  grid-template-rows: ${({ stickyHeader, home }) =>
+    stickyHeader || home
       ? "1fr minmax(var(--header-height), auto)"
       : "var(--header-height) 1fr minmax(var(--footer-height), auto);"};
   min-height: 100vh;
   @media (min-width: 768px) {
-    grid-template-rows: ${({ home }) =>
-      home
+    grid-template-rows: ${({ stickyHeader, home }) =>
+      stickyHeader || home
         ? "1fr minmax(var(--header-height-wide), auto)"
         : "var(--header-height-wide) 1fr minmax(var(--header-footer-wide), auto);"};
   }
 `;
 
 class Page extends Component {
+  state = {
+    stickyHeader: false
+  };
+
+  toggleStickyHeader = (value) => {
+    this.setState({
+      stickyHeader: value
+    });
+  }
+
   render() {
     const home = this.props.router.pathname === '/';
 
@@ -35,8 +45,8 @@ class Page extends Component {
       <div>
         <Meta />
         <GlobalStyle />
-        <Wrapper home={home}>
-          <Header home={home} />
+        <Wrapper home={home} stickyHeader={this.state.stickyHeader}>
+          <Header home={home} stickyHeader={this.state.stickyHeader} toggleStickyHeader={this.toggleStickyHeader} />
           {this.props.children}
           <Footer />
         </Wrapper>
