@@ -94,7 +94,7 @@ const WhatWeDont = styled.div`
 
 const WhatWeDoPage = () => (
   <Wrapper>
-    <Title>Services</Title>
+    <Title>What to expect from us</Title>
     <Services>
       <WhatWeDo>
         <h3>What we do</h3>
