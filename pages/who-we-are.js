@@ -58,62 +58,29 @@ const Role = styled.span`
   color: var(--color-black);
 `;
 
+const AvailableRoles = styled.div`
+
+`;
+
 const team = [
   {
     name: "Ezeikel Pemberton",
-    role: "Founder & Creative Director",
-    image: "/static/images/ezeikel-pemberton.jpg"
-  },
-  {
-    name: "Karen Hollywood",
-    role: "Co-founder / Front-end Development",
-    image: "/static/images/ezeikel-pemberton.jpg"
-  },
-  {
-    name: "Lee Karolczak",
-    role: "Development Lead",
-    image: "/static/images/ezeikel-pemberton.jpg"
-  },
-  {
-    name: "Paul Spencer",
-    role: "Design & Front-end Development",
-    image: "/static/images/ezeikel-pemberton.jpg"
-  },
-  {
-    name: "Mark Gale",
-    role: "Project Manager",
-    image: "/static/images/ezeikel-pemberton.jpg"
-  },
-  {
-    name: "Dedy Lawidjaja",
-    role: "Web & Mobile Developer",
-    image: "/static/images/ezeikel-pemberton.jpg"
-  },
-  {
-    name: "Kylie Timpani",
-    role: "Senior Designer",
-    image: "/static/images/ezeikel-pemberton.jpg"
-  },
-  {
-    name: "Sandy Lim",
-    role: "Words + Strategy",
-    image: "/static/images/ezeikel-pemberton.jpg"
-  },
-  {
-    name: "Matt Boddy",
-    role: "Web Developer",
-    image: "/static/images/ezeikel-pemberton.jpg"
-  },
-  {
-    name: "Teegan Lincoln",
-    role: "Front-end Development",
-    image: "/static/images/ezeikel-pemberton.jpg"
-  },
-  {
-    name: "Callum Shand",
-    role: "Designer",
+    role: "Founder & CTO",
     image: "/static/images/ezeikel-pemberton.jpg"
   }
+];
+
+const availableRoles = [
+  'Design Lead',
+  'Development Lead',
+  'Project Manager Lead',
+  'QA Lead',
+  'UI Designer',
+  'UX Designer',
+  'Front End Developer',
+  'Back End Developer',
+  'Project Manager',
+  'QA Engineer'
 ];
 
 const WhoWeAre = () => (
@@ -130,6 +97,16 @@ const WhoWeAre = () => (
         ))
       }
     </TeamCards>
+    <AvailableRoles>
+      <Title>We are looking for</Title>
+      {
+        availableRoles.map((role,i) => (
+          <TeamCard key={i}>
+            <Role>{role}</Role>
+          </TeamCard>
+        ))
+      }
+    </AvailableRoles>
   </Wrapper>
 );
 
