@@ -52,6 +52,9 @@ const WhatWeDo = styled.div`
     display: grid;
     justify-items: center;
     grid-row-gap: var(--spacing-medium);
+    li {
+      text-align: center;
+    }
     @media (min-width: 768px) {
       justify-items: start;
     }
@@ -78,6 +81,9 @@ const WhatWeDont = styled.div`
     display: grid;
     justify-items: center;
     grid-row-gap: var(--spacing-medium);
+    li {
+      text-align: center;
+    }
     @media (min-width: 768px) {
       justify-items: start;
     }
