@@ -44,8 +44,14 @@ export default createGlobalStyle`
   --header-footer: var(--header-height);
   --header-footer-wide: var( --header-height-wide);
 }
-::-moz-selection { background: var(--color-primary); }
-::selection { background: var(--color-primary); }
+::-moz-selection {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+::selection {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
 * {
   box-sizing: border-box;
 }
