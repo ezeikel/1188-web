@@ -19,11 +19,13 @@ const Title = styled.h2`
 
 const TeamCards = styled.section`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, auto));
-  grid-auto-flow: dense;
-  justify-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(0, 300px));
+  justify-content: center;
   grid-gap: var(--spacing-large);
   padding: var(--spacing-large) 0;
+  @media (min-width: 768px) {
+    justify-content: space-between;
+  }
 `;
 
 const TeamCard = styled.div`
@@ -58,8 +60,27 @@ const Role = styled.span`
   color: var(--color-black);
 `;
 
-const AvailableRoles = styled.div`
+const AvailableRolesWrapper = styled.div`
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-row-gap: var(--spacing-large);
+  justify-items: center;
+  text-align: center;
+  @media (min-width: 768px) {
+    justify-items: start;
+    text-align: left;
+  }
+`;
 
+const AvailableRoles = styled.div`
+  display: grid;
+  grid-auto-rows: 2.4rem;
+  grid-row-gap: var(--spacing-large);
+  color: var(--color-black);
+`;
+
+const AvailableRole = styled.span`
+  font-size: 2.4rem;
 `;
 
 const team = [
@@ -97,16 +118,18 @@ const WhoWeAre = () => (
         ))
       }
     </TeamCards>
-    <AvailableRoles>
+    <AvailableRolesWrapper>
       <Title>We are looking for</Title>
-      {
-        availableRoles.map((role,i) => (
-          <TeamCard key={i}>
-            <Role>{role}</Role>
-          </TeamCard>
-        ))
-      }
-    </AvailableRoles>
+      <AvailableRoles>
+        {
+          availableRoles.map((role,i) => (
+            <TeamCard key={i}>
+              <AvailableRole>{role}</AvailableRole>
+            </TeamCard>
+          ))
+        }
+      </AvailableRoles>
+    </AvailableRolesWrapper>
   </Wrapper>
 );
 

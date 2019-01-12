@@ -7,6 +7,8 @@ import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'bo
 import Nav from "./Nav";
 import Hamburger from "./Hamburger";
 
+NProgress.configure({ showSpinner: false });
+
 Router.onRouteChangeStart = () => {
   NProgress.start();
 };
