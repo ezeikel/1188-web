@@ -1,6 +1,9 @@
 import styled from 'styled-components';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import axios from 'axios';
+import * as yup from 'yup';
 
-const Form = styled.form`
+const FormWrapper = styled(Form)`
   display: grid;
   grid-row-gap: var(--spacing-medium);
 `;
@@ -23,6 +26,12 @@ const Fieldset = styled.div`
   display: grid;
   grid-template-rows: auto 1fr;
   grid-row-gap: var(--spacing-medium);
+  .error {
+    font-size: var(--font-size-tiny);
+    background-color: var(--color-red);
+    color: var(--color-white);
+    padding: var(--spacing-small);
+  }
 `;
 
 const Label = styled.label`
@@ -30,53 +39,84 @@ const Label = styled.label`
   text-transform: capitalize;
 `;
 
-// const SubmitMessage = styled.div `
-//   padding: var(--spacing-medium);
-//   margin-bottom: var(--spacing-large);
-//   text-align: center;
-//   p {
-//     color: var(--color-white);
-//     margin: 0;
-//   }
-//   &--success {
-//     background-color: var(--color-green);
-//   }
-//   span {
-//     text-decoration: underline;
-//   }
-// `;
+const SuccessMessage = styled.p`
+  font-size: var(--font-size-tiny);
+  background-color: var(--color-green);
+  color: var(--color-white);
+  padding: var(--spacing-small);
+`;
+
+const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
+
+const ContactSchema = yup.object().shape({
+  firstName: yup.string().required('First Name is required.'),
+  lastName: yup.string().required('Last Name is required.'),
+  email: yup.string()
+    .email('Email provided is not valid. Please try again.')
+    .required('Email is required.'),
+  phoneNumber: yup.string().required('Phone number is required.').matches(phoneRegExp, 'Phone number provided is not valid. Please try again.'),
+  message: yup.string()
+});
 
 
 const ContactForm = ({ className }) => (
-  <Form className={className}>
-    <DoubleFormfield>
-      <Fieldset>
-        <Label htmlFor="first-name">First Name</Label>
-        <input type="text" name="first-name" placeholder="Biggie" autoComplete="off" required />
-      </Fieldset>
-      <Fieldset>
-        <Label htmlFor="last-name">Last Name</Label>
-        <input type="text" name="last-name" placeholder="Smalls" autoComplete="off" required />
-      </Fieldset>
-    </DoubleFormfield>
-    <SingleFormfield>
-      <Fieldset>
-        <Label htmlFor="email">Email</Label>
-        <input autoCapitalize="off" autoComplete="off" email="true" name="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" placeholder="biggie@smalls.com" required type="email" />
-      </Fieldset>
-      <Fieldset>
-        <Label htmlFor="tel">Phone number</Label>
-        <input autoComplete="off" maxLength="11" minLength="11" name="tel" placeholder="07953005302" required type="tel" />
-      </Fieldset>
-      <Fieldset>
-        <Label htmlFor="message">Message</Label>
-        <textarea autoComplete="off" maxLength="160" name="message" placeholder="Hi, I need some dope work done. Can you help ASAP?" type="text" />
-      </Fieldset>
-      <Fieldset>
-        <button type="submit" disabled>Send</button>
-      </Fieldset>
-    </SingleFormfield>
-  </Form>
+  <Formik
+    initialValues={{ firstName: '', lastName: '', email: '', phoneNumber: '', message: '' }}
+    validationSchema={ContactSchema}
+    onSubmit={async (values, actions) => {
+      console.log(actions);
+      try {
+        await axios.post('https://nc0j2ha6l0.execute-api.eu-west-1.amazonaws.com/PRODUCTION', values);
+      } catch(error) {
+        console.log(error);
+      } finally {
+        actions.setSubmitting(false);
+        actions.resetForm();
+        actions.setStatus('submitted')
+      }
+    }}
+  >
+    {({
+      isValid,
+      isSubmitting
+    }) => (
+      // <SuccessMessage>Thanks for hitting us up. We will get back to you as soon as possible.</SuccessMessage>
+      <FormWrapper className={className}>
+        <DoubleFormfield>
+          <Fieldset>
+            <Label htmlFor="firstName">First Name</Label>
+            <Field type="text" name="firstName" />
+            <ErrorMessage name="firstName" type="text">{msg => <div className="error">{msg}</div>}</ErrorMessage>
+          </Fieldset>
+          <Fieldset>
+            <Label htmlFor="lastName">Last Name</Label>
+            <Field type="text" name="lastName" />
+            <ErrorMessage name="lastName" type="text">{msg => <div className="error">{msg}</div>}</ErrorMessage>
+          </Fieldset>
+        </DoubleFormfield>
+        <SingleFormfield>
+          <Fieldset>
+            <Label htmlFor="email">Email</Label>
+            <Field type="email" name="email" />
+            <ErrorMessage name="email" type="text">{msg => <div className="error">{msg}</div>}</ErrorMessage>
+          </Fieldset>
+          <Fieldset>
+            <Label htmlFor="phoneNumber">Phone Number</Label>
+            <Field type="tel" name="phoneNumber" />
+            <ErrorMessage name="phoneNumber" type="text">{msg => <div className="error">{msg}</div>}</ErrorMessage>
+          </Fieldset>
+          <Fieldset>
+            <Label htmlFor="message">Message</Label>
+            <Field component="textarea" name="message" />
+            <ErrorMessage name="message" type="text">{msg => <div className="error">{msg}</div>}</ErrorMessage>
+          </Fieldset>
+          <Fieldset>
+            <button type="submit" disabled={isSubmitting || !isValid }>Send{isSubmitting ? 'ing' : null}</button>
+          </Fieldset>
+        </SingleFormfield>
+      </FormWrapper>
+    )}
+  </Formik>
 );
 
 export default ContactForm;
