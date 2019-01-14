@@ -34,7 +34,7 @@ const HeroTitle = styled.h1`
   grid-row: 2 / span 1;
   grid-column: 1 / -1;
   margin: 0;
-  font-size: 3.2rem;
+  font-size: 4.2rem;
   color: var(--color-white);
   display: grid;
   place-items: center;

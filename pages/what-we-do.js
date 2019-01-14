@@ -37,7 +37,7 @@ const Services = styled.section`
 const WhatWeDo = styled.div`
   display: grid;
   justify-items: center;
-  grid-row-gap: var(--spacing-medium);
+  grid-row-gap: var(--spacing-large);
   color: var(--color-black);
   @media (min-width: 768px) {
       justify-items: start;
