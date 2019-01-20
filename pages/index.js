@@ -1,6 +1,8 @@
 import Link from "next/link";
 import styled from 'styled-components';
 import ScrollDown from '../components/ScrollDown';
+import Services from '../components/Services';
+import Clients from '../components/Clients';
 import Contact from '../components/Contact';
 
 const Wrapper = styled.div`
@@ -14,7 +16,7 @@ const Overlay = styled.section`
   bottom: 0;
   min-height: 100vh;
   display: grid;
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: repeat(6, 1fr);
   grid-template-columns: repeat(12, 1fr);
   justify-items: center;
   background: linear-gradient(
@@ -100,6 +102,8 @@ const Index = () => (
         <StyledScrollDown />
       </Overlay>
     </Hero>
+    <Services />
+    <Clients />
     <Contact />
   </Wrapper>
 );
