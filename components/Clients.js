@@ -1,7 +1,12 @@
+import styled from "styled-components";
+
+const Wrapper = styled.div`
+`;
+
 const Clients = () => (
-  <div>
+  <Wrapper>
     Clients.
-  </div>
+  </Wrapper>
 );
 
 export default Clients;
