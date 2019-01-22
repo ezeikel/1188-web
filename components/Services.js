@@ -65,6 +65,7 @@ class Services extends Component {
       slidesToShow: 1,
       slidesToScroll: 1,
       autoplay: true,
+      arrows: false,
       beforeChange: (current, next) =>
         this.setState({ oldSlide: current, activeSlide: next }),
       afterChange: current => this.setState({ activeSlide2: current })
