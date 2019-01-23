@@ -2,6 +2,7 @@ import { Component } from 'react';
 import Link from "next/link";
 import Slider from 'react-slick';
 import styled from 'styled-components';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Wrapper = styled.div`
   padding: var(--spacing-large);
@@ -109,7 +110,7 @@ const Slide = styled.div`
   display: grid !important; /*TODO: Remove */
   grid-row-gap: var(--spacing-large);
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto auto 1fr auto;
   h3, p {
     margin: 0;
   }
@@ -120,7 +121,11 @@ const Slide = styled.div`
   p {
     font-size: 1.88rem;
     grid-column: 1 / -1;
+    grid-row: 3 / span 1;
+  }
+  svg {
     grid-row: 2 / span 1;
+    grid-column: 1 / -1;
   }
 `;
 
@@ -153,6 +158,7 @@ class Services extends Component {
         <StyledSlider {...settings}>
           <Slide>
             <h3>Platforms &amp; Apps</h3>
+            <FontAwesomeIcon icon={["fal", "tablet"]} color="#3b3b3b" size="5x" />
             <p>
               Creating platforms &amp; apps is what we are most passionate
               about. Liquid has worked with a number of different industries to
@@ -165,6 +171,7 @@ class Services extends Component {
           </Slide>
           <Slide>
             <h3>Websites</h3>
+            <FontAwesomeIcon icon={["fal", "browser"]} color="#3b3b3b" size="5x" />
             <p>
               We specialise in the design &amp; development of websites that
               work – for your users and you. Powered by sophisticated backend
@@ -177,6 +184,7 @@ class Services extends Component {
           </Slide>
           <Slide>
             <h3>Mobile</h3>
+            <FontAwesomeIcon icon={["fal", "mobile"]} color="#3b3b3b" size="5x" />
             <p>
               Mobile first – always! With the opportunity to reach users at any
               given moment, we deliver expert mobile strategy, responsive design
@@ -188,6 +196,7 @@ class Services extends Component {
           </Slide>
           <Slide>
             <h3>Digital Strategy</h3>
+            <FontAwesomeIcon icon={["fal", "map-marked-alt"]} color="#3b3b3b" size="5x" />
             <p>
               Analysis, research and insight to position brands at the forefront
               of digital.
@@ -198,6 +207,7 @@ class Services extends Component {
           </Slide>
           <Slide>
             <h3>Design &amp; UX</h3>
+            <FontAwesomeIcon icon={["fal", "fill-drip"]} color="#3b3b3b" size="5x" />
             <p>
               Let our team of talented designers craft your digital experience.
               We create beautiful, functional and delicious design solutions
@@ -209,6 +219,7 @@ class Services extends Component {
           </Slide>
           <Slide>
             <h3>Marketing</h3>
+            <FontAwesomeIcon icon={["fal", "paper-plane"]} color="#3b3b3b" size="5x" />
             <p>
               Our experienced team, along with our proven platforms, will help
               build your business. With proven results on the board, we not only
