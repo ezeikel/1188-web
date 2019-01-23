@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto auto 1fr;
-  grid-row-gap: var(--spacing-medium);
+  grid-row-gap: var(--spacing-large);
   grid-column-gap: var(--spacing-large);
 `;
 
@@ -27,10 +27,22 @@ const SubTitle = styled.h4`
 `;
 
 const Title = styled.h2`
-  font-size: 3.2rem;
+  font-size: 4rem;
   margin: 0;
   grid-row: 2 / span 1;
   grid-column: 1 / -1;
+  position: relative;
+  &:after {
+    position: relative;
+    content: "";
+    display: block;
+    position: absolute;
+    background-color: var(--color-primary);
+    height: 6px;
+    width: 15%;
+    bottom: -6px;
+    left: 0;
+  }
 `;
 
 const StyledSlider = styled(Slider)`
@@ -47,13 +59,14 @@ const SliderNav = styled.div`
   h3 {
     color: #d3d3d3;
     font-size: 3rem;
-    font-weight: normal;
     margin: 0;
   }
 `;
 
 const SliderNavTitle = styled.h4`
   font-size: 1.4rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
   margin: 0;
 `;
 
@@ -98,6 +111,7 @@ const StyledAnchor = styled.a`
   @media (min-width: 768px) {
     grid-column: 1 / span 1;
     transition: all 0.3s ease-in-out;
+    font-size: 1.8rem;
     &:hover {
       background-color: #6043ed;
       border-color: #6043ed;
@@ -111,20 +125,24 @@ const Slide = styled.div`
   grid-row-gap: var(--spacing-large);
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto auto 1fr auto;
-  h3, p {
+  outline: none;
+  h3,
+  p {
     margin: 0;
   }
   h3 {
     grid-column: 1 / -1;
-    grid-row: 1 / span 1;
+    grid-row: 2 / span 1;
+    font-size: 3rem;
   }
   p {
-    font-size: 1.88rem;
-    grid-column: 1 / -1;
-    grid-row: 3 / span 1;
+    font-size: 1.8rem;
+    line-height: 3.2rem;
+    grid-column: 1 / span 3;
+    grid-row: 3 / span 3;
   }
   svg {
-    grid-row: 2 / span 1;
+    grid-row: 1 / span 1;
     grid-column: 1 / -1;
   }
 `;
@@ -157,8 +175,8 @@ class Services extends Component {
         <Title>What we're good at.</Title>
         <StyledSlider {...settings}>
           <Slide>
-            <h3>Platforms &amp; Apps</h3>
             <FontAwesomeIcon icon={["fal", "tablet"]} color="#3b3b3b" size="5x" />
+            <h3>Platforms &amp; Apps</h3>
             <p>
               Creating platforms &amp; apps is what we are most passionate
               about. Liquid has worked with a number of different industries to
@@ -170,8 +188,8 @@ class Services extends Component {
             </Link>
           </Slide>
           <Slide>
-            <h3>Websites</h3>
             <FontAwesomeIcon icon={["fal", "browser"]} color="#3b3b3b" size="5x" />
+            <h3>Websites</h3>
             <p>
               We specialise in the design &amp; development of websites that
               work – for your users and you. Powered by sophisticated backend
@@ -183,8 +201,8 @@ class Services extends Component {
             </Link>
           </Slide>
           <Slide>
-            <h3>Mobile</h3>
             <FontAwesomeIcon icon={["fal", "mobile"]} color="#3b3b3b" size="5x" />
+            <h3>Mobile</h3>
             <p>
               Mobile first – always! With the opportunity to reach users at any
               given moment, we deliver expert mobile strategy, responsive design
@@ -195,8 +213,8 @@ class Services extends Component {
             </Link>
           </Slide>
           <Slide>
-            <h3>Digital Strategy</h3>
             <FontAwesomeIcon icon={["fal", "map-marked-alt"]} color="#3b3b3b" size="5x" />
+            <h3>Digital Strategy</h3>
             <p>
               Analysis, research and insight to position brands at the forefront
               of digital.
@@ -206,8 +224,8 @@ class Services extends Component {
             </Link>
           </Slide>
           <Slide>
-            <h3>Design &amp; UX</h3>
             <FontAwesomeIcon icon={["fal", "fill-drip"]} color="#3b3b3b" size="5x" />
+            <h3>Design &amp; UX</h3>
             <p>
               Let our team of talented designers craft your digital experience.
               We create beautiful, functional and delicious design solutions
@@ -218,8 +236,8 @@ class Services extends Component {
             </Link>
           </Slide>
           <Slide>
-            <h3>Marketing</h3>
             <FontAwesomeIcon icon={["fal", "paper-plane"]} color="#3b3b3b" size="5x" />
+            <h3>Marketing</h3>
             <p>
               Our experienced team, along with our proven platforms, will help
               build your business. With proven results on the board, we not only
@@ -234,7 +252,7 @@ class Services extends Component {
           <SliderNavTitle>The Expertise</SliderNavTitle>
           <SliderNavLinks>
             <li className={this.state.activeSlide === 0 ? 'active' : null}>
-              <h3>Platform &amp; Apps</h3>
+              <h3>Platforms &amp; Apps</h3>
             </li>
             <li className={this.state.activeSlide === 1 ? 'active' : null}>
               <h3>Websites</h3>

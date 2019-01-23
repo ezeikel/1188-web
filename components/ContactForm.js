@@ -32,6 +32,9 @@ const Fieldset = styled.div`
     color: var(--color-white);
     padding: var(--spacing-small);
   }
+  button {
+    background-color: var(--color-tertiary);
+  }
 `;
 
 const Label = styled.label`
