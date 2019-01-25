@@ -1,18 +1,21 @@
-import { Component } from 'react';
+import { Component } from "react";
 import Link from "next/link";
-import Slider from 'react-slick';
-import styled from 'styled-components';
+import Slider from "react-slick";
+import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Wrapper = styled.div`
   padding: var(--spacing-large);
   color: var(--color-black);
-  overflow-x: hidden;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: auto auto 1fr;
   grid-row-gap: var(--spacing-large);
-  grid-column-gap: var(--spacing-large);
+  @media (min-width: 968px) {
+    overflow-x: hidden;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto auto 1fr;
+    grid-row-gap: var(--spacing-large);
+    grid-column-gap: var(--spacing-large);
+  }
 `;
 
 const SubTitle = styled.h4`
@@ -46,20 +49,26 @@ const Title = styled.h2`
 `;
 
 const StyledSlider = styled(Slider)`
-  grid-column: 1 / span 3;
-  grid-row: 3 / -1;
+  width: 100%;
+  @media (min-width: 968px) {
+    grid-column: 1 / span 3;
+    grid-row: 3 / -1;
+  }
 `;
 
 const SliderNav = styled.div`
-  grid-column: 4 / -1;
-  grid-row: 3 / -1;
-  display: grid;
-  justify-content: center;
-  grid-row-gap: var(--spacing-medium);
-  h3 {
-    color: #d3d3d3;
-    font-size: 3rem;
-    margin: 0;
+  display: none;
+  @media (min-width: 968px) {
+    grid-column: 4 / -1;
+    grid-row: 3 / -1;
+    display: grid;
+    justify-content: center;
+    grid-row-gap: var(--spacing-medium);
+    h3 {
+      color: #d3d3d3;
+      font-size: 3rem;
+      margin: 0;
+    }
   }
 `;
 
@@ -77,7 +86,7 @@ const SliderNavLinks = styled.ul`
     transition: color 0.3s ease-in-out;
   }
   li h3:after {
-    content: '';
+    content: "";
     position: absolute;
     background: transparent;
     border-radius: 50%;
@@ -122,28 +131,36 @@ const StyledAnchor = styled.a`
 
 const Slide = styled.div`
   display: grid !important; /*TODO: Remove */
+  grid-template-rows: auto auto 1fr auto;
   grid-row-gap: var(--spacing-large);
+  place-items: center;
+
+  /* grid-row-gap: var(--spacing-large);
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto auto 1fr auto;
   outline: none;
-  h3,
-  p {
-    margin: 0;
-  }
-  h3 {
-    grid-column: 1 / -1;
-    grid-row: 2 / span 1;
-    font-size: 3rem;
-  }
-  p {
-    font-size: 1.8rem;
-    line-height: 3.2rem;
-    grid-column: 1 / span 3;
-    grid-row: 3 / span 3;
-  }
   svg {
     grid-row: 1 / span 1;
     grid-column: 1 / -1;
+  } */
+`;
+
+const SlideTitle = styled.h3`
+  margin: 0;
+  font-size: 3rem;
+  @media (min-width: 968px) {
+    grid-column: 1 / -1;
+    grid-row: 2 / span 1;
+  }
+`;
+
+const SlideCopy = styled.p`
+  font-size: 1.8rem;
+  line-height: 3.2rem;
+  margin: 0;
+  @media (min-width: 968px) {
+    grid-column: 1 / span 3;
+    grid-row: 3 / span 3;
   }
 `;
 
@@ -164,9 +181,16 @@ class Services extends Component {
       slidesToScroll: 1,
       autoplay: true,
       arrows: false,
+      responsive: [
+        {
+          breakpoint: 968,
+          settings: {
+            rows: 6
+          }
+        }
+      ],
       beforeChange: (current, next) =>
-        this.setState({ oldSlide: current, activeSlide: next }),
-      afterChange: current => this.setState({ activeSlide2: current })
+        this.setState({ oldSlide: current, activeSlide: next })
     };
 
     return (
@@ -175,74 +199,98 @@ class Services extends Component {
         <Title>What we're good at.</Title>
         <StyledSlider {...settings}>
           <Slide>
-            <FontAwesomeIcon icon={["fal", "tablet"]} color="#3b3b3b" size="5x" />
-            <h3>Platforms &amp; Apps</h3>
-            <p>
+            <FontAwesomeIcon
+              icon={["fal", "tablet"]}
+              color="#3b3b3b"
+              size="5x"
+            />
+            <SlideTitle>Platforms &amp; Apps</SlideTitle>
+            <SlideCopy>
               Creating platforms &amp; apps is what we are most passionate
               about. Liquid has worked with a number of different industries to
               create market leading platforms, from property portals to
               community spaces.
-            </p>
+            </SlideCopy>
             <Link href="#">
               <StyledAnchor>Read More</StyledAnchor>
             </Link>
           </Slide>
           <Slide>
-            <FontAwesomeIcon icon={["fal", "browser"]} color="#3b3b3b" size="5x" />
-            <h3>Websites</h3>
-            <p>
+            <FontAwesomeIcon
+              icon={["fal", "browser"]}
+              color="#3b3b3b"
+              size="5x"
+            />
+            <SlideTitle>Websites</SlideTitle>
+            <SlideCopy>
               We specialise in the design &amp; development of websites that
               work – for your users and you. Powered by sophisticated backend
               systems and APIs, they generate leads, sales, enquiries and
               whatever else your online goals may be.
-            </p>
+            </SlideCopy>
             <Link href="#">
               <StyledAnchor>Read More</StyledAnchor>
             </Link>
           </Slide>
           <Slide>
-            <FontAwesomeIcon icon={["fal", "mobile"]} color="#3b3b3b" size="5x" />
-            <h3>Mobile</h3>
-            <p>
+            <FontAwesomeIcon
+              icon={["fal", "mobile"]}
+              color="#3b3b3b"
+              size="5x"
+            />
+            <SlideTitle>Mobile</SlideTitle>
+            <SlideCopy>
               Mobile first – always! With the opportunity to reach users at any
               given moment, we deliver expert mobile strategy, responsive design
               and mobile application development.
-            </p>
+            </SlideCopy>
             <Link href="#">
               <StyledAnchor>Read More</StyledAnchor>
             </Link>
           </Slide>
           <Slide>
-            <FontAwesomeIcon icon={["fal", "map-marked-alt"]} color="#3b3b3b" size="5x" />
-            <h3>Digital Strategy</h3>
-            <p>
+            <FontAwesomeIcon
+              icon={["fal", "map-marked-alt"]}
+              color="#3b3b3b"
+              size="5x"
+            />
+            <SlideTitle>Digital Strategy</SlideTitle>
+            <SlideCopy>
               Analysis, research and insight to position brands at the forefront
               of digital.
-            </p>
+            </SlideCopy>
             <Link href="#">
               <StyledAnchor>Read More</StyledAnchor>
             </Link>
           </Slide>
           <Slide>
-            <FontAwesomeIcon icon={["fal", "fill-drip"]} color="#3b3b3b" size="5x" />
-            <h3>Design &amp; UX</h3>
-            <p>
+            <FontAwesomeIcon
+              icon={["fal", "fill-drip"]}
+              color="#3b3b3b"
+              size="5x"
+            />
+            <SlideTitle>Design &amp; UX</SlideTitle>
+            <SlideCopy>
               Let our team of talented designers craft your digital experience.
               We create beautiful, functional and delicious design solutions
               and, we're proud of it!
-            </p>
+            </SlideCopy>
             <Link href="#">
               <StyledAnchor>Read More</StyledAnchor>
             </Link>
           </Slide>
           <Slide>
-            <FontAwesomeIcon icon={["fal", "paper-plane"]} color="#3b3b3b" size="5x" />
-            <h3>Marketing</h3>
-            <p>
+            <FontAwesomeIcon
+              icon={["fal", "paper-plane"]}
+              color="#3b3b3b"
+              size="5x"
+            />
+            <SlideTitle>Marketing</SlideTitle>
+            <SlideCopy>
               Our experienced team, along with our proven platforms, will help
               build your business. With proven results on the board, we not only
               offer solutions, we deliver game changing ideas.
-            </p>
+            </SlideCopy>
             <Link href="#">
               <StyledAnchor>Read More</StyledAnchor>
             </Link>
@@ -251,22 +299,22 @@ class Services extends Component {
         <SliderNav>
           <SliderNavTitle>The Expertise</SliderNavTitle>
           <SliderNavLinks>
-            <li className={this.state.activeSlide === 0 ? 'active' : null}>
+            <li className={this.state.activeSlide === 0 ? "active" : null}>
               <h3>Platforms &amp; Apps</h3>
             </li>
-            <li className={this.state.activeSlide === 1 ? 'active' : null}>
+            <li className={this.state.activeSlide === 1 ? "active" : null}>
               <h3>Websites</h3>
             </li>
-            <li className={this.state.activeSlide === 2 ? 'active' : null}>
+            <li className={this.state.activeSlide === 2 ? "active" : null}>
               <h3>Mobile</h3>
             </li>
-            <li className={this.state.activeSlide === 3 ? 'active' : null}>
+            <li className={this.state.activeSlide === 3 ? "active" : null}>
               <h3>Digital Strategy</h3>
             </li>
-            <li className={this.state.activeSlide === 4 ? 'active' : null}>
+            <li className={this.state.activeSlide === 4 ? "active" : null}>
               <h3>Design &amp; UX</h3>
             </li>
-            <li className={this.state.activeSlide === 5 ? 'active' : null}>
+            <li className={this.state.activeSlide === 5 ? "active" : null}>
               <h3>Marketing</h3>
             </li>
           </SliderNavLinks>
@@ -274,6 +322,6 @@ class Services extends Component {
       </Wrapper>
     );
   }
-};
+}
 
 export default Services;
