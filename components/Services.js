@@ -50,6 +50,11 @@ const Title = styled.h2`
 
 const StyledSlider = styled(Slider)`
   width: 100%;
+  .slick-slide {
+    > div + div {
+      margin-top: var(--spacing-huge);
+    }
+  }
   @media (min-width: 968px) {
     grid-column: 1 / span 3;
     grid-row: 3 / -1;
@@ -138,16 +143,17 @@ const Slide = styled.div`
   display: grid !important; /*TODO: Remove */
   grid-template-rows: auto auto 1fr auto;
   grid-row-gap: var(--spacing-large);
-  place-items: center;
-
-  /* grid-row-gap: var(--spacing-large);
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: auto auto 1fr auto;
   outline: none;
-  svg {
-    grid-row: 1 / span 1;
-    grid-column: 1 / -1;
-  } */
+  place-items: center;
+  @media (min-width: 968px) {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto auto 1fr auto;
+    justify-items: start;
+    svg {
+      grid-row: 1 / span 1;
+      grid-column: 1 / -1;
+    }
+  }
 `;
 
 const SlideTitle = styled.h3`

@@ -12,10 +12,10 @@ const Wrapper = styled.div`
 `;
 
 const Title = styled.h2`
-  text-align: center;
   color: var(--color-black);
   margin-bottom: 0;
   position: relative;
+  font-size: 4rem;
   &:after {
     position: relative;
     content: "";
@@ -28,7 +28,6 @@ const Title = styled.h2`
     left: 0;
   }
   @media (min-width: 768px) {
-    font-size: 4rem;
     grid-column: 1 / span 1;
     text-align: left;
   }
