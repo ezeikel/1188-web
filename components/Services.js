@@ -3,6 +3,7 @@ import Link from "next/link";
 import Slider from "react-slick";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Title from "./styles/Title";
 
 const Wrapper = styled.div`
   padding: var(--spacing-large);
@@ -19,6 +20,10 @@ const Wrapper = styled.div`
   }
 `;
 
+const StyledTitle = styled(Title)`
+  grid-column: 1 / span 3;
+`;
+
 const SubTitle = styled.h4`
   grid-row: 1 / span 1;
   grid-column: 1 / -1;
@@ -28,25 +33,6 @@ const SubTitle = styled.h4`
   letter-spacing: 1.5px;
   font-weight: normal;
   margin: 0;
-`;
-
-const Title = styled.h2`
-  font-size: 4rem;
-  margin: 0;
-  grid-row: 2 / span 1;
-  grid-column: 1 / -1;
-  position: relative;
-  &:after {
-    position: relative;
-    content: "";
-    display: block;
-    position: absolute;
-    background-color: var(--color-primary);
-    height: 6px;
-    width: 10rem;
-    bottom: -6px;
-    left: 0;
-  }
 `;
 
 const StyledSlider = styled(Slider)`
@@ -293,7 +279,7 @@ class Services extends Component {
     return (
       <Wrapper>
         <SubTitle>Services</SubTitle>
-        <Title>What we're good at.</Title>
+        <StyledTitle>What we're good at.</StyledTitle>
         <StyledSlider {...settings}>
           {
             this.state.sliderData.map((slide, i) => (

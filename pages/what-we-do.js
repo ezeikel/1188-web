@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import Services from "../components/Services";
+import Title from "../components/styles/Title";
 
 const Wrapper = styled.div`
   padding: var(--spacing-large);
@@ -11,20 +13,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const Title = styled.h2`
-  font-size: 4.8rem;
-  line-height: 1;
-  text-align: center;
-  color: var(--color-primary);
-  margin: 0;
-  @media (min-width: 768px) {
-    font-size: 5.6rem;
-    grid-column: 1 / span 1;
-    text-align: left;
-  }
-`;
-
-const Services = styled.section`
+const DoDont = styled.section`
   display: grid;
   grid-row-gap: var(--spacing-huge);
   @media (min-width: 768px) {
@@ -94,8 +83,9 @@ const WhatWeDont = styled.div`
 
 const WhatWeDoPage = () => (
   <Wrapper>
+    <Services />
     <Title>What to expect from us</Title>
-    <Services>
+    <DoDont>
       <WhatWeDo>
         <h3>What we do</h3>
         <ul>
@@ -126,7 +116,7 @@ const WhatWeDoPage = () => (
           <li>Outsource</li>
         </ul>
       </WhatWeDont>
-    </Services>
+    </DoDont>
   </Wrapper>
 );
 

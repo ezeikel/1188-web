@@ -1,20 +1,8 @@
 import styled from "styled-components";
+import Title from "../components/styles/Title";
 
 const Wrapper = styled.div`
   padding: var(--spacing-large);
-`;
-
-const Title = styled.h2`
-  font-size: 4.8rem;
-  line-height: 1;
-  text-align: center;
-  color: var(--color-primary);
-  margin: 0;
-  @media (min-width: 768px) {
-    font-size: 5.6rem;
-    grid-column: 1 / span 1;
-    text-align: left;
-  }
 `;
 
 const TeamCards = styled.section`

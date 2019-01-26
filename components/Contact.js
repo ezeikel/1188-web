@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import ContactForm from './ContactForm';
+import Title from "./styles/Title";
 
 const Wrapper = styled.div`
   display: grid;
@@ -8,28 +9,6 @@ const Wrapper = styled.div`
   @media (min-width: 768px) {
     grid-template-columns: repeat(4,1fr);
     grid-column-gap: var(--spacing-huge);
-  }
-`;
-
-const Title = styled.h2`
-  color: var(--color-black);
-  margin-bottom: 0;
-  position: relative;
-  font-size: 4rem;
-  &:after {
-    position: relative;
-    content: "";
-    display: block;
-    position: absolute;
-    background-color: var(--color-primary);
-    height: 6px;
-    width: 10rem;
-    bottom: -6px;
-    left: 0;
-  }
-  @media (min-width: 768px) {
-    grid-column: 1 / span 1;
-    text-align: left;
   }
 `;
 
