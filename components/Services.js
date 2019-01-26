@@ -9,6 +9,7 @@ const Wrapper = styled.div`
   color: var(--color-black);
   display: grid;
   grid-row-gap: var(--spacing-large);
+  overflow-x: hidden;
   @media (min-width: 968px) {
     overflow-x: hidden;
     grid-template-columns: repeat(4, 1fr);
@@ -42,7 +43,7 @@ const Title = styled.h2`
     position: absolute;
     background-color: var(--color-primary);
     height: 6px;
-    width: 15%;
+    width: 10rem;
     bottom: -6px;
     left: 0;
   }

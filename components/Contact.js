@@ -23,7 +23,7 @@ const Title = styled.h2`
     position: absolute;
     background-color: var(--color-primary);
     height: 6px;
-    width: 15%;
+    width: 10rem;
     bottom: -6px;
     left: 0;
   }
