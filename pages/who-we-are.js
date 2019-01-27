@@ -92,12 +92,12 @@ const team = [
   },
   {
     name: "Anthony Allen",
-    role: "Marketing Lead",
+    role: "Head of Marketing",
     image: "/static/images/anthony-allen.jpg"
   },
   {
     name: "Deji Ishola",
-    role: "Head of Finance",
+    role: "Head of Operations",
     image: "/static/images/deji-ishola.jpg"
   },
   {
