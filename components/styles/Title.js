@@ -4,6 +4,7 @@ const Title = styled.h2`
   font-size: 4rem;
   margin: 0;
   position: relative;
+  color: var(--color-black);
   &:after {
     position: relative;
     content: "";

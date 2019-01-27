@@ -225,7 +225,7 @@ const Footer = () => (
     <NewBusiness>
       <h4>New business</h4>
       <a href="mailto:hello@1188.agency">Email us</a>
-      <a href="tel:4486701023">+44 86701023</a>
+      <a href="tel:4486701023">+44 7932442879</a>
     </NewBusiness>
     <Social>
       <h4>Follow</h4>
