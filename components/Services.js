@@ -156,9 +156,11 @@ const SlideCopy = styled.p`
   font-size: 1.8rem;
   line-height: 3.2rem;
   margin: 0;
+  text-align: center;
   @media (min-width: 968px) {
     grid-column: 1 / span 3;
     grid-row: 3 / span 3;
+    text-align: initial;
   }
 `;
 
@@ -174,8 +176,8 @@ class Services extends Component {
           size: '5x'
         },
         title: 'Platforms & Apps',
-        copy: `Creating platforms &amp; apps is what we are most passionate
-        about. Liquid has worked with a number of different exustries to
+        copy: `Creating platforms & apps is what we are most passionate
+        about. 1188 has worked with a number of different industries to
         create market leading platforms, from property portals to
         community spaces.`,
         buttonLink: '#',
@@ -189,7 +191,7 @@ class Services extends Component {
           size: '5x'
         },
         title: 'Websites',
-        copy: `We specialise in the design &amp; development of websites that
+        copy: `We specialise in the design & development of websites that
         work – for your users and you. Powered by sophisticated backend
         systems and APIs, they generate leads, sales, enquiries and
         whatever else your online goals may be.`,

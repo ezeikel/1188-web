@@ -12,7 +12,7 @@ const TeamCards = styled.section`
   grid-gap: var(--spacing-large);
   padding: var(--spacing-large) 0;
   @media (min-width: 768px) {
-    justify-content: space-between;
+    justify-content: space-evenly;
   }
 `;
 
@@ -30,7 +30,7 @@ const Photo = styled.img`
 `;
 
 const Name = styled.span`
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   display: grid;
   justify-items: start;
   align-items: center;
@@ -40,7 +40,7 @@ const Name = styled.span`
 `;
 
 const Role = styled.span`
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   display: grid;
   justify-items: start;
   align-items: center;
@@ -76,11 +76,31 @@ const team = [
     name: "Ezeikel Pemberton",
     role: "Founder & CTO",
     image: "/static/images/ezeikel-pemberton.jpg"
+  },
+  {
+    name: "Shirley Denchie",
+    role: "Design Lead",
+    image: "/static/images/shirley-denchie.jpg"
+  },
+  {
+    name: "Anthony Allen",
+    role: "Marketing Lead",
+    image: "/static/images/anthony-allen.jpg"
+  },
+  {
+    name: "Deji Ishola",
+    role: "Head of Finance",
+    image: "/static/images/deji-ishola.jpg"
+  },
+  {
+    name: "Kunle Ogunjimi",
+    role: "Android & Web Developer",
+    image: "/static/images/kunle-ogunjimi.jpg"
   }
 ];
 
 const availableRoles = [
-  'Design Lead',
+  // 'Design Lead',
   'Development Lead',
   'Project Manager Lead',
   'QA Lead',

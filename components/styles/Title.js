@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Title = styled.h2`
-  font-size: 4rem;
+  font-size: 3.2rem;
   margin: 0;
   position: relative;
   color: var(--color-black);
@@ -15,6 +15,9 @@ const Title = styled.h2`
     width: 10rem;
     bottom: -6px;
     left: 0;
+  }
+  @media (min-width: 768px) {
+    font-size: 4rem;
   }
 `;
 
