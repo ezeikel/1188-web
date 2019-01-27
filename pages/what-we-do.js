@@ -3,11 +3,9 @@ import Services from "../components/Services";
 import Title from "../components/styles/Title";
 
 const Wrapper = styled.div`
-  padding: var(--spacing-large);
   display: grid;
   justify-items: center;
   grid-row-gap: var(--spacing-huge);
-  padding-bottom: var(--spacing-huge);
   @media (min-width: 768px) {
     justify-items: start;
   }
@@ -16,10 +14,21 @@ const Wrapper = styled.div`
 const DoDont = styled.section`
   display: grid;
   grid-row-gap: var(--spacing-huge);
+  padding: var(--spacing-large);
   @media (min-width: 768px) {
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr;
     justify-items: start;
+    grid-column: 1 / -1;
     width: 100%;
+    padding: 0 var(--spacing-huge) var(--spacing-huge) var(--spacing-huge);
+  }
+`;
+
+const StyledTitle = styled(Title)`
+  @media (min-width: 768px) {
+    grid-row: 1 / span 1;
+    grid-column: 1 / -1;
   }
 `;
 
@@ -29,8 +38,10 @@ const WhatWeDo = styled.div`
   grid-row-gap: var(--spacing-large);
   color: var(--color-black);
   @media (min-width: 768px) {
-      justify-items: start;
-    }
+    justify-items: start;
+    grid-column: 1 / span 1;
+    grid-row: 2 / -1;
+  }
   h3 {
     font-size: 2.6rem;
     margin: 0;
@@ -57,8 +68,10 @@ const WhatWeDont = styled.div`
   color: var(--color-black);
   opacity: 0.7;
   @media (min-width: 768px) {
-      justify-items: start;
-    }
+    justify-items: start;
+    grid-column: 2 / -1;
+    grid-row: 2 / -1;
+  }
   h3 {
     font-size: 2.6rem;
     margin: 0;
@@ -77,15 +90,13 @@ const WhatWeDont = styled.div`
       justify-items: start;
     }
   }
-  @media (min-width: 768px) {
-  }
 `;
 
 const WhatWeDoPage = () => (
   <Wrapper>
     <Services />
-    <Title>What to expect from us</Title>
     <DoDont>
+      <StyledTitle>What to expect from us</StyledTitle>
       <WhatWeDo>
         <h3>What we do</h3>
         <ul>

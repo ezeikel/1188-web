@@ -3,6 +3,20 @@ import Title from "../components/styles/Title";
 
 const Wrapper = styled.div`
   padding: var(--spacing-large);
+  display: grid;
+  grid-row-gap: var(--spacing-large);
+  @media (min-width: 768px) {
+    padding: var(--spacing-huge);
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto 1fr;
+  }
+`;
+
+const StyledTitle = styled(Title)`
+  grid-row: 1 / span 1;
+  grid-column: 1 / -1;
+  @media (min-width: 768px) {
+  }
 `;
 
 const TeamCards = styled.section`
@@ -10,9 +24,9 @@ const TeamCards = styled.section`
   grid-template-columns: repeat(auto-fit, minmax(0, 300px));
   justify-content: center;
   grid-gap: var(--spacing-large);
-  padding: var(--spacing-large) 0;
   @media (min-width: 768px) {
-    justify-content: space-evenly;
+    justify-content: start;
+    grid-column: 1 / span 1;
   }
 `;
 
@@ -52,12 +66,6 @@ const AvailableRolesWrapper = styled.div`
   display: grid;
   grid-template-rows: auto 1fr;
   grid-row-gap: var(--spacing-large);
-  justify-items: center;
-  text-align: center;
-  @media (min-width: 768px) {
-    justify-items: start;
-    text-align: left;
-  }
 `;
 
 const AvailableRoles = styled.div`
@@ -96,26 +104,33 @@ const team = [
     name: "Kunle Ogunjimi",
     role: "Android & Web Developer",
     image: "/static/images/kunle-ogunjimi.jpg"
+  },
+  {
+    name: "Maya Rowe",
+    role: "Social Media Manager",
+    image: "/static/images/maya-rowe.jpg"
   }
 ];
 
 const availableRoles = [
   // 'Design Lead',
-  'Development Lead',
-  'Project Manager Lead',
-  'QA Lead',
-  'UI Designer',
-  'UX Designer',
-  'Front End Developer',
-  'Back End Developer',
-  'Project Manager',
-  'QA Engineer'
+  // 'Development Lead',
+  // 'Project Manager Lead',
+  // 'QA Lead',
+  // 'UI Designer',
+  // 'UX Designer',
+  // 'Front End Developer',
+  // 'Back End Developer',
+  // 'Project Manager',
+  // 'QA Engineer'
+  // 'Social Media Manager (Intern)',
+  'Writer (Intern)',
 ];
 
 const WhoWeAre = () => (
   <Wrapper>
-    <Title>The Team</Title>
     <TeamCards>
+      <StyledTitle>The Team</StyledTitle>
       {
         team.map((member,i) => (
           <TeamCard key={i}>
@@ -127,7 +142,7 @@ const WhoWeAre = () => (
       }
     </TeamCards>
     <AvailableRolesWrapper>
-      <Title>We are looking for</Title>
+      <Title>We are hiring</Title>
       <AvailableRoles>
         {
           availableRoles.map((role,i) => (

@@ -97,7 +97,7 @@ const Index = () => (
         />
       </StyledVideo>
       <Overlay>
-        <HeroTitle>Diversity. Innovation. Boldness.</HeroTitle>
+        <HeroTitle>The diverse tech partner to big brands</HeroTitle>
         <Link href="/who-we-are">
           <StyledLink>Learn More</StyledLink>
         </Link>

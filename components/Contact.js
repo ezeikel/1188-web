@@ -9,6 +9,7 @@ const Wrapper = styled.div`
   @media (min-width: 768px) {
     grid-template-columns: repeat(4,1fr);
     grid-column-gap: var(--spacing-huge);
+    padding: var(--spacing-huge);
   }
 `;
 

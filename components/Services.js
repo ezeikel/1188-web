@@ -17,6 +17,7 @@ const Wrapper = styled.div`
     grid-template-rows: auto auto 1fr;
     grid-row-gap: var(--spacing-large);
     grid-column-gap: var(--spacing-large);
+    padding: var(--spacing-huge) var(--spacing-huge) 0 var(--spacing-huge);
   }
 `;
 
