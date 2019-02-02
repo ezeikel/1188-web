@@ -102,6 +102,9 @@ const SliderNavLinkTitle = styled.h3`
 
 const SliderNavLink = styled.li`
   transition: color 0.3s ease-in-out;
+  @media (min-width: 968px) {
+    cursor: pointer;
+  }
 `;
 
 const StyledAnchor = styled.a`
@@ -257,6 +260,14 @@ class Services extends Component {
     ]
   };
 
+  slider = React.createRef();
+
+  handleClick = index => {
+    this.setState({ activeSlide: index }, () => {
+      this.slider.current.slickGoTo(index);
+    });
+  }
+
   render() {
     const settings = {
       dots: false,
@@ -276,14 +287,16 @@ class Services extends Component {
         }
       ],
       // TODO: For some reason next is out of sync to actual active state of carousel. Setting +1 worked but need to go back to zero too
-      beforeChange: next => this.setState({ activeSlide: next === 5 ? 0 : next + 1 })
+      beforeChange: next => {
+        this.setState({ activeSlide: next === 5 ? 0 : next + 1 });
+      }
     };
 
     return (
       <Wrapper>
         <SubTitle>Services</SubTitle>
         <StyledTitle>What we're good at.</StyledTitle>
-        <StyledSlider {...settings}>
+        <StyledSlider {...settings} ref={this.slider}>
           {
             this.state.sliderData.map((slide, i) => (
               <Slide key={i}>
@@ -306,7 +319,7 @@ class Services extends Component {
           <SliderNavLinks>
             {
               this.state.sliderData.map((slide, i) => (
-                <SliderNavLink className={this.state.activeSlide === i ? "active" : null} key={i}>
+                <SliderNavLink onClick={() => this.handleClick(i)} className={this.state.activeSlide === i ? "active" : null} key={i}>
                   <SliderNavLinkTitle>{slide.title}</SliderNavLinkTitle>
                 </SliderNavLink>
               ))

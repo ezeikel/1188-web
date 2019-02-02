@@ -82,33 +82,31 @@ const AvailableRole = styled.span`
 const team = [
   {
     name: "Ezeikel Pemberton",
-    role: "Founder & CTO",
-    image: "/static/images/ezeikel-pemberton.jpg"
+    role: "Founder & CTO"
   },
   {
     name: "Shirley Denchie",
-    role: "Design Lead",
-    image: "/static/images/shirley-denchie.jpg"
+    role: "Design Lead"
   },
   {
     name: "Anthony Allen",
-    role: "Head of Marketing",
-    image: "/static/images/anthony-allen.jpg"
+    role: "Head of Marketing"
   },
   {
     name: "Deji Ishola",
-    role: "Head of Operations",
-    image: "/static/images/deji-ishola.jpg"
+    role: "Head of Operations"
   },
   {
     name: "Kunle Ogunjimi",
-    role: "Android & Web Developer",
-    image: "/static/images/kunle-ogunjimi.jpg"
+    role: "Android & Web Developer"
   },
   {
     name: "Maya Rowe",
-    role: "Social Media Manager",
-    image: "/static/images/maya-rowe.jpg"
+    role: "Social Media Manager"
+  },
+  {
+    name: "Romaine Smith",
+    role: "Digital Content Management & Strategist"
   }
 ];
 
@@ -134,7 +132,7 @@ const WhoWeAre = () => (
       {
         team.map((member,i) => (
           <TeamCard key={i}>
-            <Photo src={member.image} />
+            <Photo src={`/static/images/${member.name.toLowerCase().replace(/\s/g, '-')}.jpg`} />
             <Name>{member.name}</Name>
             <Role>{member.role}</Role>
           </TeamCard>
