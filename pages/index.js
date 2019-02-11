@@ -53,7 +53,7 @@ const HeroTitle = styled.h1`
 `;
 
 const StyledScrollDown = styled(ScrollDown)`
-  grid-row: 4 / -1;
+  grid-row: 5 / -1;
   grid-column: 1 / -1;
   align-self: center;
 `;
@@ -66,7 +66,7 @@ const StyledVideo = styled.video`
 `;
 
 const StyledLink = styled.a`
-  grid-row: 3 / span 1;
+  grid-row: 4 / span 1;
   grid-column: 1 / -1;
   align-self: end;
   border: 3px solid var(--color-tertiary);
