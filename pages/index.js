@@ -22,9 +22,9 @@ const Overlay = styled.section`
   grid-template-columns: repeat(12, 1fr);
   justify-items: center;
   background: linear-gradient(
-    100deg,
-    rgba(251, 84, 43, 0.7) 0%,
-    rgba(42, 0, 84, 1) 100%
+    180deg,
+    rgba(249, 119, 148, 0.8),
+    rgba(98, 58, 162, 1) 90%
   );
 `;
 
