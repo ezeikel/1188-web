@@ -28,6 +28,7 @@
     "nprogress": "^0.2.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
+    "react-fontawesome": "^1.6.1",
     "react-slick": "^0.25.2",
     "styled-components": "^4.4.0",
     "yup": "^0.27.0"
