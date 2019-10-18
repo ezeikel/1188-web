@@ -1,4 +1,4 @@
-import { Component, createRef } from "react";
+import { Component, createRef, useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Router from "next/router";
 import styled from "styled-components";
@@ -57,54 +57,57 @@ const Logo = styled.div`
   }
 `;
 
-class Header extends Component {
+const Header = (props) => {
   // TODO: Reinstate once nextjs supports hooks
-  //const [active, toggleActive] = useState(false);
-  constructor(props) {
-    super(props);
-    this._header = createRef();
-  }
+  const [ active, setActive ] = useState(false);
+  const headerEl = useRef(null);
 
-  state = {
-    active: false
-  };
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll.bind(this));
 
-  componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll.bind(this));
-  }
+    if (active) {
+      disableBodyScroll(headerEl.current);
+    } else {
+      enableBodyScroll(headerEl.current);
+    }
 
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
-    clearAllBodyScrollLocks();
-  }
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearAllBodyScrollLocks();
+    }
+  }, [active]);
 
-  toggleActive = (option) => {
+  // constructor(props) {
+  //   super(props);
+  // }
+
+  const toggleActive = (option) => {
     if (option === 'close-nav') {
-      this.setState({
-        active: false
-      });
-      enableBodyScroll(this._header.current);
+      setActive(false);
+      enableBodyScroll(headerEl.current);
 
       return;
     }
 
-    this.setState({
-      active: !this.state.active
-    }, () => {
-      if (this.state.active) {
-        disableBodyScroll(this._header.current);
-      } else {
-        enableBodyScroll(this._header.current);
-      }
-    });
+    setActive(!active);
+
+    // this.setState({
+    //   active: !active
+    // }, () => {
+    //   if (active) {
+    //     disableBodyScroll(this._header.current);
+    //   } else {
+    //     enableBodyScroll(this._header.current);
+    //   }
+    // });
   };
 
-  handleScroll = () => {
-    if (!this._header.current) {
+  const handleScroll = () => {
+    if (!headerEl.current) {
       return;
     }
 
-    const el = this._header.current;
+    const el = headerEl.current;
     const elementTop = el.offsetTop;
     const elementBottom = elementTop + el.offsetHeight;
     const viewportTop = window.scrollY;
@@ -112,28 +115,26 @@ class Header extends Component {
 
     if (elementBottom > viewportTop && elementTop < viewportBottom) {
       el.classList.remove('is-sticky')
-      this.props.toggleStickyHeader(false);
+      props.toggleStickyHeader(false);
     } else {
       el.classList.add('is-sticky');
-      this.props.toggleStickyHeader(true);
+      props.toggleStickyHeader(true);
     }
   }
 
-  render() {
-    return (
-      <Wrapper active={this.state.active} sticky={this.props.stickyHeader} home={this.props.home} ref={this._header} >
-        <Logo active={this.state.active}>
+  return (
+      <Wrapper active={active} sticky={props.stickyHeader} home={props.home} ref={headerEl} >
+        <Logo active={active}>
           <Link href="/">
-            <a onClick={() => this.toggleActive("close-nav")}>
+            <a onClick={() => toggleActive("close-nav")}>
               <img src="/static/logos/1188.svg" />
             </a>
           </Link>
         </Logo>
-        <Nav active={this.state.active} toggleActive={this.toggleActive} sticky={this.props.stickyHeader} home={this.props.home} />
-        <Hamburger active={this.state.active} toggleActive={this.toggleActive} sticky={this.props.stickyHeader} />
+        <Nav active={active} toggleActive={toggleActive} sticky={props.stickyHeader} home={props.home} />
+        <Hamburger active={active} toggleActive={toggleActive} sticky={props.stickyHeader} />
       </Wrapper>
-    );
-  }
+  );
 };
 
 export default Header;
