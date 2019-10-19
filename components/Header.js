@@ -1,4 +1,4 @@
-import { Component, createRef, useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Router from "next/router";
 import styled from "styled-components";
@@ -58,7 +58,6 @@ const Logo = styled.div`
 `;
 
 const Header = (props) => {
-  // TODO: Reinstate once nextjs supports hooks
   const [ active, setActive ] = useState(false);
   const headerEl = useRef(null);
 
@@ -77,10 +76,6 @@ const Header = (props) => {
     }
   }, [active]);
 
-  // constructor(props) {
-  //   super(props);
-  // }
-
   const toggleActive = (option) => {
     if (option === 'close-nav') {
       setActive(false);
@@ -90,16 +85,6 @@ const Header = (props) => {
     }
 
     setActive(!active);
-
-    // this.setState({
-    //   active: !active
-    // }, () => {
-    //   if (active) {
-    //     disableBodyScroll(this._header.current);
-    //   } else {
-    //     enableBodyScroll(this._header.current);
-    //   }
-    // });
   };
 
   const handleScroll = () => {

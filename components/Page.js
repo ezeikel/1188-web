@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { useState } from "react";
 import { withRouter } from "next/router";
 import styled from "styled-components";
 import Meta from "./Meta";
@@ -37,32 +37,22 @@ const Wrapper = styled.div`
   }
 `;
 
-class Page extends Component {
-  state = {
-    stickyHeader: false
-  };
+const Page = (props) => {
+  const [ stickyHeader, setStickyHeader ] = useState(false);
+  const toggleStickyHeader = (value) => setStickyHeader(value);
+  const home = props.router.pathname === '/';
 
-  toggleStickyHeader = (value) => {
-    this.setState({
-      stickyHeader: value
-    });
-  }
-
-  render() {
-    const home = this.props.router.pathname === '/';
-
-    return (
-      <div>
-        <Meta />
-        <GlobalStyle />
-        <Wrapper home={home} stickyHeader={this.state.stickyHeader}>
-          <Header home={home} stickyHeader={this.state.stickyHeader} toggleStickyHeader={this.toggleStickyHeader} />
-          {this.props.children}
-          <Footer />
-        </Wrapper>
-      </div>
-    );
-  }
+  return (
+    <div>
+      <Meta />
+      <GlobalStyle />
+      <Wrapper home={home} stickyHeader={stickyHeader}>
+        <Header home={home} stickyHeader={stickyHeader} toggleStickyHeader={toggleStickyHeader} />
+        {props.children}
+        <Footer />
+      </Wrapper>
+    </div>
+  )
 };
 
 export default withRouter(Page);
