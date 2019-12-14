@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import ContactForm from "./ContactForm";
 import Title from "./styles/Title";
@@ -40,14 +41,18 @@ const Contact = ({ className }) => (
     <Copy>
       <p>
         Great idea for the next big thing? Let us help you bring it to life.
-        Send us a quick message and we'll get back to you as soon as we can. The
-        more detail the better, but if you're still not 100% sure on all the
-        specifics, thats fine too. Alternatively you can shoot us an email at{" "}
-        <a href="mailto:info@1188.agency">info@1188.agency</a>.
+        Send us a quick message and we&apos;ll get back to you as soon as we
+        can. The more detail the better, but if you&apos;re still not 100% sure
+        on all the specifics, thats fine too. Alternatively you can shoot us an
+        email at <a href="mailto:info@1188.agency">info@1188.agency</a>.
       </p>
     </Copy>
     <StyledContactForm />
   </Wrapper>
 );
+
+Contact.propTypes = {
+  className: PropTypes.string,
+};
 
 export default Contact;

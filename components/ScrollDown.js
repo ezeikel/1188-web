@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import { scrollDown } from "../GlobalStyle";
 
@@ -37,5 +38,9 @@ const Mouse = styled.div`
 `;
 
 const ScrollDown = ({ className }) => <Mouse className={className} />;
+
+ScrollDown.propTypes = {
+  className: PropTypes.string,
+};
 
 export default ScrollDown;

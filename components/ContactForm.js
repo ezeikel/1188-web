@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
@@ -40,13 +41,6 @@ const Fieldset = styled.div`
 const Label = styled.label`
   color: var(--color-black);
   text-transform: capitalize;
-`;
-
-const SuccessMessage = styled.p`
-  font-size: var(--font-size-tiny);
-  background-color: var(--color-green);
-  color: var(--color-white);
-  padding: var(--spacing-small);
 `;
 
 const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
@@ -95,7 +89,6 @@ const ContactForm = ({ className }) => (
     }}
   >
     {({ isValid, isSubmitting }) => (
-      // <SuccessMessage>Thanks for hitting us up. We will get back to you as soon as possible.</SuccessMessage>
       <FormWrapper className={className}>
         <DoubleFormfield>
           <Fieldset>
@@ -145,5 +138,9 @@ const ContactForm = ({ className }) => (
     )}
   </Formik>
 );
+
+ContactForm.propTypes = {
+  className: PropTypes.string,
+};
 
 export default ContactForm;

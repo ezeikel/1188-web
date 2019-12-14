@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { withRouter } from "next/router";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import Meta from "./Meta";
 import Header from "./Header";
@@ -68,6 +69,11 @@ const Page = props => {
       </Wrapper>
     </div>
   );
+};
+
+Page.propTypes = {
+  children: PropTypes.func,
+  router: PropTypes.object,
 };
 
 export default withRouter(Page);

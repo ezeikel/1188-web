@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Router from "next/router";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import NProgress from "nprogress";
 import {
@@ -140,6 +141,12 @@ const Header = props => {
       />
     </Wrapper>
   );
+};
+
+Header.propTypes = {
+  toggleStickyHeader: PropTypes.func,
+  stickyHeader: PropTypes.bool,
+  home: PropTypes.bool,
 };
 
 export default Header;

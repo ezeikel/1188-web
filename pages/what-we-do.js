@@ -113,7 +113,7 @@ const WhatWeDoPage = () => (
         </ul>
       </WhatWeDo>
       <WhatWeDont>
-        <h3>What we don't</h3>
+        <h3>What we don&apos;t</h3>
         <ul>
           <li>Work late / weekends</li>
           <li>Have a sales team</li>

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -44,5 +45,11 @@ const Hamburger = ({ active, sticky, toggleActive }) => (
     <span></span>
   </Wrapper>
 );
+
+Hamburger.propTypes = {
+  active: PropTypes.bool,
+  sticky: PropTypes.bool,
+  toggleActive: PropTypes.func,
+};
 
 export default Hamburger;

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import Link from "next/link";
 import styled from "styled-components";
 
@@ -148,6 +149,13 @@ const Nav = ({ active, toggleActive, sticky, home }) => {
       </NavList>
     </Wrapper>
   );
+};
+
+Nav.propTypes = {
+  active: PropTypes.bool,
+  toggleActive: PropTypes.func,
+  sticky: PropTypes.bool,
+  home: PropTypes.bool,
 };
 
 export default Nav;

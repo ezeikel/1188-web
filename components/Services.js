@@ -170,7 +170,7 @@ const SlideCopy = styled.p`
 
 const Services = () => {
   const [activeSlide, setActiveSlide] = useState(0);
-  const [sliderData, setSliderData] = useState([
+  const [sliderData] = useState([
     {
       icon: {
         category: "fal",
@@ -288,7 +288,7 @@ const Services = () => {
   return (
     <Wrapper>
       <SubTitle>Services</SubTitle>
-      <StyledTitle>What we're good at.</StyledTitle>
+      <StyledTitle>What we&apos;re good at.</StyledTitle>
       <StyledSlider {...settings} ref={sliderEl}>
         {sliderData.map((slide, i) => (
           <Slide key={i}>
