@@ -82,32 +82,32 @@ const AvailableRole = styled.span`
 const team = [
   {
     name: "Ezeikel Pemberton",
-    role: "Founder & CTO"
+    role: "Founder & CTO",
   },
   {
     name: "Shirley Denchie",
-    role: "Design Lead"
+    role: "Design Lead",
   },
   {
     name: "Anthony Allen",
-    role: "Head of Marketing"
+    role: "Head of Marketing",
   },
   {
     name: "Deji Ishola",
-    role: "Head of Operations"
+    role: "Head of Operations",
   },
   {
     name: "Kunle Ogunjimi",
-    role: "Android & Web Developer"
+    role: "Android & Web Developer",
   },
   {
     name: "Maya Rowe",
-    role: "Social Media Manager"
+    role: "Social Media Manager",
   },
   {
     name: "Romaine Smith",
-    role: "Digital Content Management & Strategist"
-  }
+    role: "Digital Content Management & Strategist",
+  },
 ];
 
 const availableRoles = [
@@ -122,33 +122,33 @@ const availableRoles = [
   // 'Project Manager',
   // 'QA Engineer'
   // 'Social Media Manager (Intern)',
-  'Writer (Intern)',
+  "Writer (Intern)",
 ];
 
 const WhoWeAre = () => (
   <Wrapper>
     <TeamCards>
       <StyledTitle>The Team</StyledTitle>
-      {
-        team.map((member,i) => (
-          <TeamCard key={i}>
-            <Photo src={`/static/images/${member.name.toLowerCase().replace(/\s/g, '-')}.jpg`} />
-            <Name>{member.name}</Name>
-            <Role>{member.role}</Role>
-          </TeamCard>
-        ))
-      }
+      {team.map((member, i) => (
+        <TeamCard key={i}>
+          <Photo
+            src={`/static/images/${member.name
+              .toLowerCase()
+              .replace(/\s/g, "-")}.jpg`}
+          />
+          <Name>{member.name}</Name>
+          <Role>{member.role}</Role>
+        </TeamCard>
+      ))}
     </TeamCards>
     <AvailableRolesWrapper>
       <Title>We are hiring</Title>
       <AvailableRoles>
-        {
-          availableRoles.map((role,i) => (
-            <TeamCard key={i}>
-              <AvailableRole>{role}</AvailableRole>
-            </TeamCard>
-          ))
-        }
+        {availableRoles.map((role, i) => (
+          <TeamCard key={i}>
+            <AvailableRole>{role}</AvailableRole>
+          </TeamCard>
+        ))}
       </AvailableRoles>
     </AvailableRolesWrapper>
   </Wrapper>

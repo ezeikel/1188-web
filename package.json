@@ -9,7 +9,7 @@
     "dev": "next",
     "build": "next build",
     "lint": "eslint --ignore-path .gitignore .",
-    "format": "prettier --write \"**/*.+(js|json)\"",
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json)\"",
     "start": "next start -p 8000",
     "test": "NODE_ENV=test jest --watch",
     "storybook": "start-storybook -p 9001 -c .storybook"

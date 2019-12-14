@@ -3,7 +3,11 @@ import Link from "next/link";
 import Router from "next/router";
 import styled from "styled-components";
 import NProgress from "nprogress";
-import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
+import {
+  disableBodyScroll,
+  enableBodyScroll,
+  clearAllBodyScrollLocks,
+} from "body-scroll-lock";
 import Nav from "./Nav";
 import Hamburger from "./Hamburger";
 
@@ -35,7 +39,8 @@ const Wrapper = styled.header`
     sticky ? "rgba(0, 0, 0, 0.1) 0px 2px 1.5rem 0px" : "none"};
   @media (min-width: 768px) {
     padding: var(--spacing-medium) var(--spacing-large);
-    position: ${({ sticky, home }) => (sticky ? "fixed" :  home ? "absolute" : "static")};
+    position: ${({ sticky, home }) =>
+      sticky ? "fixed" : home ? "absolute" : "static"};
     top: 0;
     left: 0;
     right: 0;
@@ -49,7 +54,8 @@ const Logo = styled.div`
   z-index: 1;
   margin: 0;
   width: 100px;
-  img, a {
+  img,
+  a {
     width: 100%;
   }
   @media (min-width: 768px) {
@@ -57,12 +63,12 @@ const Logo = styled.div`
   }
 `;
 
-const Header = (props) => {
-  const [ active, setActive ] = useState(false);
+const Header = props => {
+  const [active, setActive] = useState(false);
   const headerEl = useRef(null);
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll.bind(this));
+    window.addEventListener("scroll", handleScroll.bind(this));
 
     if (active) {
       disableBodyScroll(headerEl.current);
@@ -71,13 +77,13 @@ const Header = (props) => {
     }
 
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
       clearAllBodyScrollLocks();
-    }
+    };
   }, [active]);
 
-  const toggleActive = (option) => {
-    if (option === 'close-nav') {
+  const toggleActive = option => {
+    if (option === "close-nav") {
       setActive(false);
       enableBodyScroll(headerEl.current);
 
@@ -96,29 +102,43 @@ const Header = (props) => {
     const elementTop = el.offsetTop;
     const elementBottom = elementTop + el.offsetHeight;
     const viewportTop = window.scrollY;
-    const viewportBottom = viewportTop + window.outerHeight
+    const viewportBottom = viewportTop + window.outerHeight;
 
     if (elementBottom > viewportTop && elementTop < viewportBottom) {
-      el.classList.remove('is-sticky')
+      el.classList.remove("is-sticky");
       props.toggleStickyHeader(false);
     } else {
-      el.classList.add('is-sticky');
+      el.classList.add("is-sticky");
       props.toggleStickyHeader(true);
     }
-  }
+  };
 
   return (
-      <Wrapper active={active} sticky={props.stickyHeader} home={props.home} ref={headerEl} >
-        <Logo active={active}>
-          <Link href="/">
-            <a onClick={() => toggleActive("close-nav")}>
-              <img src="/static/logos/1188.svg" />
-            </a>
-          </Link>
-        </Logo>
-        <Nav active={active} toggleActive={toggleActive} sticky={props.stickyHeader} home={props.home} />
-        <Hamburger active={active} toggleActive={toggleActive} sticky={props.stickyHeader} />
-      </Wrapper>
+    <Wrapper
+      active={active}
+      sticky={props.stickyHeader}
+      home={props.home}
+      ref={headerEl}
+    >
+      <Logo active={active}>
+        <Link href="/">
+          <a onClick={() => toggleActive("close-nav")}>
+            <img src="/static/logos/1188.svg" />
+          </a>
+        </Link>
+      </Logo>
+      <Nav
+        active={active}
+        toggleActive={toggleActive}
+        sticky={props.stickyHeader}
+        home={props.home}
+      />
+      <Hamburger
+        active={active}
+        toggleActive={toggleActive}
+        sticky={props.stickyHeader}
+      />
+    </Wrapper>
   );
 };
 

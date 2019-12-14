@@ -36,8 +36,6 @@ const Mouse = styled.div`
   }
 `;
 
-const ScrollDown = ({ className }) => (
-  <Mouse className={className} />
-);
+const ScrollDown = ({ className }) => <Mouse className={className} />;
 
 export default ScrollDown;

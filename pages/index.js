@@ -1,9 +1,9 @@
-import Link from 'next/link';
-import styled from 'styled-components';
-import ScrollDown from '../components/ScrollDown';
-import Services from '../components/Services';
-import Clients from '../components/Clients';
-import Contact from '../components/Contact';
+import Link from "next/link";
+import styled from "styled-components";
+import ScrollDown from "../components/ScrollDown";
+import Services from "../components/Services";
+import Clients from "../components/Clients";
+import Contact from "../components/Contact";
 
 const Wrapper = styled.div`
   display: grid;
@@ -110,4 +110,4 @@ const Index = () => (
   </Wrapper>
 );
 
-export default Index
+export default Index;

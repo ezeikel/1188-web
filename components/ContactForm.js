@@ -1,7 +1,7 @@
-import styled from 'styled-components';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import axios from 'axios';
-import * as yup from 'yup';
+import styled from "styled-components";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import axios from "axios";
+import * as yup from "yup";
 
 const FormWrapper = styled(Form)`
   display: grid;
@@ -49,72 +49,96 @@ const SuccessMessage = styled.p`
   padding: var(--spacing-small);
 `;
 
-const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
+const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
 const ContactSchema = yup.object().shape({
-  firstName: yup.string().required('First Name is required.'),
-  lastName: yup.string().required('Last Name is required.'),
-  email: yup.string()
-    .email('Email provided is not valid. Please try again.')
-    .required('Email is required.'),
-  phoneNumber: yup.string().required('Phone number is required.').matches(phoneRegExp, 'Phone number provided is not valid. Please try again.'),
-  message: yup.string()
+  firstName: yup.string().required("First Name is required."),
+  lastName: yup.string().required("Last Name is required."),
+  email: yup
+    .string()
+    .email("Email provided is not valid. Please try again.")
+    .required("Email is required."),
+  phoneNumber: yup
+    .string()
+    .required("Phone number is required.")
+    .matches(
+      phoneRegExp,
+      "Phone number provided is not valid. Please try again.",
+    ),
+  message: yup.string(),
 });
-
 
 const ContactForm = ({ className }) => (
   <Formik
-    initialValues={{ firstName: '', lastName: '', email: '', phoneNumber: '', message: '' }}
+    initialValues={{
+      firstName: "",
+      lastName: "",
+      email: "",
+      phoneNumber: "",
+      message: "",
+    }}
     validationSchema={ContactSchema}
     onSubmit={async (values, actions) => {
       console.log(actions);
       try {
-        await axios.post('https://nc0j2ha6l0.execute-api.eu-west-1.amazonaws.com/PRODUCTION', values);
-      } catch(error) {
+        await axios.post(
+          "https://nc0j2ha6l0.execute-api.eu-west-1.amazonaws.com/PRODUCTION",
+          values,
+        );
+      } catch (error) {
         console.log(error);
       } finally {
         actions.setSubmitting(false);
         actions.resetForm();
-        actions.setStatus('submitted')
+        actions.setStatus("submitted");
       }
     }}
   >
-    {({
-      isValid,
-      isSubmitting
-    }) => (
+    {({ isValid, isSubmitting }) => (
       // <SuccessMessage>Thanks for hitting us up. We will get back to you as soon as possible.</SuccessMessage>
       <FormWrapper className={className}>
         <DoubleFormfield>
           <Fieldset>
             <Label htmlFor="firstName">First Name</Label>
             <Field type="text" name="firstName" />
-            <ErrorMessage name="firstName" type="text">{msg => <div className="error">{msg}</div>}</ErrorMessage>
+            <ErrorMessage name="firstName" type="text">
+              {msg => <div className="error">{msg}</div>}
+            </ErrorMessage>
           </Fieldset>
           <Fieldset>
             <Label htmlFor="lastName">Last Name</Label>
             <Field type="text" name="lastName" />
-            <ErrorMessage name="lastName" type="text">{msg => <div className="error">{msg}</div>}</ErrorMessage>
+            <ErrorMessage name="lastName" type="text">
+              {msg => <div className="error">{msg}</div>}
+            </ErrorMessage>
           </Fieldset>
         </DoubleFormfield>
         <SingleFormfield>
           <Fieldset>
             <Label htmlFor="email">Email</Label>
             <Field type="email" name="email" />
-            <ErrorMessage name="email" type="text">{msg => <div className="error">{msg}</div>}</ErrorMessage>
+            <ErrorMessage name="email" type="text">
+              {msg => <div className="error">{msg}</div>}
+            </ErrorMessage>
           </Fieldset>
           <Fieldset>
             <Label htmlFor="phoneNumber">Phone Number</Label>
             <Field type="tel" name="phoneNumber" />
-            <ErrorMessage name="phoneNumber" type="text">{msg => <div className="error">{msg}</div>}</ErrorMessage>
+            <ErrorMessage name="phoneNumber" type="text">
+              {msg => <div className="error">{msg}</div>}
+            </ErrorMessage>
           </Fieldset>
           <Fieldset>
             <Label htmlFor="message">Message</Label>
             <Field component="textarea" name="message" />
-            <ErrorMessage name="message" type="text">{msg => <div className="error">{msg}</div>}</ErrorMessage>
+            <ErrorMessage name="message" type="text">
+              {msg => <div className="error">{msg}</div>}
+            </ErrorMessage>
           </Fieldset>
           <Fieldset>
-            <button type="submit" disabled={isSubmitting || !isValid }>Send{isSubmitting ? 'ing' : null}</button>
+            <button type="submit" disabled={isSubmitting || !isValid}>
+              Send{isSubmitting ? "ing" : null}
+            </button>
           </Fieldset>
         </SingleFormfield>
       </FormWrapper>

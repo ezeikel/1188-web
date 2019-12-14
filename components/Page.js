@@ -2,8 +2,8 @@ import { useState } from "react";
 import { withRouter } from "next/router";
 import styled from "styled-components";
 import Meta from "./Meta";
-import Header from './Header';
-import Footer from './Footer';
+import Header from "./Header";
+import Footer from "./Footer";
 import GlobalStyle from "../GlobalStyle";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
@@ -16,10 +16,21 @@ import {
   faMobile,
   faMapMarkedAlt,
   faFillDrip,
-  faPaperPlane
+  faPaperPlane,
 } from "@fortawesome/pro-regular-svg-icons";
 
-library.add(fab, fal, far, fas, faTablet, faBrowser, faMobile, faMapMarkedAlt, faFillDrip, faPaperPlane);
+library.add(
+  fab,
+  fal,
+  far,
+  fas,
+  faTablet,
+  faBrowser,
+  faMobile,
+  faMapMarkedAlt,
+  faFillDrip,
+  faPaperPlane,
+);
 
 const Wrapper = styled.div`
   position: relative;
@@ -37,22 +48,26 @@ const Wrapper = styled.div`
   }
 `;
 
-const Page = (props) => {
-  const [ stickyHeader, setStickyHeader ] = useState(false);
-  const toggleStickyHeader = (value) => setStickyHeader(value);
-  const home = props.router.pathname === '/';
+const Page = props => {
+  const [stickyHeader, setStickyHeader] = useState(false);
+  const toggleStickyHeader = value => setStickyHeader(value);
+  const home = props.router.pathname === "/";
 
   return (
     <div>
       <Meta />
       <GlobalStyle />
       <Wrapper home={home} stickyHeader={stickyHeader}>
-        <Header home={home} stickyHeader={stickyHeader} toggleStickyHeader={toggleStickyHeader} />
+        <Header
+          home={home}
+          stickyHeader={stickyHeader}
+          toggleStickyHeader={toggleStickyHeader}
+        />
         {props.children}
         <Footer />
       </Wrapper>
     </div>
-  )
+  );
 };
 
 export default withRouter(Page);

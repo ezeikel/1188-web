@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Wrapper = styled.div`
   cursor: pointer;
@@ -11,12 +11,15 @@ const Wrapper = styled.div`
     margin-left: auto;
     width: 25px;
     height: 2px;
-    background-color: var(--color-${({ active, sticky }) => active || sticky ? 'black' : 'black'});
+    background-color: var(
+      --color- ${({ active, sticky }) => (active || sticky ? "black" : "black")}
+    );
     background-color: var(--color-black);
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
   }
   ${({ active }) => {
-    return active ? `
+    return active
+      ? `
       > span:nth-child(1) {
         transform: translateY(6px) rotate(45deg);
       }
@@ -26,7 +29,8 @@ const Wrapper = styled.div`
       > span:nth-child(3) {
         transform: translateY(-6px) rotate(-45deg);
       }
-    ` : ''
+    `
+      : "";
   }};
   @media (min-width: 768px) {
     display: none;

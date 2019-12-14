@@ -1,5 +1,5 @@
 import Link from "next/link";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Wrapper = styled.nav`
   position: fixed;
@@ -47,7 +47,7 @@ const NavList = styled.ul`
   }
 `;
 
-const NavListItem =  styled.li`
+const NavListItem = styled.li`
   @media (min-width: 768px) {
     overflow-x: hidden;
     height: 100%;
@@ -63,14 +63,16 @@ const StyledLink = styled.a`
     display: grid;
     place-items: center;
     position: relative;
-    color: ${({ sticky, home }) => sticky || !home ? 'var(--color-black)' : 'var(--color-white)'};
+    color: ${({ sticky, home }) =>
+      sticky || !home ? "var(--color-black)" : "var(--color-white)"};
     cursor: pointer;
     &:after {
       position: relative;
       content: "";
       display: block;
       position: absolute;
-      background-color: ${({ sticky, home }) => sticky || !home ? 'var(--color-black)' : 'var(--color-white)'};
+      background-color: ${({ sticky, home }) =>
+        sticky || !home ? "var(--color-black)" : "var(--color-white)"};
       height: 2px;
       width: 50%;
       bottom: calc(var(--spacing-tiny) * -1);
@@ -87,43 +89,65 @@ const StyledLink = styled.a`
 `;
 
 const Nav = ({ active, toggleActive, sticky, home }) => {
-  return <Wrapper active={active}>
+  return (
+    <Wrapper active={active}>
       <NavList>
         <NavListItem>
           <Link href="/">
-            <StyledLink onClick={() => toggleActive("close-nav")} sticky={sticky} home={home}>
+            <StyledLink
+              onClick={() => toggleActive("close-nav")}
+              sticky={sticky}
+              home={home}
+            >
               Home
             </StyledLink>
           </Link>
         </NavListItem>
         <NavListItem>
           <Link href="/what-we-do">
-            <StyledLink onClick={() => toggleActive("close-nav")} sticky={sticky} home={home}>
+            <StyledLink
+              onClick={() => toggleActive("close-nav")}
+              sticky={sticky}
+              home={home}
+            >
               What we do
             </StyledLink>
           </Link>
         </NavListItem>
         <NavListItem>
           <Link href="/who-we-are">
-            <StyledLink onClick={() => toggleActive("close-nav")} sticky={sticky} home={home}>
+            <StyledLink
+              onClick={() => toggleActive("close-nav")}
+              sticky={sticky}
+              home={home}
+            >
               Who we are
             </StyledLink>
           </Link>
         </NavListItem>
         <NavListItem>
-        <StyledLink href="https://medium.com/@118eighty8" sticky={sticky} home={home}>
-          Blog
-        </StyledLink>
+          <StyledLink
+            href="https://medium.com/@118eighty8"
+            sticky={sticky}
+            home={home}
+          >
+            Blog
+          </StyledLink>
         </NavListItem>
         <NavListItem>
           <Link href="/#contact">
-            <StyledLink onClick={() => toggleActive("close-nav")} sticky={sticky} home={home}>
+            <StyledLink
+              onClick={() => toggleActive("close-nav")}
+              sticky={sticky}
+              home={home}
+            >
               Contact
             </StyledLink>
           </Link>
         </NavListItem>
       </NavList>
-    </Wrapper>;
+    </Wrapper>
+  );
 };
 
 export default Nav;

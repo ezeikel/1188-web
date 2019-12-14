@@ -152,7 +152,7 @@ export default createGlobalStyle`
   }
   `;
 
-  export const scrollDown = keyframes`
+export const scrollDown = keyframes`
     40%, 60% {
       -webkit-transform: translateY(10px);
               transform: translateY(10px);
