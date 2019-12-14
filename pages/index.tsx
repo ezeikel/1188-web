@@ -1,8 +1,13 @@
+import { NextPage } from 'next';
 import Link from "next/link";
 import styled from "styled-components";
 import ScrollDown from "../components/ScrollDown";
 import Services from "../components/Services";
 import Contact from "../components/Contact";
+
+type IndexProps = {
+  className: string
+}
 
 const Wrapper = styled.div`
   display: grid;
@@ -86,7 +91,7 @@ const StyledLink = styled.a`
   }
 `;
 
-const Index = () => (
+const Index: NextPage<IndexProps> = ({ className }) => (
   <Wrapper>
     <Hero>
       <StyledVideo autoPlay muted loop playsInline>
@@ -100,7 +105,7 @@ const Index = () => (
         <Link href="/who-we-are">
           <StyledLink>Learn More</StyledLink>
         </Link>
-        <StyledScrollDown />
+        <StyledScrollDown className={className} />
       </Overlay>
     </Hero>
     <Services />

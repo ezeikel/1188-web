@@ -1,6 +1,10 @@
-import PropTypes from "prop-types";
+import { FunctionComponent } from "react";
 import styled from "styled-components";
 import { scrollDown } from "../GlobalStyle";
+
+type ScrollDownProps = {
+  className: string
+}
 
 const Mouse = styled.div`
   width: 40px;
@@ -37,10 +41,6 @@ const Mouse = styled.div`
   }
 `;
 
-const ScrollDown = ({ className }) => <Mouse className={className} />;
-
-ScrollDown.propTypes = {
-  className: PropTypes.string,
-};
+const ScrollDown: FunctionComponent<ScrollDownProps> = ({ className }) => <Mouse className={className} />;
 
 export default ScrollDown;

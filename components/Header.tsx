@@ -1,7 +1,6 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, FunctionComponent } from "react";
 import Link from "next/link";
 import Router from "next/router";
-import PropTypes from "prop-types";
 import styled from "styled-components";
 import NProgress from "nprogress";
 import {
@@ -12,21 +11,39 @@ import {
 import Nav from "./Nav";
 import Hamburger from "./Hamburger";
 
-NProgress.configure({ showSpinner: false });
-
-Router.onRouteChangeStart = () => {
-  NProgress.start();
+interface WrapperProps {
+  readonly active: boolean;
+  readonly sticky: boolean;
+  readonly home: boolean;
 };
 
-Router.onRouteChangeComplete = () => {
-  NProgress.done();
+interface LogoProps {
+  readonly active: boolean;
 };
 
-Router.onRouteChangeError = () => {
-  NProgress.done();
-};
+type HeaderProps = {
+  toggleStickyHeader: any
+  stickyHeader: boolean
+  home: boolean
+}
 
-const Wrapper = styled.header`
+if (typeof window !== "undefined") {
+  NProgress.configure({ showSpinner: false });
+  
+  Router.events.on("routeChangeStart", () => {
+    NProgress.start();
+  });
+  
+  Router.events.on("routeChangeComplete", () => {
+    NProgress.done();
+  });
+  
+  Router.events.on("routeChangeError", () => {
+    NProgress.done();
+  });
+}
+
+const Wrapper = styled.header<WrapperProps>`
   z-index: 1;
   display: grid;
   grid-template-columns: auto auto;
@@ -49,7 +66,7 @@ const Wrapper = styled.header`
   }
 `;
 
-const Logo = styled.div`
+const Logo = styled.div<LogoProps>`
   display: grid;
   place-items: center;
   z-index: 1;
@@ -64,7 +81,7 @@ const Logo = styled.div`
   }
 `;
 
-const Header = props => {
+const Header: FunctionComponent<HeaderProps> = ({ home, stickyHeader, toggleStickyHeader } : HeaderProps) => {
   const [active, setActive] = useState(false);
   const headerEl = useRef(null);
 
@@ -107,20 +124,15 @@ const Header = props => {
 
     if (elementBottom > viewportTop && elementTop < viewportBottom) {
       el.classList.remove("is-sticky");
-      props.toggleStickyHeader(false);
+      toggleStickyHeader(false);
     } else {
       el.classList.add("is-sticky");
-      props.toggleStickyHeader(true);
+      toggleStickyHeader(true);
     }
   };
 
   return (
-    <Wrapper
-      active={active}
-      sticky={props.stickyHeader}
-      home={props.home}
-      ref={headerEl}
-    >
+    <Wrapper active={active} sticky={stickyHeader} home={home} ref={headerEl}>
       <Logo active={active}>
         <Link href="/">
           <a onClick={() => toggleActive("close-nav")}>
@@ -131,22 +143,16 @@ const Header = props => {
       <Nav
         active={active}
         toggleActive={toggleActive}
-        sticky={props.stickyHeader}
-        home={props.home}
+        sticky={stickyHeader}
+        home={home}
       />
       <Hamburger
         active={active}
         toggleActive={toggleActive}
-        sticky={props.stickyHeader}
+        sticky={stickyHeader}
       />
     </Wrapper>
   );
-};
-
-Header.propTypes = {
-  toggleStickyHeader: PropTypes.func,
-  stickyHeader: PropTypes.bool,
-  home: PropTypes.bool,
 };
 
 export default Header;
