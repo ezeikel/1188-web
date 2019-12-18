@@ -72,7 +72,7 @@ const Page = props => {
 };
 
 Page.propTypes = {
-  children: PropTypes.func,
+  children: PropTypes.object,
   router: PropTypes.object,
 };
 

@@ -22,7 +22,7 @@ interface LogoProps {
 };
 
 type HeaderProps = {
-  toggleStickyHeader: any
+  toggleStickyHeader(value: boolean): void
   stickyHeader: boolean
   home: boolean
 }
@@ -81,12 +81,12 @@ const Logo = styled.div<LogoProps>`
   }
 `;
 
-const Header: FunctionComponent<HeaderProps> = ({ home, stickyHeader, toggleStickyHeader } : HeaderProps) => {
+const Header: FunctionComponent<HeaderProps> = ({ home, stickyHeader, toggleStickyHeader }) => {
   const [active, setActive] = useState(false);
-  const headerEl = useRef(null);
+  const headerEl = useRef<HTMLElement>(null!);
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll.bind(this));
+    window.addEventListener("scroll", handleScroll);
 
     if (active) {
       disableBodyScroll(headerEl.current);
@@ -100,10 +100,10 @@ const Header: FunctionComponent<HeaderProps> = ({ home, stickyHeader, toggleStic
     };
   }, [active]);
 
-  const toggleActive = option => {
+  const toggleActive = (option: string) => {
     if (option === "close-nav") {
       setActive(false);
-      enableBodyScroll(headerEl.current);
+      enableBodyScroll(headerEl && headerEl.current);
 
       return;
     }
@@ -112,6 +112,9 @@ const Header: FunctionComponent<HeaderProps> = ({ home, stickyHeader, toggleStic
   };
 
   const handleScroll = () => {
+    // TODO: Should be able to get rid of if and use optional chaining
+    // plugins already added to babelrc but const el = headerEl?.current; doesnt work
+    // https://github.com/zeit/next.js/issues/9004
     if (!headerEl.current) {
       return;
     }
