@@ -1,10 +1,16 @@
 import { render } from "@testing-library/react";
 import Contact from "../Contact";
-import "jest-styled-components";
 
 test("renders", () => {
   const { debug } = render(<Contact />);
   debug();
+});
+
+test("Title should be #2E3333", () => {
+  const { getByText } = render(<Contact />);
+  const Title = getByText("Holla.");
+
+  expect(Title).toHaveStyleRule("color", "var(--color-black)");
 });
 
 test("renders", () => {
