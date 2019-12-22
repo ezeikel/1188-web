@@ -8,5 +8,10 @@ module.exports = {
       lines: 29,
     },
   },
-  projects: ["./test/jest.client.js", "./test/jest.server.js"],
+  projects: [
+    "./test/jest.tsc.js",
+    "./test/jest.lint.js",
+    "./test/jest.client.js",
+    "./test/jest.server.js",
+  ],
 };

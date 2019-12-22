@@ -8,12 +8,11 @@
   "scripts": {
     "dev": "next && yarn test",
     "build": "next build",
-    "lint": "eslint --ignore-path .gitignore .",
-    "check-types": "tsc",
-    "prettier": "prettier --ignore-path .gitignore --write \"**/*.+(js|json)\"",
+    "check-types": "jest --config test/jest.tsc.js",
+    "lint": "jest --config test/jest.lint.js",
+    "prettier": "prettier --ignore-path .gitignore --write \"**/*.+(js|jsx|json|ts|tsx|css|html|md)\"",
     "format": "yarn prettier -- --write",
     "check-format": "yarn prettier -- --list-different",
-    "validate": "npm-run-all --parallel check-types check-format lint",
     "start": "next start -p 8000",
     "test": "is-ci \"test:coverage\" \"test:watch\"",
     "test:coverage": "jest --coverage",
@@ -21,6 +20,23 @@
     "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand --watch",
     "test:pre-push": "yarn test:coverage",
     "storybook": "start-storybook -p 9001 -c .storybook"
+  },
+  "jest-runner-eslint": {
+    "cliOptions": {
+      "ignorePath": "./.gitignore"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.+(js|jsx|json|ts|tsx|css|html|md)": [
+      "prettier --write",
+      "jest --findRelatedTests",
+      "git add"
+    ]
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.12",
@@ -69,7 +85,11 @@
     "husky": "^3.1.0",
     "is-ci-cli": "^2.0.0",
     "jest": "^24.9.0",
+    "jest-runner-eslint": "^0.7.5",
+    "jest-runner-tsc": "^1.6.0",
     "jest-styled-components": "^6.3.4",
+    "jest-watch-select-projects": "^1.0.0",
+    "jest-watch-typeahead": "^0.4.2",
     "lint-staged": "^9.5.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^1.19.1",
