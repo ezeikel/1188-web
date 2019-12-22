@@ -1,3 +1,4 @@
+
 {
   "parserOptions": {
     "ecmaVersion": 2019,
@@ -38,6 +39,16 @@
         "plugin:@typescript-eslint/recommended",
         "eslint-config-prettier/@typescript-eslint"
       ]
+    },
+    {
+      "files": ["**/__tests__/**"],
+      "settings": {
+        "import/resolver": {
+          "jest": {
+            "jestConfigFile": "./test/jest-config.js"
+          }
+        }
+      }
     }
   ]
 }

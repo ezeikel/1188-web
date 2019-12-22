@@ -6,7 +6,7 @@
   "license": "ISC",
   "main": "index.js",
   "scripts": {
-    "dev": "next",
+    "dev": "next && yarn test",
     "build": "next build",
     "lint": "eslint --ignore-path .gitignore .",
     "check-types": "tsc",
@@ -15,7 +15,10 @@
     "check-format": "yarn prettier -- --list-different",
     "validate": "npm-run-all --parallel check-types check-format lint",
     "start": "next start -p 8000",
-    "test": "jest",
+    "test": "is-ci \"test:coverage\" \"test:watch\"",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch",
+    "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand --watch",
     "storybook": "start-storybook -p 9001 -c .storybook"
   },
   "dependencies": {
@@ -63,6 +66,7 @@
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.17.0",
     "husky": "^3.1.0",
+    "is-ci-cli": "^2.0.0",
     "jest": "^24.9.0",
     "jest-styled-components": "^6.3.4",
     "lint-staged": "^9.5.0",

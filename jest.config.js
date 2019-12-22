@@ -1,13 +1,12 @@
-const path = require("path");
-
 module.exports = {
-  testEnvironment: "jest-environment-jsdom",
-  moduleDirectories: ["node_modules", path.join(__dirname, "src")],
-  moduleNameMapper: {
-    "\\.css$": require.resolve("./test/style-mock.js"),
+  ...require("./test/jest-common"),
+  coverageThreshold: {
+    global: {
+      statements: 34,
+      branches: 24,
+      functions: 29,
+      lines: 29,
+    },
   },
-  setupFilesAfterEnv: [
-    "jest-styled-components",
-    "@testing-library/jest-dom/extend-expect",
-  ],
+  projects: ["./test/jest.client.js", "./test/jest.server.js"],
 };
