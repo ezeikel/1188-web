@@ -19,6 +19,7 @@
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch",
     "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand --watch",
+    "test:pre-push": "test:coverage",
     "storybook": "start-storybook -p 9001 -c .storybook"
   },
   "dependencies": {
