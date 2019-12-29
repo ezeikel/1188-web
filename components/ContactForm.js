@@ -93,7 +93,11 @@ const ContactForm = ({ className }) => (
         <DoubleFormfield>
           <Fieldset>
             <Label htmlFor="firstName">First Name</Label>
-            <Field type="text" name="firstName" />
+            <Field
+              data-testid="first-name-input"
+              type="text"
+              name="firstName"
+            />
             <ErrorMessage name="firstName" type="text">
               {msg => <div className="error">{msg}</div>}
             </ErrorMessage>

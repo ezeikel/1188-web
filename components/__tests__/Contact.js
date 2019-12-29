@@ -161,6 +161,7 @@ test("renders", () => {
                 First Name
               </label>
               <input
+                data-testid="first-name-input"
                 name="firstName"
                 type="text"
                 value=""

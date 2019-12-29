@@ -12,7 +12,8 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "types": ["cypress", "@types/testing-library__cypress"]
   },
   "exclude": ["node_modules", ".next", ".storybook", "**/*.spec.ts"],
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
