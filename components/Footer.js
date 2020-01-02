@@ -234,59 +234,49 @@ const Footer = () => (
       <h4>Follow</h4>
       <SocialLinks>
         <li>
-          <Link href="https://twitter.com/118eighty8">
-            <a>
-              <FontAwesomeIcon
-                icon={["fab", "twitter"]}
-                color="var(--color-dark-grey)"
-                size="2x"
-              />
-            </a>
-          </Link>
+          <a href="https://twitter.com/118eighty8">
+            <FontAwesomeIcon
+              icon={["fab", "twitter"]}
+              color="var(--color-dark-grey)"
+              size="2x"
+            />
+          </a>
         </li>
         <li>
-          <Link href="https://www.instagram.com/118eighty8">
-            <a>
-              <FontAwesomeIcon
-                icon={["fab", "instagram"]}
-                color="var(--color-dark-grey)"
-                size="2x"
-              />
-            </a>
-          </Link>
+          <a href="https://www.instagram.com/118eighty8">
+            <FontAwesomeIcon
+              icon={["fab", "instagram"]}
+              color="var(--color-dark-grey)"
+              size="2x"
+            />
+          </a>
         </li>
         <li>
-          <Link href="https://medium.com/@118eighty8">
-            <a>
-              <FontAwesomeIcon
-                icon={["fab", "medium-m"]}
-                color="var(--color-dark-grey)"
-                size="2x"
-              />
-            </a>
-          </Link>
+          <a href="https://medium.com/@118eighty8">
+            <FontAwesomeIcon
+              icon={["fab", "medium-m"]}
+              color="var(--color-dark-grey)"
+              size="2x"
+            />
+          </a>
         </li>
         <li>
-          <Link href="https://fb.me/118eighty8">
-            <a>
-              <FontAwesomeIcon
-                icon={["fab", "facebook-f"]}
-                color="var(--color-dark-grey)"
-                size="2x"
-              />
-            </a>
-          </Link>
+          <a href="https://fb.me/118eighty8">
+            <FontAwesomeIcon
+              icon={["fab", "facebook-f"]}
+              color="var(--color-dark-grey)"
+              size="2x"
+            />
+          </a>
         </li>
         <li>
-          <Link href="https://www.linkedin.com/company/eleven-8eighty8">
-            <a>
-              <FontAwesomeIcon
-                icon={["fab", "linkedin-in"]}
-                color="var(--color-dark-grey)"
-                size="2x"
-              />
-            </a>
-          </Link>
+          <a href="https://www.linkedin.com/company/eleven-8eighty8">
+            <FontAwesomeIcon
+              icon={["fab", "linkedin-in"]}
+              color="var(--color-dark-grey)"
+              size="2x"
+            />
+          </a>
         </li>
       </SocialLinks>
     </Social>

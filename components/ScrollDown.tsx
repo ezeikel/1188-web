@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { scrollDown } from "../GlobalStyle";
 
 type ScrollDownProps = {
-  className: string
-}
+  className?: string;
+};
 
 const Mouse = styled.div`
   width: 40px;
@@ -41,6 +41,8 @@ const Mouse = styled.div`
   }
 `;
 
-const ScrollDown: FunctionComponent<ScrollDownProps> = ({ className }) => <Mouse className={className} />;
+const ScrollDown: FunctionComponent<ScrollDownProps> = ({ className }) => (
+  <Mouse className={className} />
+);
 
 export default ScrollDown;

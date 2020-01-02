@@ -1,7 +1,11 @@
-import PropTypes from "prop-types";
+import { FunctionComponent } from "react";
 import styled from "styled-components";
 import ContactForm from "./ContactForm";
 import Title from "./styles/Title";
+
+type ContactProps = {
+  className?: string;
+};
 
 const Wrapper = styled.div`
   display: grid;
@@ -35,7 +39,7 @@ const StyledContactForm = styled(ContactForm)`
   }
 `;
 
-const Contact = ({ className }) => (
+const Contact: FunctionComponent<ContactProps> = ({ className }) => (
   <Wrapper className={className} id="contact">
     <Title>Holla.</Title>
     <Copy>
@@ -47,12 +51,8 @@ const Contact = ({ className }) => (
         email at <a href="mailto:info@1188.agency">info@1188.agency</a>.
       </p>
     </Copy>
-    <StyledContactForm />
+    <StyledContactForm className={className} />
   </Wrapper>
 );
-
-Contact.propTypes = {
-  className: PropTypes.string,
-};
 
 export default Contact;

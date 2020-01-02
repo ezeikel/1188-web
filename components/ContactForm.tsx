@@ -1,8 +1,12 @@
-import PropTypes from "prop-types";
+import { FunctionComponent } from "react";
 import styled from "styled-components";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
 import * as yup from "yup";
+
+type ContactFormProps = {
+  className?: string;
+};
 
 const FormWrapper = styled(Form)`
   display: grid;
@@ -62,7 +66,7 @@ const ContactSchema = yup.object().shape({
   message: yup.string(),
 });
 
-const ContactForm = ({ className }) => (
+const ContactForm: FunctionComponent<ContactFormProps> = ({ className }) => (
   <Formik
     initialValues={{
       firstName: "",
@@ -98,14 +102,14 @@ const ContactForm = ({ className }) => (
               type="text"
               name="firstName"
             />
-            <ErrorMessage name="firstName" type="text">
+            <ErrorMessage name="firstName">
               {msg => <div className="error">{msg}</div>}
             </ErrorMessage>
           </Fieldset>
           <Fieldset>
             <Label htmlFor="lastName">Last Name</Label>
             <Field type="text" name="lastName" />
-            <ErrorMessage name="lastName" type="text">
+            <ErrorMessage name="lastName">
               {msg => <div className="error">{msg}</div>}
             </ErrorMessage>
           </Fieldset>
@@ -114,21 +118,21 @@ const ContactForm = ({ className }) => (
           <Fieldset>
             <Label htmlFor="email">Email</Label>
             <Field type="email" name="email" />
-            <ErrorMessage name="email" type="text">
+            <ErrorMessage name="email">
               {msg => <div className="error">{msg}</div>}
             </ErrorMessage>
           </Fieldset>
           <Fieldset>
             <Label htmlFor="phoneNumber">Phone Number</Label>
             <Field type="tel" name="phoneNumber" />
-            <ErrorMessage name="phoneNumber" type="text">
+            <ErrorMessage name="phoneNumber">
               {msg => <div className="error">{msg}</div>}
             </ErrorMessage>
           </Fieldset>
           <Fieldset>
             <Label htmlFor="message">Message</Label>
             <Field component="textarea" name="message" />
-            <ErrorMessage name="message" type="text">
+            <ErrorMessage name="message">
               {msg => <div className="error">{msg}</div>}
             </ErrorMessage>
           </Fieldset>
@@ -142,9 +146,5 @@ const ContactForm = ({ className }) => (
     )}
   </Formik>
 );
-
-ContactForm.propTypes = {
-  className: PropTypes.string,
-};
 
 export default ContactForm;
