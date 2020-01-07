@@ -1,3 +1,4 @@
+import { FunctionComponent } from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -206,7 +207,7 @@ const Social = styled.section`
   }
 `;
 
-const Footer = () => (
+const Footer: FunctionComponent = () => (
   <Wrapper>
     <Slogan>
       <Logo>

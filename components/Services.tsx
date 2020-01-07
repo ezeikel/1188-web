@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { FunctionComponent, useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Slider from "react-slick";
 import styled from "styled-components";
@@ -168,7 +168,7 @@ const SlideCopy = styled.p`
   }
 `;
 
-const Services = () => {
+const Services: FunctionComponent = () => {
   const [activeSlide, setActiveSlide] = useState(0);
   const [sliderData] = useState([
     {
@@ -260,10 +260,12 @@ const Services = () => {
   const sliderEl = useRef(null);
 
   useEffect(() => {
-    sliderEl.current.slickGoTo(activeSlide);
+    if (sliderEl && sliderEl.current) {
+      sliderEl.current.slickGoTo(activeSlide);
+    }
   }, [activeSlide]);
 
-  const handleClick = index => setActiveSlide(index);
+  const handleClick = (index: number) => setActiveSlide(index);
 
   const settings = {
     dots: false,
@@ -282,7 +284,7 @@ const Services = () => {
         },
       },
     ],
-    beforeChange: (prev, next) => setActiveSlide(next),
+    beforeChange: (prev: number, next: number) => setActiveSlide(next),
   };
 
   return (

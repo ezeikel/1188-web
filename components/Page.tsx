@@ -1,6 +1,5 @@
-import { useState } from "react";
-import { withRouter } from "next/router";
-import PropTypes from "prop-types";
+import { FunctionComponent, useState } from "react";
+import { withRouter, SingletonRouter } from "next/router";
 import styled from "styled-components";
 import Meta from "./Meta";
 import Header from "./Header";
@@ -33,7 +32,16 @@ library.add(
   faPaperPlane,
 );
 
-const Wrapper = styled.div`
+type PageProps = {
+  router: SingletonRouter;
+};
+
+interface WrapperProps {
+  readonly stickyHeader: boolean;
+  readonly home: boolean;
+}
+
+const Wrapper = styled.div<WrapperProps>`
   position: relative;
   display: grid;
   grid-template-rows: ${({ stickyHeader, home }) =>
@@ -49,10 +57,10 @@ const Wrapper = styled.div`
   }
 `;
 
-const Page = props => {
+const Page: FunctionComponent<PageProps> = ({ router, children }) => {
   const [stickyHeader, setStickyHeader] = useState(false);
-  const toggleStickyHeader = value => setStickyHeader(value);
-  const home = props.router.pathname === "/";
+  const toggleStickyHeader = (value: boolean) => setStickyHeader(value);
+  const home = router.pathname === "/";
 
   return (
     <div>
@@ -64,16 +72,11 @@ const Page = props => {
           stickyHeader={stickyHeader}
           toggleStickyHeader={toggleStickyHeader}
         />
-        {props.children}
+        {children}
         <Footer />
       </Wrapper>
     </div>
   );
-};
-
-Page.propTypes = {
-  children: PropTypes.object,
-  router: PropTypes.object,
 };
 
 export default withRouter(Page);

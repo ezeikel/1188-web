@@ -1,7 +1,19 @@
-import PropTypes from "prop-types";
+import { FunctionComponent } from "react";
 import styled from "styled-components";
 
-const Wrapper = styled.div`
+type HamburgerProps = {
+  active: boolean;
+  sticky: boolean;
+  onClick?: () => void;
+  toggleActive: (value: string) => void;
+};
+
+interface WrapperProps {
+  readonly active: boolean;
+  readonly sticky: boolean;
+}
+
+const Wrapper = styled.div<WrapperProps>`
   cursor: pointer;
   z-index: 1;
   > span {
@@ -38,18 +50,16 @@ const Wrapper = styled.div`
   }
 `;
 
-const Hamburger = ({ active, sticky, toggleActive }) => (
-  <Wrapper active={active} sticky={sticky} onClick={toggleActive}>
+const Hamburger: FunctionComponent<HamburgerProps> = ({
+  active,
+  sticky,
+  toggleActive,
+}) => (
+  <Wrapper active={active} sticky={sticky} onClick={() => toggleActive}>
     <span></span>
     <span></span>
     <span></span>
   </Wrapper>
 );
-
-Hamburger.propTypes = {
-  active: PropTypes.bool,
-  sticky: PropTypes.bool,
-  toggleActive: PropTypes.func,
-};
 
 export default Hamburger;

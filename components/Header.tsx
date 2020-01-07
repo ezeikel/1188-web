@@ -15,29 +15,29 @@ interface WrapperProps {
   readonly active: boolean;
   readonly sticky: boolean;
   readonly home: boolean;
-};
+}
 
 interface LogoProps {
   readonly active: boolean;
-};
+}
 
 type HeaderProps = {
-  toggleStickyHeader(value: boolean): void
-  stickyHeader: boolean
-  home: boolean
-}
+  toggleStickyHeader(value: boolean): void;
+  stickyHeader: boolean;
+  home: boolean;
+};
 
 if (typeof window !== "undefined") {
   NProgress.configure({ showSpinner: false });
-  
+
   Router.events.on("routeChangeStart", () => {
     NProgress.start();
   });
-  
+
   Router.events.on("routeChangeComplete", () => {
     NProgress.done();
   });
-  
+
   Router.events.on("routeChangeError", () => {
     NProgress.done();
   });
@@ -81,7 +81,11 @@ const Logo = styled.div<LogoProps>`
   }
 `;
 
-const Header: FunctionComponent<HeaderProps> = ({ home, stickyHeader, toggleStickyHeader }) => {
+const Header: FunctionComponent<HeaderProps> = ({
+  home,
+  stickyHeader,
+  toggleStickyHeader,
+}) => {
   const [active, setActive] = useState(false);
   const headerEl = useRef<HTMLElement>(null!);
 
@@ -100,7 +104,7 @@ const Header: FunctionComponent<HeaderProps> = ({ home, stickyHeader, toggleStic
     };
   }, [active]);
 
-  const toggleActive = (option: string) => {
+  const toggleActive = (option?: string) => {
     if (option === "close-nav") {
       setActive(false);
       enableBodyScroll(headerEl && headerEl.current);

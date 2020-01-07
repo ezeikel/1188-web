@@ -1,8 +1,24 @@
-import PropTypes from "prop-types";
+import { FunctionComponent } from "react";
 import Link from "next/link";
 import styled from "styled-components";
 
-const Wrapper = styled.nav`
+type NavProps = {
+  active: boolean;
+  toggleActive(mode: string): void;
+  sticky: boolean;
+  home: boolean;
+};
+
+interface WrapperProps {
+  readonly active: boolean;
+}
+
+interface StyledLinkProps {
+  readonly sticky: boolean;
+  readonly home: boolean;
+}
+
+const Wrapper = styled.nav<WrapperProps>`
   position: fixed;
   top: 0;
   right: 0;
@@ -57,7 +73,7 @@ const NavListItem = styled.li`
   }
 `;
 
-const StyledLink = styled.a`
+const StyledLink = styled.a<StyledLinkProps>`
   color: var(--color-black);
   font-weight: bold;
   @media (min-width: 768px) {
@@ -89,7 +105,12 @@ const StyledLink = styled.a`
   }
 `;
 
-const Nav = ({ active, toggleActive, sticky, home }) => {
+const Nav: FunctionComponent<NavProps> = ({
+  active,
+  toggleActive,
+  sticky,
+  home,
+}) => {
   return (
     <Wrapper active={active}>
       <NavList>
@@ -149,13 +170,6 @@ const Nav = ({ active, toggleActive, sticky, home }) => {
       </NavList>
     </Wrapper>
   );
-};
-
-Nav.propTypes = {
-  active: PropTypes.bool,
-  toggleActive: PropTypes.func,
-  sticky: PropTypes.bool,
-  home: PropTypes.bool,
 };
 
 export default Nav;

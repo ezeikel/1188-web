@@ -1,22 +1,42 @@
-import Document, { Head, Main, NextScript } from "next/document";
+import Document, {
+  Head,
+  Main,
+  NextScript,
+  DocumentContext,
+} from "next/document";
 // Import styled components ServerStyleSheet
 import { ServerStyleSheet } from "styled-components";
 
 export default class MyDocument extends Document {
-  static getInitialProps({ renderPage }) {
+  //static getInitialProps({ renderPage }) {
+  static async getInitialProps(ctx: DocumentContext) {
     // Step 1: Create an instance of ServerStyleSheet
     const sheet = new ServerStyleSheet();
+    const originalRenderPage = ctx.renderPage;
 
-    // Step 2: Retrieve styles from components in the page
-    const page = renderPage(App => props =>
-      sheet.collectStyles(<App {...props} />),
-    );
+    try {
+      // Step 2: Retrieve styles from components in the page
+      ctx.renderPage = () =>
+        originalRenderPage({
+          enhanceApp: App => props => sheet.collectStyles(<App {...props} />),
+        });
 
-    // Step 3: Extract the styles as <style> tags
-    const styleTags = sheet.getStyleElement();
+      const initialProps = await Document.getInitialProps(ctx);
 
-    // Step 4: Pass styleTags as a prop
-    return { ...page, styleTags };
+      return {
+        ...initialProps,
+        // Step 3: Extract the styles as <style> tags
+        // Step 4: Pass styleTags as a prop
+        styles: (
+          <>
+            {initialProps.styles}
+            {sheet.getStyleElement}
+          </>
+        ),
+      };
+    } finally {
+      sheet.seal();
+    }
   }
 
   setGoogleAnalyticsTags() {
@@ -46,7 +66,7 @@ export default class MyDocument extends Document {
       <html>
         <Head>
           {/* Step 5: Output the styles in the head  */}
-          {this.props.styleTags}
+          {/* {this.props.styleTags} */}
           {/* Global site tag (gtag.js) - Google Analytics */}
           <script
             async
