@@ -1,3 +1,4 @@
+import { FunctionComponent } from "react";
 import styled from "styled-components";
 import Title from "../components/styles/Title";
 
@@ -125,7 +126,7 @@ const availableRoles = [
   "Writer (Intern)",
 ];
 
-const WhoWeAre = () => (
+const WhoWeAre: FunctionComponent = () => (
   <Wrapper>
     <TeamCards>
       <StyledTitle>The Team</StyledTitle>

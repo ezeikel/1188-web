@@ -1,3 +1,4 @@
+import { FunctionComponent } from "react";
 import styled from "styled-components";
 import Services from "../components/Services";
 import Title from "../components/styles/Title";
@@ -92,7 +93,7 @@ const WhatWeDont = styled.div`
   }
 `;
 
-const WhatWeDoPage = () => (
+const WhatWeDoPage: FunctionComponent = () => (
   <Wrapper>
     <Services />
     <DoDont>

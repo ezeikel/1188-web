@@ -4,6 +4,11 @@ import Slider from "react-slick";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Title from "./styles/Title";
+import { IconPrefix, IconName } from "@fortawesome/fontawesome-svg-core";
+
+interface SliderNavLinkProps {
+  readonly className?: string;
+}
 
 const Wrapper = styled.div`
   padding: var(--spacing-large);
@@ -100,7 +105,7 @@ const SliderNavLinkTitle = styled.h3`
   }
 `;
 
-const SliderNavLink = styled.li`
+const SliderNavLink = styled.li<SliderNavLinkProps>`
   transition: color 0.3s ease-in-out;
   @media (min-width: 968px) {
     cursor: pointer;
@@ -176,7 +181,6 @@ const Services: FunctionComponent = () => {
         category: "fal",
         name: "tablet",
         color: "#3B3B3B",
-        size: "5x",
       },
       title: "Platforms & Apps",
       copy: `Creating platforms & apps is what we are most passionate
@@ -191,7 +195,6 @@ const Services: FunctionComponent = () => {
         category: "fal",
         name: "browser",
         color: "#3B3B3B",
-        size: "5x",
       },
       title: "Websites",
       copy: `We specialise in the design & development of websites that
@@ -206,7 +209,6 @@ const Services: FunctionComponent = () => {
         category: "fal",
         name: "mobile",
         color: "#3B3B3B",
-        size: "5x",
       },
       title: "Mobile",
       copy: `Mobile first – always! With the opportunity to reach users at any
@@ -220,7 +222,6 @@ const Services: FunctionComponent = () => {
         category: "fal",
         name: "map-marked-alt",
         color: "#3B3B3B",
-        size: "5x",
       },
       title: "Digital Strategy",
       copy: `Analysis, research and insight to position brands at the forefront
@@ -233,7 +234,6 @@ const Services: FunctionComponent = () => {
         category: "fal",
         name: "fill-drip",
         color: "#3B3B3B",
-        size: "5x",
       },
       title: "Design & UX",
       copy: `Let our team of talented designers craft your digital experience.
@@ -247,7 +247,6 @@ const Services: FunctionComponent = () => {
         category: "fal",
         name: "paper-plane",
         color: "#3B3B3B",
-        size: "5x",
       },
       title: "Marketing",
       copy: `Our experienced team, along with our proven platforms, will help
@@ -257,12 +256,10 @@ const Services: FunctionComponent = () => {
       buttonCopy: "Read More",
     },
   ]);
-  const sliderEl = useRef(null);
+  const sliderEl = useRef<Slider>(null);
 
   useEffect(() => {
-    if (sliderEl && sliderEl.current) {
-      sliderEl.current.slickGoTo(activeSlide);
-    }
+    sliderEl?.current?.slickGoTo(activeSlide);
   }, [activeSlide]);
 
   const handleClick = (index: number) => setActiveSlide(index);
@@ -295,9 +292,12 @@ const Services: FunctionComponent = () => {
         {sliderData.map((slide, i) => (
           <Slide key={i}>
             <FontAwesomeIcon
-              icon={[slide.icon.category, slide.icon.name]}
+              icon={[
+                slide.icon.category as IconPrefix,
+                slide.icon.name as IconName,
+              ]} // FIX: https://github.com/FortAwesome/react-fontawesome/issues/210
               color={slide.icon.color}
-              size={slide.icon.size}
+              size="5x"
             />
             <SlideTitle>{slide.title}</SlideTitle>
             <SlideCopy>{slide.copy}</SlideCopy>
@@ -313,7 +313,7 @@ const Services: FunctionComponent = () => {
           {sliderData.map((slide, i) => (
             <SliderNavLink
               onClick={() => handleClick(i)}
-              className={activeSlide === i ? "active" : null}
+              className={activeSlide === i ? "active" : ""}
               key={i}
             >
               <SliderNavLinkTitle>{slide.title}</SliderNavLinkTitle>
