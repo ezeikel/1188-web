@@ -40,6 +40,12 @@
       ]
     },
     {
+        "files": ["**/*.tsx"],
+        "rules": {
+            "react/prop-types": "off"
+        }
+    },
+    {
       "files": ["**/__tests__/**"],
       "settings": {
         "import/resolver": {

@@ -1,4 +1,4 @@
-import { NextPage } from 'next';
+import { NextPage } from "next";
 import Link from "next/link";
 import styled from "styled-components";
 import ScrollDown from "../components/ScrollDown";
@@ -6,8 +6,8 @@ import Services from "../components/Services";
 import Contact from "../components/Contact";
 
 type IndexProps = {
-  className: string
-}
+  className: string;
+};
 
 const Wrapper = styled.div`
   display: grid;

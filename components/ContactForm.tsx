@@ -1,4 +1,4 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, ReactElement } from "react";
 import styled from "styled-components";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
@@ -76,7 +76,7 @@ const ContactForm: FunctionComponent<ContactFormProps> = ({ className }) => (
       message: "",
     }}
     validationSchema={ContactSchema}
-    onSubmit={async (values, actions) => {
+    onSubmit={async (values, actions): Promise<void> => {
       console.log(actions);
       try {
         await axios.post(
@@ -92,7 +92,7 @@ const ContactForm: FunctionComponent<ContactFormProps> = ({ className }) => (
       }
     }}
   >
-    {({ isValid, isSubmitting }) => (
+    {({ isValid, isSubmitting }): ReactElement => (
       <FormWrapper className={className}>
         <DoubleFormfield>
           <Fieldset>
@@ -103,14 +103,14 @@ const ContactForm: FunctionComponent<ContactFormProps> = ({ className }) => (
               name="firstName"
             />
             <ErrorMessage name="firstName">
-              {msg => <div className="error">{msg}</div>}
+              {(msg): ReactElement => <div className="error">{msg}</div>}
             </ErrorMessage>
           </Fieldset>
           <Fieldset>
             <Label htmlFor="lastName">Last Name</Label>
             <Field type="text" name="lastName" />
             <ErrorMessage name="lastName">
-              {msg => <div className="error">{msg}</div>}
+              {(msg): ReactElement => <div className="error">{msg}</div>}
             </ErrorMessage>
           </Fieldset>
         </DoubleFormfield>
@@ -119,21 +119,21 @@ const ContactForm: FunctionComponent<ContactFormProps> = ({ className }) => (
             <Label htmlFor="email">Email</Label>
             <Field type="email" name="email" />
             <ErrorMessage name="email">
-              {msg => <div className="error">{msg}</div>}
+              {(msg): ReactElement => <div className="error">{msg}</div>}
             </ErrorMessage>
           </Fieldset>
           <Fieldset>
             <Label htmlFor="phoneNumber">Phone Number</Label>
             <Field type="tel" name="phoneNumber" />
             <ErrorMessage name="phoneNumber">
-              {msg => <div className="error">{msg}</div>}
+              {(msg): ReactElement => <div className="error">{msg}</div>}
             </ErrorMessage>
           </Fieldset>
           <Fieldset>
             <Label htmlFor="message">Message</Label>
             <Field component="textarea" name="message" />
             <ErrorMessage name="message">
-              {msg => <div className="error">{msg}</div>}
+              {(msg): ReactElement => <div className="error">{msg}</div>}
             </ErrorMessage>
           </Fieldset>
           <Fieldset>
