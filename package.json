@@ -5,6 +5,9 @@
   "version": "1.0.0",
   "license": "ISC",
   "main": "index.js",
+  "engines": {
+    "node": "12.x"
+  },
   "scripts": {
     "dev": "next && yarn test",
     "build": "next build",
