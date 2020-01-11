@@ -143,7 +143,7 @@ const Header: FunctionComponent<HeaderProps> = ({
       <Logo active={active}>
         <Link href="/">
           <a onClick={() => toggleActive("close-nav")}>
-            <img src="/static/logos/1188.svg" />
+            <img src="/logos/1188.svg" />
           </a>
         </Link>
       </Logo>

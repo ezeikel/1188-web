@@ -213,7 +213,7 @@ const Footer: FunctionComponent = () => (
       <Logo>
         <Link href="/">
           <a>
-            <img src="/static/logos/1188-outline-white.svg" />
+            <img src="/logos/1188-outline-white.svg" />
           </a>
         </Link>
       </Logo>

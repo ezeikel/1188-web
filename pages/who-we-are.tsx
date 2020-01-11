@@ -133,9 +133,7 @@ const WhoWeAre: FunctionComponent = () => (
       {team.map((member, i) => (
         <TeamCard key={i}>
           <Photo
-            src={`/static/images/${member.name
-              .toLowerCase()
-              .replace(/\s/g, "-")}.jpg`}
+            src={`/images/${member.name.toLowerCase().replace(/\s/g, "-")}.jpg`}
           />
           <Name>{member.name}</Name>
           <Role>{member.role}</Role>
