@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "types": ["cypress", "@types/testing-library__cypress"]
   },
-  "exclude": ["node_modules", ".next", ".storybook", "**/*.spec.ts"],
+  "exclude": ["node_modules", ".next", ".storybook", "**/*.spec.ts", "cypress",],
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
 }

@@ -1,10 +1,7 @@
+// TODO: change all tests to .tsx - https://github.com/testing-library/jest-dom/issues/123
+
 import { render } from "@testing-library/react";
 import Contact from "../Contact";
-
-test("renders", () => {
-  const { debug } = render(<Contact />);
-  debug();
-});
 
 test("Title should be #2E3333", () => {
   const { getByText } = render(<Contact />);
@@ -15,6 +12,7 @@ test("Title should be #2E3333", () => {
 
 test("renders", () => {
   const { container } = render(<Contact />);
+  // TODO: fix whitespace being added before HTML link
   expect(container).toMatchInlineSnapshot(`
     .c3 {
       display: grid;
@@ -136,7 +134,7 @@ test("renders", () => {
           class="c2"
         >
           <p>
-            Great idea for the next big thing? Let us help you bring it to life. Send us a quick message and we'll get back to you as soon as we can. The more detail the better, but if you're still not 100% sure on all the specifics, thats fine too. Alternatively you can shoot us an email at 
+            Great idea for the next big thing? Let us help you bring it to life. Send us a quick message and we'll get back to you as soon as we can. The more detail the better, but if you're still not 100% sure on all the specifics, thats fine too. Alternatively you can shoot us an email at
             <a
               href="mailto:info@1188.agency"
             >
@@ -146,6 +144,7 @@ test("renders", () => {
           </p>
         </div>
         <form
+          action="#"
           class="c3 c4"
         >
           <section
@@ -233,7 +232,6 @@ test("renders", () => {
               class="c6"
             >
               <button
-                disabled=""
                 type="submit"
               >
                 Send

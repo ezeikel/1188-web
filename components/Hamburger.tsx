@@ -5,7 +5,7 @@ type HamburgerProps = {
   active: boolean;
   sticky: boolean;
   onClick?: () => void;
-  toggleActive: (value: string) => void;
+  toggleActive: (value?: string) => void;
 };
 
 interface WrapperProps {
@@ -52,7 +52,7 @@ const Hamburger: FunctionComponent<HamburgerProps> = ({
   sticky,
   toggleActive,
 }) => (
-  <Wrapper active={active} sticky={sticky} onClick={() => toggleActive}>
+  <Wrapper active={active} sticky={sticky} onClick={() => toggleActive()} data-testid="hamburger">
     <span></span>
     <span></span>
     <span></span>
