@@ -1,10 +1,9 @@
-describe("hero", () => {
-  it("clicking learn more button should take user to who we are page", () => {
+describe("clicking hero cta", () => {
+  it("should take user to who we are page", () => {
     cy.visit("/")
-      .findByTestId("first-name-input")
       .findByText(/learn more/i)
       .click()
-      .url()
+      .url({ timeout: 10000 })
       .should("eq", `${Cypress.config().baseUrl}/who-we-are`);
   });
 });

@@ -52,7 +52,12 @@ const Hamburger: FunctionComponent<HamburgerProps> = ({
   sticky,
   toggleActive,
 }) => (
-  <Wrapper active={active} sticky={sticky} onClick={() => toggleActive()} data-testid="hamburger">
+  <Wrapper
+    active={active}
+    sticky={sticky}
+    onClick={(): void => toggleActive()}
+    data-testid="hamburger"
+  >
     <span></span>
     <span></span>
     <span></span>

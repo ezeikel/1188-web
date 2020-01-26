@@ -146,6 +146,7 @@ test("renders", () => {
         <form
           action="#"
           class="c3 c4"
+          data-testid="contact-form"
         >
           <section
             class="c5"
@@ -176,6 +177,7 @@ test("renders", () => {
                 Last Name
               </label>
               <input
+                data-testid="last-name-input"
                 name="lastName"
                 type="text"
                 value=""
@@ -195,6 +197,7 @@ test("renders", () => {
                 Email
               </label>
               <input
+                data-testid="email-input"
                 name="email"
                 type="email"
                 value=""
@@ -210,6 +213,7 @@ test("renders", () => {
                 Phone Number
               </label>
               <input
+                data-testid="phone-number-input"
                 name="phoneNumber"
                 type="tel"
                 value=""
@@ -225,6 +229,7 @@ test("renders", () => {
                 Message
               </label>
               <textarea
+                data-testid="message-input"
                 name="message"
               />
             </div>
@@ -232,6 +237,7 @@ test("renders", () => {
               class="c6"
             >
               <button
+                disabled=""
                 type="submit"
               >
                 Send

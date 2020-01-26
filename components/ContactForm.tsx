@@ -92,8 +92,8 @@ const ContactForm: FunctionComponent<ContactFormProps> = ({ className }) => (
       }
     }}
   >
-    {({ isValid, isSubmitting }): ReactElement => (
-      <FormWrapper className={className}>
+    {({ isValid, isSubmitting, touched }): ReactElement => (
+      <FormWrapper className={className} data-testid="contact-form">
         <DoubleFormfield>
           <Fieldset>
             <Label htmlFor="firstName">First Name</Label>
@@ -108,7 +108,7 @@ const ContactForm: FunctionComponent<ContactFormProps> = ({ className }) => (
           </Fieldset>
           <Fieldset>
             <Label htmlFor="lastName">Last Name</Label>
-            <Field type="text" name="lastName" />
+            <Field type="text" name="lastName" data-testid="last-name-input" />
             <ErrorMessage name="lastName">
               {(msg): ReactElement => <div className="error">{msg}</div>}
             </ErrorMessage>
@@ -117,27 +117,45 @@ const ContactForm: FunctionComponent<ContactFormProps> = ({ className }) => (
         <SingleFormfield>
           <Fieldset>
             <Label htmlFor="email">Email</Label>
-            <Field type="email" name="email" />
+            <Field type="email" name="email" data-testid="email-input" />
             <ErrorMessage name="email">
               {(msg): ReactElement => <div className="error">{msg}</div>}
             </ErrorMessage>
           </Fieldset>
           <Fieldset>
             <Label htmlFor="phoneNumber">Phone Number</Label>
-            <Field type="tel" name="phoneNumber" />
+            <Field
+              type="tel"
+              name="phoneNumber"
+              data-testid="phone-number-input"
+            />
             <ErrorMessage name="phoneNumber">
               {(msg): ReactElement => <div className="error">{msg}</div>}
             </ErrorMessage>
           </Fieldset>
           <Fieldset>
             <Label htmlFor="message">Message</Label>
-            <Field component="textarea" name="message" />
+            <Field
+              component="textarea"
+              name="message"
+              data-testid="message-input"
+            />
             <ErrorMessage name="message">
               {(msg): ReactElement => <div className="error">{msg}</div>}
             </ErrorMessage>
           </Fieldset>
           <Fieldset>
-            <button type="submit" disabled={isSubmitting || !isValid}>
+            <button
+              type="submit"
+              disabled={
+                isSubmitting ||
+                !isValid ||
+                !touched.firstName ||
+                !touched.lastName ||
+                !touched.email ||
+                !touched.phoneNumber
+              }
+            >
               Send{isSubmitting ? "ing" : null}
             </button>
           </Fieldset>
