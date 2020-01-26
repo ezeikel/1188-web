@@ -1,8 +1,8 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useContext } from "react";
 import styled from "styled-components";
+import MenuContext from "../contexts/MenuContext";
 
 type HamburgerProps = {
-  active: boolean;
   sticky: boolean;
   onClick?: () => void;
   toggleActive: (value?: string) => void;
@@ -48,20 +48,23 @@ const Wrapper = styled.div<WrapperProps>`
 `;
 
 const Hamburger: FunctionComponent<HamburgerProps> = ({
-  active,
   sticky,
   toggleActive,
-}) => (
-  <Wrapper
-    active={active}
-    sticky={sticky}
-    onClick={(): void => toggleActive()}
-    data-testid="hamburger"
-  >
-    <span></span>
-    <span></span>
-    <span></span>
-  </Wrapper>
-);
+}) => {
+  const active = useContext(MenuContext);
+
+  return (
+    <Wrapper
+      active={active}
+      sticky={sticky}
+      onClick={(): void => toggleActive()}
+      data-testid="hamburger"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </Wrapper>
+  );
+};
 
 export default Hamburger;

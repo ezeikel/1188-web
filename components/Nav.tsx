@@ -1,9 +1,9 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, useContext } from "react";
 import Link from "next/link";
 import styled from "styled-components";
+import MenuContext from "../contexts/MenuContext";
 
 type NavProps = {
-  active: boolean;
   toggleActive(mode: string): void;
   sticky: boolean;
   home: boolean;
@@ -105,12 +105,9 @@ const StyledLink = styled.a<StyledLinkProps>`
   }
 `;
 
-const Nav: FunctionComponent<NavProps> = ({
-  active,
-  toggleActive,
-  sticky,
-  home,
-}) => {
+const Nav: FunctionComponent<NavProps> = ({ toggleActive, sticky, home }) => {
+  const active = useContext(MenuContext);
+
   return (
     <Wrapper active={active}>
       <NavList>

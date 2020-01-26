@@ -8,6 +8,7 @@ import {
   enableBodyScroll,
   clearAllBodyScrollLocks,
 } from "body-scroll-lock";
+import MenuContext from "../contexts/MenuContext";
 import Nav from "./Nav";
 import Hamburger from "./Hamburger";
 
@@ -89,33 +90,7 @@ const Header: FunctionComponent<HeaderProps> = ({
   const [active, setActive] = useState(false);
   const headerEl = useRef<HTMLElement>(null!);
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-
-    if (active) {
-      disableBodyScroll(headerEl.current);
-    } else {
-      enableBodyScroll(headerEl.current);
-    }
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      clearAllBodyScrollLocks();
-    };
-  }, [active]);
-
-  const toggleActive = (option?: string) => {
-    if (option === "close-nav") {
-      setActive(false);
-      enableBodyScroll(headerEl && headerEl.current);
-
-      return;
-    }
-
-    setActive(!active);
-  };
-
-  const handleScroll = () => {
+  const handleScroll = (): void => {
     // TODO: Should be able to get rid of if and use optional chaining
     // plugins already added to babelrc but const el = headerEl?.current; doesnt work
     // https://github.com/zeit/next.js/issues/9004
@@ -138,27 +113,46 @@ const Header: FunctionComponent<HeaderProps> = ({
     }
   };
 
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    if (active) {
+      disableBodyScroll(headerEl.current);
+    } else {
+      enableBodyScroll(headerEl.current);
+    }
+
+    return (): void => {
+      window.removeEventListener("scroll", handleScroll);
+      clearAllBodyScrollLocks();
+    };
+  }, [active]);
+
+  const toggleActive = (option?: string): void => {
+    if (option === "close-nav") {
+      setActive(false);
+      enableBodyScroll(headerEl && headerEl.current);
+
+      return;
+    }
+
+    setActive(!active);
+  };
+
   return (
-    <Wrapper active={active} sticky={stickyHeader} home={home} ref={headerEl}>
-      <Logo active={active}>
-        <Link href="/">
-          <a onClick={() => toggleActive("close-nav")}>
-            <img src="/logos/1188.svg" />
-          </a>
-        </Link>
-      </Logo>
-      <Nav
-        active={active}
-        toggleActive={toggleActive}
-        sticky={stickyHeader}
-        home={home}
-      />
-      <Hamburger
-        active={active}
-        toggleActive={toggleActive}
-        sticky={stickyHeader}
-      />
-    </Wrapper>
+    <MenuContext.Provider value={active}>
+      <Wrapper active={active} sticky={stickyHeader} home={home} ref={headerEl}>
+        <Logo active={active}>
+          <Link href="/">
+            <a onClick={(): void => toggleActive("close-nav")}>
+              <img src="/logos/1188.svg" />
+            </a>
+          </Link>
+        </Logo>
+        <Nav toggleActive={toggleActive} sticky={stickyHeader} home={home} />
+        <Hamburger toggleActive={toggleActive} sticky={stickyHeader} />
+      </Wrapper>
+    </MenuContext.Provider>
   );
 };
 
