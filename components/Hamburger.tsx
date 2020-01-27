@@ -3,14 +3,11 @@ import styled from "styled-components";
 import MenuContext from "../contexts/MenuContext";
 
 type HamburgerProps = {
-  sticky: boolean;
   onClick?: () => void;
-  toggleActive: (value?: string) => void;
 };
 
 interface WrapperProps {
   readonly active: boolean;
-  readonly sticky: boolean;
 }
 
 const Wrapper = styled.div<WrapperProps>`
@@ -47,17 +44,13 @@ const Wrapper = styled.div<WrapperProps>`
   }
 `;
 
-const Hamburger: FunctionComponent<HamburgerProps> = ({
-  sticky,
-  toggleActive,
-}) => {
-  const active = useContext(MenuContext);
+const Hamburger: FunctionComponent<HamburgerProps> = () => {
+  const { active, toggle } = useContext(MenuContext);
 
   return (
     <Wrapper
       active={active}
-      sticky={sticky}
-      onClick={(): void => toggleActive()}
+      onClick={(): void => toggle()}
       data-testid="hamburger"
     >
       <span></span>

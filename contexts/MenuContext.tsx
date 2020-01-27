@@ -1,5 +1,10 @@
 import { createContext } from "react";
 
-const MenuContext = createContext(false);
+interface MenuContextProps {
+  active: boolean;
+  toggle: (value?: string) => void;
+}
+
+const MenuContext = createContext({} as MenuContextProps);
 
 export default MenuContext;

@@ -3,7 +3,7 @@ describe("clicking hero cta", () => {
     cy.visit("/")
       .findByText(/learn more/i)
       .click()
-      .url({ timeout: 10000 })
+      .url()
       .should("eq", `${Cypress.config().baseUrl}/who-we-are`);
   });
 });

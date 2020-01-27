@@ -4,7 +4,6 @@ import styled from "styled-components";
 import MenuContext from "../contexts/MenuContext";
 
 type NavProps = {
-  toggleActive(mode: string): void;
   sticky: boolean;
   home: boolean;
 };
@@ -105,8 +104,8 @@ const StyledLink = styled.a<StyledLinkProps>`
   }
 `;
 
-const Nav: FunctionComponent<NavProps> = ({ toggleActive, sticky, home }) => {
-  const active = useContext(MenuContext);
+const Nav: FunctionComponent<NavProps> = ({ sticky, home }) => {
+  const { active, toggle } = useContext(MenuContext);
 
   return (
     <Wrapper active={active}>
@@ -114,7 +113,7 @@ const Nav: FunctionComponent<NavProps> = ({ toggleActive, sticky, home }) => {
         <NavListItem>
           <Link href="/">
             <StyledLink
-              onClick={() => toggleActive("close-nav")}
+              onClick={(): void => toggle("close-nav")}
               sticky={sticky}
               home={home}
             >
@@ -125,7 +124,7 @@ const Nav: FunctionComponent<NavProps> = ({ toggleActive, sticky, home }) => {
         <NavListItem>
           <Link href="/what-we-do">
             <StyledLink
-              onClick={() => toggleActive("close-nav")}
+              onClick={(): void => toggle("close-nav")}
               sticky={sticky}
               home={home}
             >
@@ -136,7 +135,7 @@ const Nav: FunctionComponent<NavProps> = ({ toggleActive, sticky, home }) => {
         <NavListItem>
           <Link href="/who-we-are">
             <StyledLink
-              onClick={() => toggleActive("close-nav")}
+              onClick={(): void => toggle("close-nav")}
               sticky={sticky}
               home={home}
             >
@@ -156,7 +155,7 @@ const Nav: FunctionComponent<NavProps> = ({ toggleActive, sticky, home }) => {
         <NavListItem>
           <Link href="/#contact">
             <StyledLink
-              onClick={() => toggleActive("close-nav")}
+              onClick={(): void => toggle("close-nav")}
               sticky={sticky}
               home={home}
             >

@@ -140,7 +140,7 @@ const Header: FunctionComponent<HeaderProps> = ({
   };
 
   return (
-    <MenuContext.Provider value={active}>
+    <MenuContext.Provider value={{ active, toggle: toggleActive }}>
       <Wrapper active={active} sticky={stickyHeader} home={home} ref={headerEl}>
         <Logo active={active}>
           <Link href="/">
@@ -149,8 +149,8 @@ const Header: FunctionComponent<HeaderProps> = ({
             </a>
           </Link>
         </Logo>
-        <Nav toggleActive={toggleActive} sticky={stickyHeader} home={home} />
-        <Hamburger toggleActive={toggleActive} sticky={stickyHeader} />
+        <Nav sticky={stickyHeader} home={home} />
+        <Hamburger />
       </Wrapper>
     </MenuContext.Provider>
   );
