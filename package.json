@@ -40,8 +40,7 @@
   "lint-staged": {
     "**/*.+(js|jsx|json|ts|tsx|css|html|md)": [
       "prettier --write",
-      "jest --findRelatedTests",
-      "git add"
+      "jest --findRelatedTests"
     ]
   },
   "dependencies": {
