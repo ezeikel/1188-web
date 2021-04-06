@@ -1,6 +1,8 @@
 import { FunctionComponent } from "react";
 import styled from "styled-components";
 import Title from "../components/styles/Title";
+import PersonCard from "../components/PersonCard";
+import PersonList from "../components/PersonList";
 
 const Wrapper = styled.div`
   padding: var(--spacing-large);
@@ -10,13 +12,6 @@ const Wrapper = styled.div`
     padding: var(--spacing-huge);
     grid-template-columns: 2fr 1fr;
     grid-template-rows: auto 1fr;
-  }
-`;
-
-const StyledTitle = styled(Title)`
-  grid-row: 1 / span 1;
-  grid-column: 1 / -1;
-  @media (min-width: 768px) {
   }
 `;
 
@@ -128,18 +123,7 @@ const availableRoles = [
 
 const WhoWeAre: FunctionComponent = () => (
   <Wrapper>
-    <TeamCards>
-      <StyledTitle>The Team</StyledTitle>
-      {team.map((member, i) => (
-        <TeamCard key={i}>
-          <Photo
-            src={`/images/${member.name.toLowerCase().replace(/\s/g, "-")}.jpg`}
-          />
-          <Name>{member.name}</Name>
-          <Role>{member.role}</Role>
-        </TeamCard>
-      ))}
-    </TeamCards>
+    <PersonList heading="The Team" people={team} />
     <AvailableRolesWrapper>
       <Title>We are hiring</Title>
       <AvailableRoles>

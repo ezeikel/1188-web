@@ -1,4 +1,5 @@
 import Document, {
+  Html,
   Head,
   Main,
   NextScript,
@@ -44,7 +45,7 @@ export default class MyDocument extends Document {
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
-        gtag('config', 'UA-131531376-1');
+        gtag('config', 'G-DQ7BW21Z41');
       `,
     };
   }
@@ -59,9 +60,24 @@ export default class MyDocument extends Document {
     };
   }
 
+  setHotjarTag() {
+    return {
+      __html: `
+      (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:2333666,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+      `,
+    };
+  }
+
   render() {
     return (
-      <html>
+      <Html>
         <Head>
           {/* Global site tag (gtag.js) - Google Analytics */}
           <script
@@ -69,13 +85,14 @@ export default class MyDocument extends Document {
             src="https://www.googletagmanager.com/gtag/js?id=UA-131531376-1"
           />
           <script dangerouslySetInnerHTML={this.setGoogleAnalyticsTags()} />
+          <script dangerouslySetInnerHTML={this.setHotjarTag()} />
           <script dangerouslySetInnerHTML={this.setCypressReactDevTools()} />
         </Head>
         <body>
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     );
   }
 }
