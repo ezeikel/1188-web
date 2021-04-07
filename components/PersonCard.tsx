@@ -6,8 +6,8 @@ type PersonCardProps = {
   person: {
     name: string;
     role: string;
-  }
-}
+  };
+};
 
 const Wrapper = styled.div`
   display: flex;
@@ -35,20 +35,16 @@ const Role = styled.span`
 
 const PersonCard: FunctionComponent<PersonCardProps> = ({ person }) => (
   <Wrapper>
-  {/* <Photo
-    src={`/images/${member.name.toLowerCase().replace(/\s/g, "-")}.jpg`}
-  /> */}
-  <NextImageWrapper
-    src={`/images/${person.name.toLowerCase().replace(/\s/g, "-")}.jpg`}
-    alt="team member image"
-    layout="fill"
-    objectFit="cover"
-    objectPosition="top center"
-    placeholder="blurred"
-  />
-  <Name>{person.name}</Name>
-  <Role>{person.role}</Role>
-</Wrapper>
+    <NextImageWrapper
+      src={`/images/${person.name.toLowerCase().replace(/\s/g, "-")}.jpg`}
+      alt="team member image"
+      layout="fill"
+      objectFit="cover"
+      objectPosition="top center"
+    />
+    <Name>{person.name}</Name>
+    <Role>{person.role}</Role>
+  </Wrapper>
 );
 
 export default PersonCard;

@@ -1,27 +1,18 @@
 import { FunctionComponent } from "react";
 import styled from "styled-components";
-import Image from "next/image";
-
-type NextImageWrapperProps = {
-  className?: string;
-  src: string;
-  alt: string;
-  layout: string;
-  objectFit?: string;
-  objectPosition?: string;
-};
+import Image, { ImageProps } from "next/image";
 
 const Wrapper = styled.div`
   position: relative;
   height: 100%;
 `;
 
-const NextImageWrapper: FunctionComponent<NextImageWrapperProps> = ({
+const NextImageWrapper: FunctionComponent<ImageProps> = ({
   className,
   ...props
 }) => (
   <Wrapper className={className}>
-    <Image {...props} />  {/** tslint:disable-line **/}
+    <Image {...props} />
   </Wrapper>
 );
 
