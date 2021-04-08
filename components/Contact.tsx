@@ -48,7 +48,7 @@ const Contact: FunctionComponent<ContactProps> = ({ className }) => (
         Send us a quick message and we&apos;ll get back to you as soon as we
         can. The more detail the better, but if you&apos;re still not 100% sure
         on all the specifics, thats fine too. Alternatively you can shoot us an
-        email at <a href="mailto:info@1188.agency">info@1188.agency</a>.
+        email at <a href="mailto:ezeikel@1188.agency">ezeikel@1188.agency</a>.
       </p>
     </Copy>
     <StyledContactForm className={className} />

@@ -228,7 +228,7 @@ const Footer: FunctionComponent = () => (
     </Visit>
     <NewBusiness>
       <h4>New business</h4>
-      <a href="mailto:hello@1188.agency">Email us</a>
+      <a href="mailto:ezeikel@1188.agency">Email us</a>
       <a href="tel:447932442879">+44 7932442879</a>
     </NewBusiness>
     <Social>
