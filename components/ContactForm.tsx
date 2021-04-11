@@ -1,4 +1,4 @@
-import { FunctionComponent, ReactElement } from "react";
+import { FunctionComponent, ReactElement, useEffect } from "react";
 import styled from "styled-components";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
@@ -76,19 +76,19 @@ const ContactForm: FunctionComponent<ContactFormProps> = ({ className }) => (
       message: "",
     }}
     validationSchema={ContactSchema}
-    onSubmit={async (values, actions): Promise<void> => {
-      console.log(actions);
+    onSubmit={async (
+      values,
+      { setSubmitting, resetForm, setStatus },
+    ): Promise<void> => {
+      // TODO: cleanup/trim data being sent
       try {
-        await axios.post(
-          "https://nc0j2ha6l0.execute-api.eu-west-1.amazonaws.com/PRODUCTION",
-          values,
-        );
+        await axios.post("/api/contact", values);
       } catch (error) {
         console.log(error);
       } finally {
-        actions.setSubmitting(false);
-        actions.resetForm();
-        actions.setStatus("submitted");
+        setSubmitting(false);
+        resetForm();
+        setStatus("submitted");
       }
     }}
   >
