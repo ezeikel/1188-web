@@ -3,8 +3,9 @@ import Link from "next/link";
 import Slider from "react-slick";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Title from "./styles/Title";
 import { IconPrefix, IconName } from "@fortawesome/fontawesome-svg-core";
+import Title from "./styles/Title";
+import Head from "next/head";
 
 interface SliderNavLinkProps {
   readonly className?: string;
@@ -285,43 +286,57 @@ const Services: FunctionComponent = () => {
   };
 
   return (
-    <Wrapper>
-      <SubTitle>Services</SubTitle>
-      <StyledTitle>What we&apos;re good at.</StyledTitle>
-      <StyledSlider {...settings} ref={sliderEl}>
-        {sliderData.map((slide, i) => (
-          <Slide key={i}>
-            <FontAwesomeIcon
-              icon={[
-                slide.icon.category as IconPrefix,
-                slide.icon.name as IconName,
-              ]} // FIX: https://github.com/FortAwesome/react-fontawesome/issues/210
-              color={slide.icon.color}
-              size="5x"
-            />
-            <SlideTitle>{slide.title}</SlideTitle>
-            <SlideCopy>{slide.copy}</SlideCopy>
-            <Link href={slide.buttonLink}>
-              <StyledAnchor>{slide.buttonCopy}</StyledAnchor>
-            </Link>
-          </Slide>
-        ))}
-      </StyledSlider>
-      <SliderNav>
-        <SliderNavTitle>The Expertise</SliderNavTitle>
-        <SliderNavLinks>
+    <>
+      <Head>
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+        />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+        />
+      </Head>
+      <Wrapper>
+        <SubTitle>Services</SubTitle>
+        <StyledTitle>What we&apos;re good at.</StyledTitle>
+        <StyledSlider {...settings} ref={sliderEl}>
           {sliderData.map((slide, i) => (
-            <SliderNavLink
-              onClick={() => handleClick(i)}
-              className={activeSlide === i ? "active" : ""}
-              key={i}
-            >
-              <SliderNavLinkTitle>{slide.title}</SliderNavLinkTitle>
-            </SliderNavLink>
+            <Slide key={i}>
+              <FontAwesomeIcon
+                icon={[
+                  slide.icon.category as IconPrefix,
+                  slide.icon.name as IconName,
+                ]} // FIX: https://github.com/FortAwesome/react-fontawesome/issues/210
+                color={slide.icon.color}
+                size="5x"
+              />
+              <SlideTitle>{slide.title}</SlideTitle>
+              <SlideCopy>{slide.copy}</SlideCopy>
+              <Link href={slide.buttonLink}>
+                <StyledAnchor>{slide.buttonCopy}</StyledAnchor>
+              </Link>
+            </Slide>
           ))}
-        </SliderNavLinks>
-      </SliderNav>
-    </Wrapper>
+        </StyledSlider>
+        <SliderNav>
+          <SliderNavTitle>The Expertise</SliderNavTitle>
+          <SliderNavLinks>
+            {sliderData.map((slide, i) => (
+              <SliderNavLink
+                onClick={() => handleClick(i)}
+                className={activeSlide === i ? "active" : ""}
+                key={i}
+              >
+                <SliderNavLinkTitle>{slide.title}</SliderNavLinkTitle>
+              </SliderNavLink>
+            ))}
+          </SliderNavLinks>
+        </SliderNav>
+      </Wrapper>
+    </>
   );
 };
 

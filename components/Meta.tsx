@@ -7,17 +7,6 @@ const Meta: FunctionComponent = () => (
     <meta charSet="utf-8" />
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="stylesheet" href="https://use.typekit.net/eys8oea.css" />
-    <link rel="stylesheet" type="text/css" href="/static/nprogress.css" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
-    />
     <title>1188 | London based Creative Digital Agency.</title>
   </Head>
 );
