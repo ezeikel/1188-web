@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, FunctionComponent } from "react";
+import Head from "next/head";
 import Link from "next/link";
 import Router from "next/router";
 import styled from "styled-components";
@@ -31,17 +32,9 @@ type HeaderProps = {
 if (typeof window !== "undefined") {
   NProgress.configure({ showSpinner: false });
 
-  Router.events.on("routeChangeStart", () => {
-    NProgress.start();
-  });
-
-  Router.events.on("routeChangeComplete", () => {
-    NProgress.done();
-  });
-
-  Router.events.on("routeChangeError", () => {
-    NProgress.done();
-  });
+  Router.events.on("routeChangeStart", () => NProgress.start());
+  Router.events.on("routeChangeComplete", () => NProgress.done());
+  Router.events.on("routeChangeError", () => NProgress.done());
 }
 
 const Wrapper = styled.header<WrapperProps>`
@@ -140,19 +133,30 @@ const Header: FunctionComponent<HeaderProps> = ({
   };
 
   return (
-    <MenuContext.Provider value={{ active, toggle: toggleActive }}>
-      <Wrapper active={active} sticky={stickyHeader} home={home} ref={headerEl}>
-        <Logo active={active}>
-          <Link href="/">
-            <a onClick={(): void => toggleActive("close-nav")}>
-              <img src="/logos/1188.svg" />
-            </a>
-          </Link>
-        </Logo>
-        <Nav sticky={stickyHeader} home={home} />
-        <Hamburger />
-      </Wrapper>
-    </MenuContext.Provider>
+    <>
+      <Head>
+        {/* Import CSS for nprogress */}
+        <link rel="stylesheet" type="text/css" href="/nprogress.css" />
+      </Head>
+      <MenuContext.Provider value={{ active, toggle: toggleActive }}>
+        <Wrapper
+          active={active}
+          sticky={stickyHeader}
+          home={home}
+          ref={headerEl}
+        >
+          <Logo active={active}>
+            <Link href="/">
+              <a onClick={(): void => toggleActive("close-nav")}>
+                <img src="/logos/1188.svg" />
+              </a>
+            </Link>
+          </Logo>
+          <Nav sticky={stickyHeader} home={home} />
+          <Hamburger />
+        </Wrapper>
+      </MenuContext.Provider>
+    </>
   );
 };
 
