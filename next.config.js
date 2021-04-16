@@ -15,6 +15,9 @@ const basePath = "";
 module.exports = {
   target: "serverless",
   productionBrowserSourceMaps: true,
+  future: {
+    webpack5: true,
+  },
   env: {
     // Make the COMMIT_SHA available to the client so that Sentry events can be
     // marked for the release they belong to. It may be undefined if running

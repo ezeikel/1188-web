@@ -1,13 +1,8 @@
 {
   "name": "1188-web",
-  "private": true,
   "author": "Ezeikel Pemberton (https://ezeikel.dev)",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "license": "ISC",
-  "main": "index.js",
-  "engines": {
-    "node": "12.x"
-  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
