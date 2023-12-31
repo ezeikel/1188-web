@@ -113,7 +113,7 @@ const SliderNavLink = styled.li<SliderNavLinkProps>`
   }
 `;
 
-const StyledAnchor = styled.a`
+const StyledLink = styled(Link)`
   border: 3px solid var(--color-tertiary);
   border-radius: 4px;
   color: var(--color-white);
@@ -315,9 +315,9 @@ const Services: FunctionComponent = () => {
               />
               <SlideTitle>{slide.title}</SlideTitle>
               <SlideCopy>{slide.copy}</SlideCopy>
-              <Link href={slide.buttonLink}>
-                <StyledAnchor>{slide.buttonCopy}</StyledAnchor>
-              </Link>
+              <StyledLink href={slide.buttonLink}>
+                {slide.buttonCopy}
+              </StyledLink>
             </Slide>
           ))}
         </StyledSlider>

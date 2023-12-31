@@ -69,7 +69,7 @@ const StyledVideo = styled.video`
   object-fit: cover;
 `;
 
-const StyledLink = styled.a`
+const StyledLink = styled(Link)`
   grid-row: 4 / span 1;
   grid-column: 1 / -1;
   align-self: end;
@@ -102,9 +102,9 @@ const Index: NextPage<IndexProps> = ({ className }) => (
       </StyledVideo>
       <Overlay>
         <HeroTitle>The diverse tech partner to big brands</HeroTitle>
-        <Link href="/who-we-are">
-          <StyledLink>Learn More</StyledLink>
-        </Link>
+        <StyledLink href="/who-we-are">
+          Learn More
+        </StyledLink>
         <StyledScrollDown className={className} />
       </Overlay>
     </Hero>

@@ -72,7 +72,7 @@ const NavListItem = styled.li`
   }
 `;
 
-const StyledLink = styled.a<StyledLinkProps>`
+const StyledLink = styled(Link)<StyledLinkProps>`
   color: var(--color-black);
   font-weight: bold;
   @media (min-width: 768px) {
@@ -111,37 +111,28 @@ const Nav: FunctionComponent<NavProps> = ({ sticky, home }) => {
     <Wrapper active={active}>
       <NavList>
         <NavListItem>
-          <Link href="/">
-            <StyledLink
+          <StyledLink href="/"
               onClick={(): void => toggle("close-nav")}
               sticky={sticky}
-              home={home}
-            >
+              home={home}>
+
               Home
-            </StyledLink>
-          </Link>
+          </StyledLink>
         </NavListItem>
         <NavListItem>
-          <Link href="/what-we-do">
-            <StyledLink
-              onClick={(): void => toggle("close-nav")}
+          <StyledLink href="/what-we-do"            onClick={(): void => toggle("close-nav")}
               sticky={sticky}
-              home={home}
-            >
+              home={home}>
               What we do
-            </StyledLink>
-          </Link>
+          </StyledLink>
         </NavListItem>
         <NavListItem>
-          <Link href="/who-we-are">
-            <StyledLink
-              onClick={(): void => toggle("close-nav")}
+          <StyledLink href="/who-we-are"            onClick={(): void => toggle("close-nav")}
               sticky={sticky}
-              home={home}
-            >
+              home={home}>
+
               Who we are
-            </StyledLink>
-          </Link>
+          </StyledLink>
         </NavListItem>
         <NavListItem>
           <StyledLink
@@ -153,15 +144,12 @@ const Nav: FunctionComponent<NavProps> = ({ sticky, home }) => {
           </StyledLink>
         </NavListItem>
         <NavListItem>
-          <Link href="/#contact">
-            <StyledLink
-              onClick={(): void => toggle("close-nav")}
+          <StyledLink href="/#contact"            onClick={(): void => toggle("close-nav")}
               sticky={sticky}
-              home={home}
-            >
+              home={home}>
+
               Contact
-            </StyledLink>
-          </Link>
+          </StyledLink>
         </NavListItem>
       </NavList>
     </Wrapper>

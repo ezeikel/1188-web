@@ -1,23 +1,20 @@
 # dependencies
-/node_modules
-/.pnp
-.pnp.js
-
+node_modules/
 
 # testing
-/coverage
-/cypress/videos
-/cypress/screenshots
+coverage/
 
 # next.js
-/.next/
-/out/
+.next/
+out/
 
 # production
-/build
+build/
 
 # misc
 .DS_Store
+.idea/*
+.vscode/
 
 # debug
 npm-debug.log*
@@ -25,7 +22,16 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env
+.env.*
+
+# cypress
+cypress/results/*
+cypress/reports/*
+cypress/screenshots/*
+cypress/videos/*
+cypress.env.json
+
+# TypeScript incremental compilation cache
+*.tsbuildinfo
+.vercel

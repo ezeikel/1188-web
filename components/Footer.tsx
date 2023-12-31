@@ -212,9 +212,7 @@ const Footer: FunctionComponent = () => (
     <Slogan>
       <Logo>
         <Link href="/">
-          <a>
             <img src="/logos/1188-outline-white.svg" />
-          </a>
         </Link>
       </Logo>
       <p>

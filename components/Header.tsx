@@ -146,10 +146,8 @@ const Header: FunctionComponent<HeaderProps> = ({
           ref={headerEl}
         >
           <Logo active={active}>
-            <Link href="/">
-              <a onClick={(): void => toggleActive("close-nav")}>
+            <Link href="/" onClick={(): void => toggleActive("close-nav")}>
                 <img src="/logos/1188.svg" />
-              </a>
             </Link>
           </Logo>
           <Nav sticky={stickyHeader} home={home} />
