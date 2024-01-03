@@ -49,7 +49,7 @@ const ContactForm = ({ className }: ContactFormProps) => (
       try {
         await axios.post('/api/contact', values);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       } finally {
         setSubmitting(false);
         resetForm();
@@ -66,6 +66,7 @@ const ContactForm = ({ className }: ContactFormProps) => (
       >
         <section className="grid gap-y-4 md:grid-cols-[1fr_1fr] md:gap-x-4">
           <div className="flex flex-col gap-y-4">
+            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
             <label
               className="text-base text-black capitalize"
               htmlFor="firstName"
@@ -81,6 +82,7 @@ const ContactForm = ({ className }: ContactFormProps) => (
             <ErrorMessage name="firstName" component={InputError} />
           </div>
           <div className="flex flex-col gap-y-4">
+            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
             <label
               className="text-base text-black capitalize"
               htmlFor="lastName"
@@ -98,6 +100,7 @@ const ContactForm = ({ className }: ContactFormProps) => (
         </section>
         <section className="flex flex-col gap-y-4">
           <div className="grid grid-rows-[auto_1fr]">
+            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
             <label className="text-base text-black capitalize" htmlFor="email">
               Email
             </label>
@@ -110,6 +113,7 @@ const ContactForm = ({ className }: ContactFormProps) => (
             <ErrorMessage name="email" component={InputError} />
           </div>
           <div className="flex flex-col gap-y-4">
+            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
             <label
               className="text-base text-black capitalize"
               htmlFor="phoneNumber"
@@ -125,6 +129,7 @@ const ContactForm = ({ className }: ContactFormProps) => (
             <ErrorMessage name="phoneNumber" component={InputError} />
           </div>
           <div className="flex flex-col gap-y-4">
+            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
             <label
               className="text-base text-black capitalize"
               htmlFor="message"

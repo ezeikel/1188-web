@@ -1,9 +1,9 @@
-import ContactForm from './forms/ContactForm/ContactForm';
-import H2 from './H2/H2';
+import ContactForm from '../forms/ContactForm/ContactForm';
+import H2 from '../H2/H2';
 
 const Contact = () => (
   <div className="flex flex-col md:flex-row  gap-8 p-8" id="contact">
-    <section className="flex flex-col gap-y-8 flex-[0_0_50%]">
+    <section className="flex flex-col gap-y-8 md:flex-[1_1_50%]">
       <H2>Holla.</H2>
       <p className="text-black text-lg m-0">
         Great idea for the next big thing? Let us help you bring it to life.
@@ -17,7 +17,7 @@ const Contact = () => (
         .
       </p>
     </section>
-    <ContactForm className="flex-[0_0_50%]" />
+    <ContactForm className="md:flex-[1_1_50%]" />
   </div>
 );
 

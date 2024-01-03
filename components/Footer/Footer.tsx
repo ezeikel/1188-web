@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { SOCIAL_LINKS } from '@/app/constants';
-import LogoOutline from './svgs/LogoOutline';
+import LogoOutline from '../svgs/LogoOutline';
 
 const Footer = () => (
   <footer className="flex md:grid md:grid-cols-3 md:grid-rows-4 flex-col gap-y-8 p-8 bg-[#000] text-dark-grey text-sm md:gap-x-16 md:justify-items-start">
@@ -15,7 +15,7 @@ const Footer = () => (
       <h4 className="m-0 text-white font-bold text-center md:self-start">
         Inspire
       </h4>
-      <p>
+      <p className="text-center md:text-left">
         We create possibilities for the diverse connected world.{' '}
         <span className="text-white">Be Bold.</span>
       </p>
@@ -24,14 +24,14 @@ const Footer = () => (
       <h4 className="m-0 text-white font-bold text-center md:self-start">
         Visit
       </h4>
-      <address className="not-italic">
+      <address className="not-italic text-center md:text-left">
         Pop Brixton, 49 Brixton Station Rd, London SW9 8PQ
       </address>
     </section>
-    <section className="flex flex-col gap-y-4 items-center md:col-[3_/_span_1] md:row-[2_/_span_1]">
+    <section className="flex flex-col gap-y-4 items-center  md:items-start md:col-[3_/_span_1] md:row-[2_/_span_1]">
       <h4 className="m-0 text-white font-bold md:self-start">New business</h4>
       <a href="mailto:ezeikel@1188.agency" className="md:self-start">
-        Email us
+        ezeikel@1188.agency
       </a>
       <a href="tel:447932442879">+44 7932442879</a>
     </section>

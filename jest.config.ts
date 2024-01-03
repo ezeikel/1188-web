@@ -1,4 +1,4 @@
-import { Config } from "jest";
+import { Config } from 'jest';
 
 const config: Config = {
   coverageThreshold: {
@@ -9,7 +9,7 @@ const config: Config = {
       lines: 29,
     },
   },
-  projects: ["./test/jest.lint.ts", "./test/jest.client.ts"],
+  projects: ['./test/jest.lint.ts', './test/jest.client.ts'],
 };
 
 export default config;

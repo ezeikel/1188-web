@@ -4,13 +4,11 @@ import Script from 'next/script';
 import { Analytics } from '@vercel/analytics/react';
 import * as Sentry from '@sentry/nextjs';
 import { config } from '@fortawesome/fontawesome-svg-core';
+import '@fortawesome/fontawesome-svg-core/styles.css';
 import Header from '@/components/Header/Header';
-import Footer from '@/components/Footer';
+import Footer from '@/components/Footer/Footer';
 import MobileMenu from '@/components/MobileMenu/MobileMenu';
 import Providers from './providers';
-// import 'slick-carousel/slick/slick.css';
-// import 'slick-carousel/slick/slick-theme.css';
-import '@fortawesome/fontawesome-svg-core/styles.css';
 import './global.css';
 
 config.autoAddCss = false;
@@ -62,9 +60,11 @@ const RootLayout = async ({ children }: RootLayoutProps) => {
     <html lang="en">
       <body>
         <Providers>
-          <Header />
-          <main className="relative grid min-h-screen">{children}</main>
-          <Footer />
+          <div className="relative grid grid-rows-[auto_1fr_auto] min-h-screen">
+            <Header />
+            <main>{children}</main>
+            <Footer />
+          </div>
           <MobileMenu />
         </Providers>
         <Script id="hotjar-widget" dangerouslySetInnerHTML={setHotjarTag()} />

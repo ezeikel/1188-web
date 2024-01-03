@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Balancer from 'react-wrap-balancer';
 import { useUIContext } from '@/contexts/ui';
-import ScrollDown from '../ScrollDown';
+import ScrollDown from '../ScrollDown/ScrollDown';
 
 const Hero = () => {
   const { headerHeight } = useUIContext();
@@ -37,7 +37,7 @@ const Hero = () => {
               href="/who-we-are"
               className="self-end border-tertiary border-[3px] rounded text-white bg-tertiary text-xl font-bold py-4 px-8 md:transition-all md:hover:bg-[#6043ed] md:hover:border-[#6043ed] md:hover:cursor-pointer"
             >
-              Learn More
+              Learn more
             </Link>
           </button>
         </div>

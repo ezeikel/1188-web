@@ -1,15 +1,17 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { useMediaQuery } from 'react-responsive';
 import { NAVIGATION_ITEMS } from '@/app/constants';
 import { useUIContext } from '@/contexts/ui';
 import { cn } from '@/lib/utils';
-import Hamburger from '../Hamburger';
+import Hamburger from '../Hamburger/Hamburger';
 import Logo from '../svgs/Logo';
 
 const Header = () => {
+  const pathname = usePathname();
   const headerEl = useRef<HTMLHeadElement>(null);
   const [isSticky, setIsSticky] = useState(false);
   const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
@@ -35,10 +37,9 @@ const Header = () => {
   }, []);
 
   const anchorLinkClasses = cn(
-    "flex relative after:absolute after:content-[''] after:block after:h-0.5 after:w-1/2 after:-bottom-1 after:left-0 after:z-10 after:transition-transform after:duration-200 after:ease-in-out after:translate-x-[-150%] group-hover:after:translate-x-0",
+    "flex relative after:absolute after:content-[''] after:block after:bg-black after:h-0.5 after:w-1/2 after:-bottom-1 after:left-0 after:z-10 after:transition-transform after:duration-200 after:ease-in-out after:translate-x-[-150%] group-hover:after:translate-x-0",
     {
-      'after:bg-black': isSticky,
-      'after:bg-white': !isSticky,
+      'after:bg-white': !isSticky && pathname === '/',
     },
   );
 
@@ -46,7 +47,7 @@ const Header = () => {
     <header
       className={cn('flex justify-between items-center p-8 z-10 top-0', {
         'sticky shadow-md': isSticky,
-        'absolute left-0 right-0 bg-transparent': !isSticky,
+        'absolute left-0 right-0 bg-transparent': pathname === '/' && !isSticky,
         'bg-white': isSticky || isMobile,
       })}
       ref={headerEl}
@@ -59,9 +60,8 @@ const Header = () => {
       ) : (
         <nav>
           <ul
-            className={cn('flex gap-x-8 text-lg font-bold', {
-              'text-white': !isSticky,
-              'text-black': isSticky,
+            className={cn('text-black flex gap-x-8 text-lg font-bold', {
+              'text-white': !isSticky && pathname === '/',
             })}
           >
             {NAVIGATION_ITEMS.map((item) => (

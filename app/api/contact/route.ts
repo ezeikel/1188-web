@@ -36,11 +36,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       res.status(200).json({
         message: 'Email sent successfully.',
       });
-
-      return {
-        statusCode: 200,
-        body: 'Email sent',
-      };
     } catch (error) {
       const statusCode = typeof error.code === 'number' ? error.code : 500;
 

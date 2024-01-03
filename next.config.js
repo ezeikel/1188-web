@@ -3,24 +3,30 @@
 // https://nextjs.org/docs/api-reference/next.config.js/introduction
 // https://docs.sentry.io/platforms/javascript/guides/nextjs/
 
-const { withSentryConfig } = require("@sentry/nextjs");
+const { withSentryConfig } = require('@sentry/nextjs');
 
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ["res.cloudinary.com"],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        pathname: '**',
+      },
+    ],
   },
   async redirects() {
     return [
       {
-        source: "/.well-known/assetlinks",
-        destination: "/.well-known/assetlinks.json",
+        source: '/.well-known/assetlinks',
+        destination: '/.well-known/assetlinks.json',
         permanent: true,
       },
       {
-        source: "/apple-app-site-association",
-        destination: "/apple-app-site-association.json",
+        source: '/apple-app-site-association',
+        destination: '/apple-app-site-association.json',
         permanent: true,
       },
     ];

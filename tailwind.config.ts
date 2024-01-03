@@ -109,6 +109,7 @@ const config: Config = {
       },
     },
   },
+  // eslint-disable-next-line global-require
   plugins: [require('tailwindcss-animate')],
 };
 

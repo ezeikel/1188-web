@@ -1,12 +1,40 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
+import Link from 'next/link';
+import {
+  disableBodyScroll,
+  enableBodyScroll,
+  clearAllBodyScrollLocks,
+} from 'body-scroll-lock';
+import { useMediaQuery } from 'react-responsive';
 import { NAVIGATION_ITEMS } from '@/app/constants';
 import { useUIContext } from '@/contexts/ui';
 import { cn } from '@/lib/utils';
-import Link from 'next/link';
 
 const MobileMenu = () => {
+  const navEl = useRef<HTMLElement>(null!);
   const { isMenuOpen, headerHeight, closeMenu } = useUIContext();
+  const isMobile = useMediaQuery({ query: '(max-width: 768px)' });
+
+  useEffect(() => {
+    if (!isMobile) {
+      closeMenu();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isMobile]);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      disableBodyScroll(navEl.current);
+    } else {
+      enableBodyScroll(navEl.current);
+    }
+
+    return (): void => {
+      clearAllBodyScrollLocks();
+    };
+  }, [isMenuOpen]);
 
   return (
     <nav
@@ -17,6 +45,7 @@ const MobileMenu = () => {
       style={{
         top: headerHeight,
       }}
+      ref={navEl}
     >
       <ul
         className={cn(
