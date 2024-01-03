@@ -1,48 +1,18 @@
-import { FunctionComponent } from "react";
-import styled from "styled-components";
-import { scrollDown } from "../GlobalStyle";
+import { cn } from '@/lib/utils';
 
 type ScrollDownProps = {
   className?: string;
 };
 
-const Mouse = styled.div`
-  width: 40px;
-  height: 60px;
-  border-radius: 20px;
-  border: 3px solid var(--color-white);
-  position: relative;
-
-  &:before,
-  &:after {
-    content: "";
-    display: block;
-    position: absolute;
-  }
-
-  &:before {
-    height: 30px;
-    width: 4px;
-    top: 10px;
-    left: calc(50% - 2px);
-    background: rgba(255, 255, 255, 0.55);
-    border-radius: 2px;
-  }
-
-  &:after {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    top: 15px;
-    left: calc(50% - 5px);
-    background: var(--color-white);
-    -webkit-animation: m-0-ball 1.2s ease-in-out infinite;
-    animation: ${scrollDown} 1.2s ease-in-out infinite;
-  }
-`;
-
-const ScrollDown: FunctionComponent<ScrollDownProps> = ({ className }) => (
-  <Mouse className={className} />
+const ScrollDown = ({ className }: ScrollDownProps) => (
+  <div
+    className={cn(
+      "w-10 h-[60px] rounded-3xl border-[3px] border-white relative before:content-[''] before:block before:absolute before:h-[30px] before:w-1 before:top-2.5 before:left-[calc(50%_-_2px)] before:bg-[rgba(255,_255,_255,_0.55)] before:rounded-sm after:content-[''] after:block after:absolute after:w-2.5 after:h-2.5 after:rounded-[50%] after:top-[15px] after:left-[calc(50%_-_5px)] after:bg-white after:animate-scroll-down",
+      {
+        [className as string]: !!className,
+      },
+    )}
+  />
 );
 
 export default ScrollDown;

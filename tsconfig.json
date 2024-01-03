@@ -1,34 +1,40 @@
 {
   "compilerOptions": {
-    "noEmit": true,
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": true,
+    "strict": false,
     "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "types": [
-      "cypress",
-      "@types/testing-library__cypress"
+    "incremental": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
     ],
-    "incremental": true
+    "strictNullChecks": true
   },
-  "exclude": [
-    "node_modules",
-  ],
   "include": [
     "next-env.d.ts",
+    "custom.d.ts",
     "**/*.ts",
-    "**/*.tsx"
-  ]
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "jest.config.ts",
+    "test/jest.common.ts",
+    "test/jest.setup.ts",
+    "./test/jest.client.ts",
+    "./test/jest.lint.ts"  ],
+  "exclude": ["node_modules"]
 }

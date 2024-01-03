@@ -1,293 +1,64 @@
-import { FunctionComponent } from "react";
-import styled from "styled-components";
-import Link from "next/link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from 'next/link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { SOCIAL_LINKS } from '@/app/constants';
+import LogoOutline from './svgs/LogoOutline';
 
-const Wrapper = styled.footer`
-  display: grid;
-  grid-template-rows: repeat(3, auto);
-  place-items: center;
-  grid-row-gap: var(--spacing-large);
-  padding: var(--spacing-large);
-  background-color: #000;
-  @media (min-width: 768px) {
-    grid-row-gap: var(--spacing-huge);
-    grid-column-gap: var(--spacing-huge);
-    justify-items: start;
-    padding: var(--spacing-huge);
-    grid-template-rows: repeat(3, 1fr);
-    grid-template-columns: repeat(6, 1fr);
-    grid-row-gap: var(--spacing-medium);
-  }
-`;
-
-const Copyright = styled.section`
-  display: grid;
-  grid-row-gap: var(--spacing-medium);
-  text-align: center;
-  font-weight: 300;
-  font-size: 1.4rem;
-  line-height: 21px;
-  color: var(--color-dark-grey);
-  a,
-  a:link,
-  a:active,
-  a:visited,
-  a:focus {
-    color: var(--color-white);
-    text-decoration: underline;
-  }
-  @media (min-width: 768px) {
-    width: 100%;
-    grid-row: 3 / -1;
-    grid-column: 1 / -1;
-    align-self: end;
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-  }
-`;
-
-const MadeWith = styled.span`
-  > span:first-of-type {
-    color: var(--color-red);
-  }
-  > span:nth-of-type(2) {
-    color: var(--color-white);
-  }
-  @media (min-width: 768px) {
-    align-self: end;
-    justify-self: end;
-  }
-`;
-
-const RightsReservered = styled.span`
-  @media (min-width: 768px) {
-    justify-self: start;
-    align-self: end;
-    > span:first-of-type {
-      color: var(--color-red);
-    }
-    > span:nth-of-type(2) {
-      color: var(--color-white);
-    }
-  }
-`;
-
-const Logo = styled.div`
-  display: grid;
-  place-items: center;
-  z-index: 1;
-  margin: 0;
-  width: 100px;
-  @media (min-width: 768px) {
-    grid-row: 1 / -1;
-    grid-column: 1 / span 1;
-  }
-`;
-
-const SocialLinks = styled.ul`
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  justify-content: start;
-  grid-column-gap: var(--spacing-large);
-  justify-items: center;
-  width: 100%;
-  margin: 0;
-  a {
-    color: var(--color-white);
-  }
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(5, auto);
-  }
-`;
-
-const Visit = styled.section`
-  display: grid;
-  grid-template-rows: repeat(2, auto);
-  grid-row-gap: var(--spacing-medium);
-  place-items: center;
-  font-size: 1.4rem;
-  h4 {
-    margin: 0;
-    color: var(--color-white);
-  }
-  address {
-    color: var(--color-dark-grey);
-    font-style: normal;
-  }
-  @media (min-width: 768px) {
-    grid-row: 1 / span 1;
-    grid-column: 3 / span 2;
-    display: grid;
-    grid-template-rows: repeat(2, auto);
-    grid-row-gap: var(--spacing-medium);
-    justify-items: start;
-  }
-`;
-
-const Slogan = styled.section`
-  display: grid;
-  grid-template-rows: repeat(2, auto);
-  grid-row-gap: var(--spacing-medium);
-  place-items: center;
-  color: var(--color-dark-grey);
-  font-size: 1.4rem;
-  span {
-    color: var(--color-white);
-  }
-  @media (min-width: 768px) {
-    grid-row: 1 / span 1;
-    grid-column: 1 / span 2;
-    display: grid;
-    justify-items: start;
-  }
-`;
-
-const NewBusiness = styled.section`
-  display: grid;
-  grid-template-rows: repeat(2, auto);
-  grid-row-gap: var(--spacing-medium);
-  place-items: center;
-  font-size: 1.4rem;
-  h4 {
-    margin: 0;
-    color: var(--color-white);
-  }
-  a {
-    color: var(--color-dark-grey);
-  }
-  color: var(--color-dark-grey);
-  display: grid;
-  grid-template-rows: repeat(2, auto);
-  @media (min-width: 768px) {
-    grid-row: 1 / span 1;
-    grid-column: 5 / span 2;
-    display: grid;
-    justify-items: start;
-    grid-template-rows: repeat(2, auto);
-    grid-row-gap: var(--spacing-medium);
-  }
-`;
-
-const Social = styled.section`
-  display: grid;
-  grid-template-rows: repeat(2, auto);
-  grid-row-gap: var(--spacing-medium);
-  place-items: center;
-  h4 {
-    font-size: 1.4rem;
-    margin: 0;
-    color: var(--color-white);
-  }
-  a {
-    svg {
-      color: var(--color-dark-grey);
-    }
-    &:hover {
-      svg {
-        @media (min-width: 768px) {
-          transition: color 0.3s ease-in-out;
-          &:hover {
-            color: var(--color-white);
-          }
-        }
-      }
-    }
-  }
-  color: var(--color-dark-grey);
-  @media (min-width: 768px) {
-    grid-row: 2 / span 1;
-    grid-column: 1 / span 2;
-    align-self: end;
-    display: grid;
-    grid-template-rows: repeat(2, auto);
-    grid-row-gap: var(--spacing-medium);
-    justify-items: start;
-    width: 100%;
-  }
-`;
-
-const Footer: FunctionComponent = () => (
-  <Wrapper>
-    <Slogan>
-      <Logo>
-        <Link href="/">
-            <img src="/logos/1188-outline-white.svg" />
-        </Link>
-      </Logo>
+const Footer = () => (
+  <footer className="flex md:grid md:grid-cols-3 md:grid-rows-4 flex-col gap-y-8 p-8 bg-[#000] text-dark-grey text-sm md:gap-x-16 md:justify-items-start">
+    <Link
+      href="/"
+      className="self-center md:col-[1_/_span_1] md:row-[1_/_span_1]"
+    >
+      <LogoOutline className="w-[100px] stroke-white" />
+    </Link>
+    <section className="flex flex-col gap-y-4 items-center md:col-[1_/_span_1] md:row-[2_/_span_1]">
+      <h4 className="m-0 text-white font-bold text-center md:self-start">
+        Inspire
+      </h4>
       <p>
-        We create possibilities for the diverse connected world.{" "}
-        <span>Be Bold.</span>
+        We create possibilities for the diverse connected world.{' '}
+        <span className="text-white">Be Bold.</span>
       </p>
-    </Slogan>
-    <Visit>
-      <h4>Visit</h4>
-      <address>Pop Brixton, 49 Brixton Station Rd, London SW9 8PQ</address>
-    </Visit>
-    <NewBusiness>
-      <h4>New business</h4>
-      <a href="mailto:ezeikel@1188.agency">Email us</a>
+    </section>
+    <section className="flex flex-col gap-y-4 items-center md:col-[2_/_span_1] md:row-[2_/_span_1]">
+      <h4 className="m-0 text-white font-bold text-center md:self-start">
+        Visit
+      </h4>
+      <address className="not-italic">
+        Pop Brixton, 49 Brixton Station Rd, London SW9 8PQ
+      </address>
+    </section>
+    <section className="flex flex-col gap-y-4 items-center md:col-[3_/_span_1] md:row-[2_/_span_1]">
+      <h4 className="m-0 text-white font-bold md:self-start">New business</h4>
+      <a href="mailto:ezeikel@1188.agency" className="md:self-start">
+        Email us
+      </a>
       <a href="tel:447932442879">+44 7932442879</a>
-    </NewBusiness>
-    <Social>
-      <h4>Follow</h4>
-      <SocialLinks>
-        <li>
-          <a href="https://twitter.com/118eighty8">
-            <FontAwesomeIcon
-              icon={["fab", "twitter"]}
-              color="var(--color-dark-grey)"
-              size="2x"
-            />
-          </a>
-        </li>
-        <li>
-          <a href="https://www.instagram.com/118eighty8">
-            <FontAwesomeIcon
-              icon={["fab", "instagram"]}
-              color="var(--color-dark-grey)"
-              size="2x"
-            />
-          </a>
-        </li>
-        <li>
-          <a href="https://medium.com/@118eighty8">
-            <FontAwesomeIcon
-              icon={["fab", "medium-m"]}
-              color="var(--color-dark-grey)"
-              size="2x"
-            />
-          </a>
-        </li>
-        <li>
-          <a href="https://fb.me/118eighty8">
-            <FontAwesomeIcon
-              icon={["fab", "facebook-f"]}
-              color="var(--color-dark-grey)"
-              size="2x"
-            />
-          </a>
-        </li>
-        <li>
-          <a href="https://www.linkedin.com/company/eleven-8eighty8">
-            <FontAwesomeIcon
-              icon={["fab", "linkedin-in"]}
-              color="var(--color-dark-grey)"
-              size="2x"
-            />
-          </a>
-        </li>
-      </SocialLinks>
-    </Social>
-    <Copyright>
-      <RightsReservered>
-        &copy; {new Date().getFullYear()} 1188. All rights reserved.
-      </RightsReservered>
-      <MadeWith>
-        Made with <span>♡</span> in <span>South London</span>.
-      </MadeWith>
-    </Copyright>
-  </Wrapper>
+    </section>
+    <section className="flex flex-col gap-y-4 items-center md:items-start md:w-full md:col-[1_/_span_1] md:row-[3_/_span_1]">
+      <h4 className="m-0 text-white font-bold">Follow</h4>
+      <ul className="w-full flex gap-x-8 justify-center md:justify-start">
+        {SOCIAL_LINKS.map(({ label, href, icon }) => (
+          <li>
+            <a href={href} className="group" aria-label={`${label} link`}>
+              <FontAwesomeIcon
+                icon={icon}
+                size="2x"
+                className="fill-dark-grey md:group-hover:text-white md:group-hover:transition-colors md:group-hover:duration-300 md:group-hover:fill-white md:group-hover:ease-in-out"
+              />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+    <section className="flex flex-col md:flex-row md:justify-between md:items-center gap-y-4 text-center font-light md:col-[1_/_-1] md:row-[4_/_span_1] w-full">
+      <span>&copy; {new Date().getFullYear()} 1188. All rights reserved.</span>
+      <span>
+        Made with <span className="text-red">♡</span> in{' '}
+        <span className="text-white">South London</span>.
+      </span>
+    </section>
+  </footer>
 );
 
 export default Footer;

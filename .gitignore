@@ -35,3 +35,4 @@ cypress.env.json
 # TypeScript incremental compilation cache
 *.tsbuildinfo
 .vercel
+.env*.local

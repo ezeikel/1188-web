@@ -1,0 +1,149 @@
+@import url("https://use.typekit.net/eys8oea.css");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: 26 188 156;
+    /* --color-primary: 247 231 206; */
+    --color-secondary: 241 211 209;
+    --color-tertiary: 70 41 211;
+    --color-radical-red: 255 61 99;
+    --color-aquamarine: 98 255 211;
+    --color-bittersweet: 255 114 100;
+    --color-white: 255 255 255;
+    --color-gold: 205 163 73;
+    --color-gold-lighter: 212 175 97;
+    --color-light-grey: 236 240 241;
+    --color-red: 231 76 60;
+    --color-green: 46 204 113;
+    --color-grey: 189 195 199;
+    --color-dark-grey: 155 155 155;
+    --color-black: 59 59 59;
+
+
+    --spacing-tiny: 4px;
+    --spacing-small: 8px;
+    --spacing-medium: 16px;
+    --spacing-large: 32px;
+    --spacing-huge: 64px;
+    --spacing-gargantuan: 128px;
+
+    --font-family-primary: 'itc-avant-garde-gothic-pro', sans-serif;
+
+    --header-height: 130px;
+    --header-height-wide: 100px;
+    --header-footer: var(--header-height);
+    --header-footer-wide: var(--header-height-wide);
+  }
+
+  ::-moz-selection {
+    background: rgb(var(--color-primary));
+    color: rgb(var(--color-white));
+  }
+
+  ::selection {
+    background: rgb(var(--color-primary));
+    color: rgb(var(--color-white));
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family-primary);
+    font-size: 1.6rem;
+  }
+
+
+  a {
+    text-decoration: none;
+  }
+
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+  }
+
+
+  select {
+    background-color: rgb(var(--color-white));
+  }
+
+  fieldset {
+    border: none;
+  }
+
+  ::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: rgb(var(--color-light-grey));
+    /*font-weight: 300;*/
+  }
+
+  ::-moz-placeholder {
+    /* Firefox 19+ */
+    color: rgb(var(--color-light-grey));
+    font-weight: 300;
+  }
+
+  :-ms-input-placeholder {
+    /* IE 10+ */
+    color: rgb(var(--color-light-grey));
+    font-weight: 300;
+  }
+
+  :-moz-placeholder {
+    /* Firefox 18- */
+    color: rgb(var(--color-light-grey));
+    font-weight: 300;
+  }
+
+  input,
+  textarea {
+    font-family: var(--font-family-default);
+    font-size: var(--default)
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="date"],
+  input[type="submit"],
+  textarea,
+  select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    outline: 0;
+    border: 0;
+    border-radius: 0;
+    padding: 1em;
+    border: 1px solid #ecf0f1;
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+    font-weight: 300;
+  }
+
+  button[type="submit"][disabled] {
+    opacity: 0.7;
+    text-decoration: line-through;
+  }
+}
+
+@layer components {
+  .slick-slide {
+    > div + div {
+        margin-top: var(--spacing-huge);
+      }
+  }
+}

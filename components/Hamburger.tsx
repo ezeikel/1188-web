@@ -1,62 +1,34 @@
-import { FunctionComponent, useContext } from "react";
-import styled from "styled-components";
-import MenuContext from "../contexts/MenuContext";
+'use client';
 
-type HamburgerProps = {
-  onClick?: () => void;
-};
+import { useUIContext } from '@/contexts/ui';
+import { cn } from '@/lib/utils';
 
-interface WrapperProps {
-  readonly active: boolean;
-}
-
-const Wrapper = styled.div<WrapperProps>`
-  cursor: pointer;
-  z-index: 1;
-  > span {
-    display: block;
-    margin-top: var(--spacing-tiny);
-    margin-bottom: var(--spacing-tiny);
-    margin-right: auto;
-    margin-left: auto;
-    width: 25px;
-    height: 2px;
-    background-color: var(--color-black);
-    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
-  }
-  ${({ active }) => {
-    return active
-      ? `
-      > span:nth-child(1) {
-        transform: translateY(6px) rotate(45deg);
-      }
-      > span:nth-child(2) {
-        opacity: 0;
-      }
-      > span:nth-child(3) {
-        transform: translateY(-6px) rotate(-45deg);
-      }
-    `
-      : "";
-  }};
-  @media (min-width: 768px) {
-    display: none;
-  }
-`;
-
-const Hamburger: FunctionComponent<HamburgerProps> = () => {
-  const { active, toggle } = useContext(MenuContext);
+const Hamburger = () => {
+  const { isMenuOpen, toggleMenu } = useUIContext();
 
   return (
-    <Wrapper
-      active={active}
-      onClick={(): void => toggle()}
+    <button
+      type="button"
+      className="cursor-pointer z-20 md:hidden"
+      onClick={toggleMenu}
       data-testid="hamburger"
+      aria-label="Toggle Menu"
     >
-      <span></span>
-      <span></span>
-      <span></span>
-    </Wrapper>
+      {Array.from({ length: 3 }).map((_, i) => (
+        <span
+          // eslint-disable-next-line react/no-array-index-key
+          key={i}
+          className={cn(
+            'block my-1 mx-auto w-[25px] h-0.5 bg-black transition-[transform,opacity] duration-300 ease-in-out',
+            {
+              'translate-y-[6px] rotate-45': i === 0 && isMenuOpen,
+              'opacity-0': i === 1 && isMenuOpen,
+              '-translate-y-[6px] -rotate-45': i === 2 && isMenuOpen,
+            },
+          )}
+        />
+      ))}
+    </button>
   );
 };
 

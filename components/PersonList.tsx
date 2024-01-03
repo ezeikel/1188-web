@@ -1,77 +1,23 @@
-import { FunctionComponent } from "react";
-import styled from "styled-components";
-import PersonCard from "./PersonCard";;
+import PersonCard from './PersonCard';
 
 type PersonListProps = {
   heading: string;
   people: any[]; // TODO: change to array of type People
 };
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-left: calc(-1 * var(--spacing-large));
-    margin-top: calc(-1 * var(--spacing-large));
-
-    @media (min-width: 768px) {
-      justify-content: flex-start;
-    }
-  }
-
-  li {
-    display: flex;
-    flex: 0 0 300px;
-    height: 450px;
-    margin-left: var(--spacing-large);
-    margin-top: var(--spacing-large);
-
-    > div {
-      flex: 1 0 auto;
-    }
-  }
-`;
-
-const Heading = styled.h2`
-  font-size: 3.2rem;
-  margin: 0;
-  position: relative;
-  color: var(--color-black);
-  margin-bottom: var(--spacing-large);
-  &:after {
-    position: relative;
-    content: "";
-    display: block;
-    position: absolute;
-    background-color: var(--color-primary);
-    height: var(--spacing-small);
-    width: 10rem;
-    bottom: calc(-1 * var(--spacing-small));
-    left: 0;
-  }
-  @media (min-width: 768px) {
-    font-size: 4rem;
-  }
-`;
-
-const PersonList: FunctionComponent<PersonListProps> = ({
-  heading,
-  people,
-}) => (
-  <Wrapper>
-    <Heading>{heading}</Heading>
-    <ul>
+const PersonList = ({ heading, people }: PersonListProps) => (
+  <div className="flex flex-col">
+    <h2 className="text-3xl m-0 relative text-black mb-8 after:content-[''] after:block after:absolute after:bg-primary after:h-2 after:w-2.5 after:bottom-[calc(-1_*_var(--spacing-small))] after:left-0 md:text-4xl">
+      {heading}
+    </h2>
+    <ul className="flex flex-wrap justify-center ml-[calc(-1_*_var(--spacing-large))] mt-[calc(-1_*_var(--spacing-large))] md:justify-start">
       {people.map((person, i) => (
-        <li>
-          <PersonCard person={person} key={i} />
+        <li className="flex flex-[0_0_300px] h-[450px] ml-8 mt-8">
+          <PersonCard person={person} key={i} className="flex-[1_0_auto]" />
         </li>
       ))}
     </ul>
-  </Wrapper>
+  </div>
 );
 
 export default PersonList;

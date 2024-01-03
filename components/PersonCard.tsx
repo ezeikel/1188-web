@@ -1,50 +1,34 @@
-import { FunctionComponent } from "react";
-import styled from "styled-components";
-import NextImageWrapper from "./NextImageWrapper";
+import { cn } from '@/lib/utils';
+import Image from 'next/image';
 
 type PersonCardProps = {
   person: {
     name: string;
     role: string;
   };
+  className?: string;
 };
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const Name = styled.span`
-  flex: 0 1 auto;
-  display: grid;
-  justify-items: start;
-  align-items: center;
-  margin-top: var(--spacing-medium);
-  font-weight: normal;
-  color: var(--color-black);
-`;
-
-const Role = styled.span`
-  flex: 0 1 auto;
-  display: grid;
-  justify-items: start;
-  align-items: center;
-  font-weight: lighter;
-  color: var(--color-black);
-`;
-
-const PersonCard: FunctionComponent<PersonCardProps> = ({ person }) => (
-  <Wrapper>
-    <NextImageWrapper
-      src={`/images/${person.name.toLowerCase().replace(/\s/g, "-")}.jpg`}
+const PersonCard = ({ className, person }: PersonCardProps) => (
+  <div
+    className={cn('flex flex-col', {
+      [className as string]: !!className,
+    })}
+  >
+    <Image
+      src={`/images/${person.name.toLowerCase().replace(/\s/g, '-')}.jpg`}
       alt="team member image"
       layout="fill"
       objectFit="cover"
       objectPosition="top center"
     />
-    <Name>{person.name}</Name>
-    <Role>{person.role}</Role>
-  </Wrapper>
+    <span className="flex-[0_1_auto] grid justify-items-start items-center mt-0 font-normal text-black">
+      {person.name}
+    </span>
+    <span className="flex-[0_1_auto] grid justify-items-start items-center font-extralight text-black">
+      {person.role}
+    </span>
+  </div>
 );
 
 export default PersonCard;

@@ -1,260 +1,78 @@
-import { FunctionComponent, useState, useEffect, useRef } from "react";
-import Link from "next/link";
-import Slider from "react-slick";
-import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { IconPrefix, IconName } from "@fortawesome/fontawesome-svg-core";
-import Title from "./styles/Title";
-import Head from "next/head";
+'use client';
 
-interface SliderNavLinkProps {
-  readonly className?: string;
-}
+import { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
+import Head from 'next/head';
+import Slider from 'react-slick';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faBrowser,
+  faFillDrip,
+  faMapMarkerAlt,
+  faMobile,
+  faPaperPlane,
+  faTablet,
+} from '@fortawesome/pro-light-svg-icons';
+import { cn } from '@/lib/utils';
+import H2 from './H2/H2';
 
-const Wrapper = styled.div`
-  padding: var(--spacing-large);
-  color: var(--color-black);
-  display: grid;
-  grid-row-gap: var(--spacing-large);
-  overflow-x: hidden;
-  @media (min-width: 968px) {
-    overflow-x: hidden;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: auto auto 1fr;
-    grid-row-gap: var(--spacing-large);
-    grid-column-gap: var(--spacing-large);
-    padding: var(--spacing-huge) var(--spacing-huge) 0 var(--spacing-huge);
-  }
-`;
-
-const StyledTitle = styled(Title)`
-  grid-column: 1 / span 3;
-`;
-
-const SubTitle = styled.h4`
-  grid-row: 1 / span 1;
-  grid-column: 1 / -1;
-  text-transform: uppercase;
-  color: #b3b3b3;
-  font-size: 1.3rem;
-  letter-spacing: 1.5px;
-  font-weight: normal;
-  margin: 0;
-`;
-
-const StyledSlider = styled(Slider)`
-  width: 100%;
-  .slick-slide {
-    > div + div {
-      margin-top: var(--spacing-huge);
-    }
-  }
-  @media (min-width: 968px) {
-    grid-column: 1 / span 3;
-    grid-row: 3 / -1;
-  }
-`;
-
-const SliderNav = styled.div`
-  display: none;
-  @media (min-width: 968px) {
-    grid-column: 4 / -1;
-    grid-row: 3 / -1;
-    display: grid;
-    justify-content: center;
-    grid-row-gap: var(--spacing-medium);
-  }
-`;
-
-const SliderNavTitle = styled.h4`
-  font-size: 1.4rem;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  margin: 0;
-`;
-
-const SliderNavLinks = styled.ul`
-  display: grid;
-  grid-row-gap: var(--spacing-medium);
-`;
-
-const SliderNavLinkTitle = styled.h3`
-  transition: color 0.3s ease-in-out;
-  .active & {
-    position: relative;
-    color: var(--color-black);
-    &:after {
-      background-color: var(--color-primary);
-    }
-  }
-  &:after {
-    content: "";
-    position: absolute;
-    background: transparent;
-    border-radius: 50%;
-    height: 10px;
-    width: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    left: -30px;
-    transition: background-color 0.3s ease-in-out;
-  }
-  @media (min-width: 968px) {
-    color: #d3d3d3;
-    font-size: 3rem;
-    margin: 0;
-  }
-`;
-
-const SliderNavLink = styled.li<SliderNavLinkProps>`
-  transition: color 0.3s ease-in-out;
-  @media (min-width: 968px) {
-    cursor: pointer;
-  }
-`;
-
-const StyledLink = styled(Link)`
-  border: 3px solid var(--color-tertiary);
-  border-radius: 4px;
-  color: var(--color-white);
-  background-color: var(--color-tertiary);
-  font-size: 2.2rem;
-  font-weight: bold;
-  padding: var(--spacing-medium) var(--spacing-large);
-  color: var(--color-white);
-  display: grid;
-  place-items: center;
-  @media (min-width: 768px) {
-    grid-column: 1 / span 1;
-    transition: all 0.3s ease-in-out;
-    font-size: 1.8rem;
-    &:hover {
-      background-color: #6043ed;
-      border-color: #6043ed;
-      cursor: pointer;
-    }
-  }
-`;
-
-const Slide = styled.div`
-  display: grid !important; /*TODO: Remove */
-  grid-template-rows: auto auto 1fr auto;
-  grid-row-gap: var(--spacing-large);
-  outline: none;
-  place-items: center;
-  @media (min-width: 968px) {
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: auto auto 1fr auto;
-    justify-items: start;
-    svg {
-      grid-row: 1 / span 1;
-      grid-column: 1 / -1;
-    }
-  }
-`;
-
-const SlideTitle = styled.h3`
-  margin: 0;
-  font-size: 3rem;
-  @media (min-width: 968px) {
-    grid-column: 1 / -1;
-    grid-row: 2 / span 1;
-  }
-`;
-
-const SlideCopy = styled.p`
-  font-size: 1.8rem;
-  line-height: 3.2rem;
-  margin: 0;
-  text-align: center;
-  @media (min-width: 968px) {
-    grid-column: 1 / span 3;
-    grid-row: 3 / span 3;
-    text-align: initial;
-  }
-`;
-
-const Services: FunctionComponent = () => {
+const Services = () => {
   const [activeSlide, setActiveSlide] = useState(0);
   const [sliderData] = useState([
     {
-      icon: {
-        category: "fal",
-        name: "tablet",
-        color: "#3B3B3B",
-      },
-      title: "Platforms & Apps",
+      icon: faTablet,
+      title: 'Platforms & Apps',
       copy: `Creating platforms & apps is what we are most passionate
       about. 1188 has worked with a number of different industries to
       create market leading platforms, from property portals to
       community spaces.`,
-      buttonLink: "#",
-      buttonCopy: "Read More",
+      buttonLink: '#',
+      buttonCopy: 'Read More',
     },
     {
-      icon: {
-        category: "fal",
-        name: "browser",
-        color: "#3B3B3B",
-      },
-      title: "Websites",
+      icon: faBrowser,
+      title: 'Websites',
       copy: `We specialise in the design & development of websites that
       work – for your users and you. Powered by sophisticated backend
       systems and APIs, they generate leads, sales, enquiries and
       whatever else your online goals may be.`,
-      buttonLink: "#",
-      buttonCopy: "Read More",
+      buttonLink: '#',
+      buttonCopy: 'Read More',
     },
     {
-      icon: {
-        category: "fal",
-        name: "mobile",
-        color: "#3B3B3B",
-      },
-      title: "Mobile",
+      icon: faMobile,
+      title: 'Mobile',
       copy: `Mobile first – always! With the opportunity to reach users at any
       given moment, we deliver expert mobile strategy, responsive design
       and mobile application development.`,
-      buttonLink: "#",
-      buttonCopy: "Read More",
+      buttonLink: '#',
+      buttonCopy: 'Read More',
     },
     {
-      icon: {
-        category: "fal",
-        name: "map-marked-alt",
-        color: "#3B3B3B",
-      },
-      title: "Digital Strategy",
+      icon: faMapMarkerAlt,
+      title: 'Digital Strategy',
       copy: `Analysis, research and insight to position brands at the forefront
       of digital.`,
-      buttonLink: "#",
-      buttonCopy: "Read More",
+      buttonLink: '#',
+      buttonCopy: 'Read More',
     },
     {
-      icon: {
-        category: "fal",
-        name: "fill-drip",
-        color: "#3B3B3B",
-      },
-      title: "Design & UX",
+      icon: faFillDrip,
+      title: 'Design & UX',
       copy: `Let our team of talented designers craft your digital experience.
       We create beautiful, functional and delicious design solutions
       and, we're proud of it!`,
-      buttonLink: "#",
-      buttonCopy: "Read More",
+      buttonLink: '#',
+      buttonCopy: 'Read More',
     },
     {
-      icon: {
-        category: "fal",
-        name: "paper-plane",
-        color: "#3B3B3B",
-      },
-      title: "Marketing",
+      icon: faPaperPlane,
+      title: 'Marketing',
       copy: `Our experienced team, along with our proven platforms, will help
       build your business. With proven results on the board, we not only
       offer solutions, we deliver game changing ideas.`,
-      buttonLink: "#",
-      buttonCopy: "Read More",
+      buttonLink: '#',
+      buttonCopy: 'Read More',
     },
   ]);
   const sliderEl = useRef<Slider>(null);
@@ -299,43 +117,65 @@ const Services: FunctionComponent = () => {
           href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
         />
       </Head>
-      <Wrapper>
-        <SubTitle>Services</SubTitle>
-        <StyledTitle>What we&apos;re good at.</StyledTitle>
-        <StyledSlider {...settings} ref={sliderEl}>
+      <div className="p-8 text-black grid gap-y-8 overflow-x-hidden md:grid-cols-[repeat(4,1fr)] md:grid-rows-[auto_auto_1fr] md:gap-x-8 md:p-16">
+        <h4 className="row-[1_/_span_1] col-span-full uppercase text-[#b3b3b3] text-sm font-normal m-0">
+          Services
+        </h4>
+        <H2 className="col-[1_/_span_3]">What we&apos;re good at.</H2>
+        <Slider
+          className="w-full md:col-[1_/_span_3] md:row-[3_/_span_-1]"
+          // eslint-disable-next-line react/jsx-props-no-spreading
+          {...settings}
+          ref={sliderEl}
+        >
           {sliderData.map((slide, i) => (
-            <Slide key={i}>
+            <div
+              className="grid grid-rows-[auto_auto_1fr_auto] gap-y-8 outline-none place-items-center md:grid-cols-[repeat(4,1fr)] md:grid-rows-[auto_auto_1fr_auto] md:justify-items-start"
+              key={i}
+            >
               <FontAwesomeIcon
-                icon={[
-                  slide.icon.category as IconPrefix,
-                  slide.icon.name as IconName,
-                ]} // FIX: https://github.com/FortAwesome/react-fontawesome/issues/210
-                color={slide.icon.color}
+                icon={slide.icon}
+                color="#3B3B3B"
                 size="5x"
+                className="md:row-[1_/_span_1] md:col-span-full"
               />
-              <SlideTitle>{slide.title}</SlideTitle>
-              <SlideCopy>{slide.copy}</SlideCopy>
-              <StyledLink href={slide.buttonLink}>
+              <h3 className="m-0 text-3xl md:col-span-full md:row-[2_/_span_1]">
+                {slide.title}
+              </h3>
+              <p className="text-lg m-0 text-center md:col-[1_/_span_3] md:row-[3_/_span_3] md:[text-align:initial]">
+                {slide.copy}
+              </p>
+              <Link
+                href={slide.buttonLink}
+                className="border-tertiary border-[3px] text-white bg-tertiary text-2xl font-bold px-8 py-4 grid place-items-center md:col-[1_/_span_1] md:transition-all md:duration-300 md:ease-in-out md:text-lg md:hover:bg-primary md:hover:border-primary md:hover:cursor-pointer"
+              >
                 {slide.buttonCopy}
-              </StyledLink>
-            </Slide>
+              </Link>
+            </div>
           ))}
-        </StyledSlider>
-        <SliderNav>
-          <SliderNavTitle>The Expertise</SliderNavTitle>
-          <SliderNavLinks>
+        </Slider>
+        <div className="hidden md:col-[4_/_-1] md:row-[3_/_-1] md:grid md:justify-center md:gap-y-4">
+          <h4 className="text-sm uppercase m-0">The Expertise</h4>
+          <ul className="grid gap-y-4">
             {sliderData.map((slide, i) => (
-              <SliderNavLink
+              <li
                 onClick={() => handleClick(i)}
-                className={activeSlide === i ? "active" : ""}
+                className={cn(
+                  'group transition-colors duration-300 ease-in-out md:cursor-pointer',
+                  {
+                    active: activeSlide === i,
+                  },
+                )}
                 key={i}
               >
-                <SliderNavLinkTitle>{slide.title}</SliderNavLinkTitle>
-              </SliderNavLink>
+                <h3 className="transition-colors duration-300 ease-in-out group-[.active]:relative after:content-[''] after:bg-transparent after:rounded-[50%] after:h-2.5  after:w-2.5 after:top-1/2 after:translate-y-[-50%] after:left-[-30px] after:transition-colors after:duration-300 after:ease-in-out  group-[.active]:text-black group-[.active]:after:bg-primary md:color-[#d3d3d3] md:text-3xl md:m-0">
+                  {slide.title}
+                </h3>
+              </li>
             ))}
-          </SliderNavLinks>
-        </SliderNav>
-      </Wrapper>
+          </ul>
+        </div>
+      </div>
     </>
   );
 };
