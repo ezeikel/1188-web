@@ -1,4 +1,6 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+/* eslint-disable import/prefer-default-export */
+
+import { NextRequest } from 'next/server';
 import postmark from 'postmark';
 
 const createEmail = (text: string) => `
@@ -13,41 +15,41 @@ const createEmail = (text: string) => `
   </div>
 `;
 
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  if (req.method === 'POST') {
-    const {
-      body: { firstName, lastName, email, message },
-    } = req;
+export async function POST(request: NextRequest) {
+  const { firstName, lastName, email, message } = await request.json();
 
-    const client = new postmark.ServerClient(
-      process.env.POSTMARK_TOKEN as string,
-    );
+  const client = new postmark.ServerClient(
+    process.env.POSTMARK_TOKEN as string,
+  );
 
-    try {
-      await client.sendEmail({
-        From: 'contact-form@1188.agency',
-        To: 'ezeikel@1188.agency',
-        Subject: `Enquiry via 1188.agency from ${firstName} ${lastName} (${email})`,
-        HtmlBody: createEmail(message),
-        TextBody: message,
-        MessageStream: 'outbound',
-      });
-
-      res.status(200).json({
-        message: 'Email sent successfully.',
-      });
-    } catch (error) {
-      const statusCode = typeof error.code === 'number' ? error.code : 500;
-
-      res.status(statusCode).json({
-        message: error.message,
-      });
-    }
-  } else {
-    res.status(404).json({
-      message: 'HTTP method not supported.',
+  try {
+    await client.sendEmail({
+      From: 'contact-form@1188.agency',
+      To: 'ezeikel@1188.agency',
+      Subject: `Enquiry via 1188.agency from ${firstName} ${lastName} (${email})`,
+      HtmlBody: createEmail(message),
+      TextBody: message,
+      MessageStream: 'outbound',
     });
-  }
-};
 
-export default handler;
+    return Response.json(
+      {
+        message: 'Email sent successfully.',
+      },
+      {
+        status: 200,
+      },
+    );
+  } catch (error) {
+    const statusCode = typeof error.code === 'number' ? error.code : 500;
+
+    return Response.json(
+      {
+        message: error.message,
+      },
+      {
+        status: statusCode,
+      },
+    );
+  }
+}
