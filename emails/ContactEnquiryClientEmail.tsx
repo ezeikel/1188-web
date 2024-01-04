@@ -16,7 +16,7 @@ import {
 //   ? `https://${process.env.VERCEL_URL}`
 //   : '';
 // FIX: process.env only checks ./react-email directory not parent so hardcoding for now - https://github.com/resend/react-email/issues/668
-const baseUrl = 'https://develop.1188.agency';
+const baseUrl = 'https://1188.agency';
 
 type ContactEnquiryClientEmailProps = {
   firstName: string;
