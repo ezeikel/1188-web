@@ -1,9 +1,13 @@
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import imageUrlBuilder from '@sanity/image-url';
+import { client } from '@/sanity/lib/client';
 
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
+// this function will generate a URL for the given source
+export const urlFor = (source: any): string =>
+  imageUrlBuilder(client).image(source).url();
+
+export const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs));
 
 export const getTailwindClass = (className: string, query: RegExp) => {
   if (!className) {

@@ -39,7 +39,7 @@ const Footer = () => (
       <h4 className="m-0 text-white font-bold">Follow</h4>
       <ul className="w-full flex gap-x-8 justify-center md:justify-start">
         {SOCIAL_LINKS.map(({ label, href, icon }) => (
-          <li>
+          <li key={href}>
             <a href={href} className="group" aria-label={`${label} link`}>
               <FontAwesomeIcon
                 icon={icon}

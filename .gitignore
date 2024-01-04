@@ -1,19 +1,18 @@
 # dependencies
-node_modules/
+/node_modules
 
 # testing
-coverage/
+/coverage
 
 # next.js
-.next/
-out/
+/.next/
+/out/
 
 # production
-build/
+/build
 
 # misc
 .DS_Store
-.idea/*
 .vscode/
 
 # debug
@@ -21,20 +20,15 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+
 # local env files
-.env
-.env.*
-
-# cypress
-cypress/results/*
-cypress/reports/*
-cypress/screenshots/*
-cypress/videos/*
-cypress.env.json
-
-# TypeScript incremental compilation cache
-*.tsbuildinfo
-.vercel
 .env*.local
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
 
 .react-email

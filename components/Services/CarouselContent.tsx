@@ -11,7 +11,7 @@ type CarouselContentProps = {
 const CarouselContent = ({ className }: CarouselContentProps) =>
   CAROUSEL_ITEMS.map((slide) => (
     // wrapper div needed as react-slick injects inline styles
-    <div>
+    <div key={slide.id}>
       <div
         className={cn('flex flex-col gap-y-8', {
           [className as string]: !!className,

@@ -5,6 +5,7 @@ type TeamMemberCardProps = {
   teamMember: {
     name: string;
     role: string;
+    image: string;
   };
   className?: string;
 };
@@ -16,7 +17,7 @@ const TeamMemberCard = ({ className, teamMember }: TeamMemberCardProps) => (
     })}
   >
     <Image
-      src={`/images/${teamMember.name.toLowerCase().replace(/\s/g, '-')}.jpg`}
+      src={teamMember.image}
       alt={`picture of ${teamMember.name}`}
       width={300}
       height={450}
