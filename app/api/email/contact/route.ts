@@ -32,7 +32,6 @@ export async function POST(request: NextRequest) {
     subject: `We've Received Your Enquiry, ${firstName}!`,
     react: ContactEnquiryClientEmail({
       firstName,
-      lastName,
     }),
   });
 
