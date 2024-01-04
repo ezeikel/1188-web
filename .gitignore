@@ -36,3 +36,5 @@ cypress.env.json
 *.tsbuildinfo
 .vercel
 .env*.local
+
+.react-email

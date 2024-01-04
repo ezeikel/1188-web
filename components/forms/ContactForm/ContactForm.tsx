@@ -47,7 +47,7 @@ const ContactForm = ({ className }: ContactFormProps) => (
     ): Promise<void> => {
       // TODO: cleanup/trim data being sent
       try {
-        await axios.post('/api/contact', values);
+        await axios.post('/api/email/contact', values);
       } catch (error) {
         console.error(error);
       } finally {
