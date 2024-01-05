@@ -1,13 +1,7 @@
-// This file sets a custom webpack configuration to use your Next.js app
-// with Sentry.
-// https://nextjs.org/docs/api-reference/next.config.js/introduction
-// https://docs.sentry.io/platforms/javascript/guides/nextjs/
-
 const { withSentryConfig } = require('@sentry/nextjs');
 
+/** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
   images: {
     remotePatterns: [
       {
@@ -17,19 +11,21 @@ const nextConfig = {
       },
     ],
   },
-  async redirects() {
-    return [
-      {
-        source: '/.well-known/assetlinks',
-        destination: '/.well-known/assetlinks.json',
-        permanent: true,
-      },
-      {
-        source: '/apple-app-site-association',
-        destination: '/apple-app-site-association.json',
-        permanent: true,
-      },
-    ];
+  // Optional build-time configuration options
+  sentry: {
+    // See the sections below for information on the following options:
+    //   'Configure Source Maps':
+    //     - disableServerWebpackPlugin
+    //     - disableClientWebpackPlugin
+    //     - hideSourceMaps
+    //     - widenClientFileUpload
+    //   'Configure Legacy Browser Support':
+    //     - transpileClientSDK
+    //   'Configure Serverside Auto-instrumentation':
+    //     - autoInstrumentServerFunctions
+    //     - excludeServerRoutes
+    //   'Configure Tunneling to avoid Ad-Blockers':
+    //     - tunnelRoute
   },
 };
 
@@ -39,6 +35,15 @@ const SentryWebpackPluginOptions = {
   // recommended:
   //   release, url, org, project, authToken, configFile, stripPrefix,
   //   urlPrefix, include, ignore
+
+  org: process.env.SENTRY_ORG,
+  project: process.env.SENTRY_PROJECT,
+
+  // An auth token is required for uploading source maps.
+  authToken: process.env.SENTRY_AUTH_TOKEN,
+
+  silent: true, // Suppresses all logs
+
   // For all available options, see:
   // https://github.com/getsentry/sentry-webpack-plugin#options.
 };

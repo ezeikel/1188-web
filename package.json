@@ -57,6 +57,7 @@
     "class-variance-authority": "^0.7.0",
     "embla-carousel-react": "8.0.0-rc17",
     "formik": "^2.4.5",
+    "is-ci-cli": "^2.2.0",
     "lucide-react": "^0.303.0",
     "next": "14.0.4",
     "next-sanity": "7",
