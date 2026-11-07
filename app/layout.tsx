@@ -1,7 +1,6 @@
 import { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import Script from 'next/script';
-import { Analytics } from '@vercel/analytics/react';
 import * as Sentry from '@sentry/nextjs';
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
@@ -75,7 +74,6 @@ const RootLayout = async ({ children }: RootLayoutProps) => {
           id="google-analytics"
           dangerouslySetInnerHTML={setGoogleAnalyticsTags()}
         />
-        <Analytics />
       </body>
     </html>
   );
